@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46073D231BDA66170039A908 /* MyEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46073D221BDA66170039A908 /* MyEventViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		46073D251BDA68190039A908 /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46073D241BDA68190039A908 /* MyCustomCell.swift */; settings = {ASSET_TAGS = (); }; };
+		4692F4041BD6479E00B62564 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4031BD6479E00B62564 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4051BD6521000B62564 /* SignUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		4692F4081BD6740300B62564 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4071BD6740300B62564 /* EditProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		4692F4161BD8FB5D00B62564 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4151BD8FB5D00B62564 /* CustomCell.swift */; settings = {ASSET_TAGS = (); }; };
+		4692F4181BD8FBD500B62564 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4171BD8FBD500B62564 /* EventViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		46BF30531BD10584003AA0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30521BD10584003AA0AE /* AppDelegate.swift */; };
 		46BF30551BD10584003AA0AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30541BD10584003AA0AE /* ViewController.swift */; };
 		46BF30581BD10584003AA0AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BF30561BD10584003AA0AE /* Main.storyboard */; };
@@ -14,6 +21,8 @@
 		46BF305D1BD10584003AA0AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BF305B1BD10584003AA0AE /* LaunchScreen.storyboard */; };
 		46BF30681BD10584003AA0AE /* DeventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30671BD10584003AA0AE /* DeventTests.swift */; };
 		46BF30731BD10584003AA0AE /* DeventUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30721BD10584003AA0AE /* DeventUITests.swift */; };
+		46BF30811BD105CD003AA0AE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 46BF30801BD105CD003AA0AE /* Podfile */; settings = {ASSET_TAGS = (); }; };
+		A6C2A73E2B2030B9BFA75FEA /* libPods-Devent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C24C59A03D54D627E59199 /* libPods-Devent.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +43,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28101BB0201438D8E80B03C9 /* Pods-Devent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Devent.release.xcconfig"; path = "Pods/Target Support Files/Pods-Devent/Pods-Devent.release.xcconfig"; sourceTree = "<group>"; };
+		46073D221BDA66170039A908 /* MyEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventViewController.swift; sourceTree = "<group>"; };
+		46073D241BDA68190039A908 /* MyCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
+		4692F4031BD6479E00B62564 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4692F4051BD6521000B62564 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4692F4071BD6740300B62564 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		4692F4151BD8FB5D00B62564 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		4692F4171BD8FBD500B62564 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		46BF304F1BD10584003AA0AE /* Devent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Devent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BF30521BD10584003AA0AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46BF30541BD10584003AA0AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +64,10 @@
 		46BF306E1BD10584003AA0AE /* DeventUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeventUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BF30721BD10584003AA0AE /* DeventUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeventUITests.swift; sourceTree = "<group>"; };
 		46BF30741BD10584003AA0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46BF30801BD105CD003AA0AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		46BF30821BD1065C003AA0AE /* Devent-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Devent-Bridging-Header.h"; sourceTree = "<group>"; };
+		47C24C59A03D54D627E59199 /* libPods-Devent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Devent.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF9C72336C5BB7EF94115B23 /* Pods-Devent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Devent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Devent/Pods-Devent.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6C2A73E2B2030B9BFA75FEA /* libPods-Devent.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,10 +99,14 @@
 		46BF30461BD10584003AA0AE = {
 			isa = PBXGroup;
 			children = (
+				46BF30801BD105CD003AA0AE /* Podfile */,
 				46BF30511BD10584003AA0AE /* Devent */,
 				46BF30661BD10584003AA0AE /* DeventTests */,
 				46BF30711BD10584003AA0AE /* DeventUITests */,
 				46BF30501BD10584003AA0AE /* Products */,
+				DBE9E464DD0CA046A5AF99D6 /* Pods */,
+				C1FFEB1FFE98D9D4592A607A /* Frameworks */,
+				46BF30821BD1065C003AA0AE /* Devent-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +129,13 @@
 				46BF30591BD10584003AA0AE /* Assets.xcassets */,
 				46BF305B1BD10584003AA0AE /* LaunchScreen.storyboard */,
 				46BF305E1BD10584003AA0AE /* Info.plist */,
+				4692F4031BD6479E00B62564 /* LoginViewController.swift */,
+				4692F4051BD6521000B62564 /* SignUpViewController.swift */,
+				4692F4071BD6740300B62564 /* EditProfileViewController.swift */,
+				4692F4151BD8FB5D00B62564 /* CustomCell.swift */,
+				4692F4171BD8FBD500B62564 /* EventViewController.swift */,
+				46073D221BDA66170039A908 /* MyEventViewController.swift */,
+				46073D241BDA68190039A908 /* MyCustomCell.swift */,
 			);
 			path = Devent;
 			sourceTree = "<group>";
@@ -125,6 +158,23 @@
 			path = DeventUITests;
 			sourceTree = "<group>";
 		};
+		C1FFEB1FFE98D9D4592A607A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				47C24C59A03D54D627E59199 /* libPods-Devent.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DBE9E464DD0CA046A5AF99D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF9C72336C5BB7EF94115B23 /* Pods-Devent.debug.xcconfig */,
+				28101BB0201438D8E80B03C9 /* Pods-Devent.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +182,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46BF30771BD10584003AA0AE /* Build configuration list for PBXNativeTarget "Devent" */;
 			buildPhases = (
+				0EFF0FFA5DCB7B3EAA15E746 /* Check Pods Manifest.lock */,
 				46BF304B1BD10584003AA0AE /* Sources */,
 				46BF304C1BD10584003AA0AE /* Frameworks */,
 				46BF304D1BD10584003AA0AE /* Resources */,
+				7DC981A382E54F852078B449 /* Embed Pods Frameworks */,
+				94F4FE646CA83253D34235CF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -187,6 +240,7 @@
 		46BF30471BD10584003AA0AE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = ES;
 				TargetAttributes = {
@@ -230,6 +284,7 @@
 			files = (
 				46BF305D1BD10584003AA0AE /* LaunchScreen.storyboard in Resources */,
 				46BF305A1BD10584003AA0AE /* Assets.xcassets in Resources */,
+				46BF30811BD105CD003AA0AE /* Podfile in Resources */,
 				46BF30581BD10584003AA0AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,12 +305,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0EFF0FFA5DCB7B3EAA15E746 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7DC981A382E54F852078B449 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Devent/Pods-Devent-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94F4FE646CA83253D34235CF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Devent/Pods-Devent-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		46BF304B1BD10584003AA0AE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46073D251BDA68190039A908 /* MyCustomCell.swift in Sources */,
+				4692F4041BD6479E00B62564 /* LoginViewController.swift in Sources */,
 				46BF30551BD10584003AA0AE /* ViewController.swift in Sources */,
+				4692F4181BD8FBD500B62564 /* EventViewController.swift in Sources */,
+				4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */,
+				4692F4081BD6740300B62564 /* EditProfileViewController.swift in Sources */,
+				46073D231BDA66170039A908 /* MyEventViewController.swift in Sources */,
+				4692F4161BD8FB5D00B62564 /* CustomCell.swift in Sources */,
 				46BF30531BD10584003AA0AE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,23 +506,30 @@
 		};
 		46BF30781BD10584003AA0AE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF9C72336C5BB7EF94115B23 /* Pods-Devent.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Devent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ES.Devent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Devent-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		46BF30791BD10584003AA0AE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28101BB0201438D8E80B03C9 /* Pods-Devent.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Devent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ES.Devent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Devent-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -483,6 +600,7 @@
 				46BF30791BD10584003AA0AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		46BF307A1BD10584003AA0AE /* Build configuration list for PBXNativeTarget "DeventTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +609,7 @@
 				46BF307C1BD10584003AA0AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		46BF307D1BD10584003AA0AE /* Build configuration list for PBXNativeTarget "DeventUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +618,7 @@
 				46BF307F1BD10584003AA0AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
