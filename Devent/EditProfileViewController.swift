@@ -20,6 +20,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        eventMatch()
         
         print(PFUser.currentUser()?.objectForKey("firstName"))
         

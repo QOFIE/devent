@@ -10,6 +10,12 @@ import UIKit
 
 class EventViewController: PFQueryTableViewController {
 
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        eventMatch()
+        
+    }
         
         // Initialise the PFQueryTable tableview
         override init(style: UITableViewStyle, className: String!) {

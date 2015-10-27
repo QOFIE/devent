@@ -23,11 +23,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             self.presentViewController(loginViewController, animated: false, completion: nil)
         } else {
             presentLoggedInAlert()
-            
         }
-        
-        
-        
     }
     
     func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
@@ -44,18 +40,12 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     func presentLoggedInAlert() {
         let alertController = UIAlertController(title: "You're logged in", message: "Welcome to Devent", preferredStyle: .Alert)
         let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            self.performSegueWithIdentifier("LoggedInSeque", sender: self)
-            
-            //self.dismissViewControllerAnimated(true, completion: nil)
-            
+            self.performSegueWithIdentifier("loggedInSeque", sender: self)
         }
+        
         alertController.addAction(OKAction)
         self.presentViewController(alertController, animated: true, completion: nil)
-        
     }
-    
-    
-    
 }
 
 

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		46073D231BDA66170039A908 /* MyEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46073D221BDA66170039A908 /* MyEventViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		46073D251BDA68190039A908 /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46073D241BDA68190039A908 /* MyCustomCell.swift */; settings = {ASSET_TAGS = (); }; };
+		4690A5FE1BDD7E0F00B18403 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4690A5FD1BDD7E0F00B18403 /* CardView.swift */; settings = {ASSET_TAGS = (); }; };
+		4690A6001BDD7E5300B18403 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4690A5FF1BDD7E5300B18403 /* SwipeView.swift */; settings = {ASSET_TAGS = (); }; };
+		4690A6021BDD7E9900B18403 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4690A6011BDD7E9900B18403 /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		4690A6041BDD807E00B18403 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4690A6031BDD807E00B18403 /* CardsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4692F4041BD6479E00B62564 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4031BD6479E00B62564 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4051BD6521000B62564 /* SignUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4692F4081BD6740300B62564 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4071BD6740300B62564 /* EditProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -22,6 +26,10 @@
 		46BF30681BD10584003AA0AE /* DeventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30671BD10584003AA0AE /* DeventTests.swift */; };
 		46BF30731BD10584003AA0AE /* DeventUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30721BD10584003AA0AE /* DeventUITests.swift */; };
 		46BF30811BD105CD003AA0AE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 46BF30801BD105CD003AA0AE /* Podfile */; settings = {ASSET_TAGS = (); }; };
+		46E58E081BDF7A3F00FEA214 /* eventMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E071BDF7A3F00FEA214 /* eventMatch.swift */; settings = {ASSET_TAGS = (); }; };
+		46E58E0A1BDF89FC00FEA214 /* Deneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E091BDF89FC00FEA214 /* Deneme.swift */; settings = {ASSET_TAGS = (); }; };
+		46E58E0C1BDFA4D900FEA214 /* MacthesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E0B1BDFA4D900FEA214 /* MacthesTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		46E58E0E1BDFA51700FEA214 /* MacthesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E0D1BDFA51700FEA214 /* MacthesCustomCell.swift */; settings = {ASSET_TAGS = (); }; };
 		A6C2A73E2B2030B9BFA75FEA /* libPods-Devent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C24C59A03D54D627E59199 /* libPods-Devent.a */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +54,10 @@
 		28101BB0201438D8E80B03C9 /* Pods-Devent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Devent.release.xcconfig"; path = "Pods/Target Support Files/Pods-Devent/Pods-Devent.release.xcconfig"; sourceTree = "<group>"; };
 		46073D221BDA66170039A908 /* MyEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventViewController.swift; sourceTree = "<group>"; };
 		46073D241BDA68190039A908 /* MyCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
+		4690A5FD1BDD7E0F00B18403 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		4690A5FF1BDD7E5300B18403 /* SwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
+		4690A6011BDD7E9900B18403 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4690A6031BDD807E00B18403 /* CardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		4692F4031BD6479E00B62564 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4692F4051BD6521000B62564 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4692F4071BD6740300B62564 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +78,10 @@
 		46BF30741BD10584003AA0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46BF30801BD105CD003AA0AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		46BF30821BD1065C003AA0AE /* Devent-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Devent-Bridging-Header.h"; sourceTree = "<group>"; };
+		46E58E071BDF7A3F00FEA214 /* eventMatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventMatch.swift; sourceTree = "<group>"; };
+		46E58E091BDF89FC00FEA214 /* Deneme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deneme.swift; sourceTree = "<group>"; };
+		46E58E0B1BDFA4D900FEA214 /* MacthesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacthesTableViewController.swift; sourceTree = "<group>"; };
+		46E58E0D1BDFA51700FEA214 /* MacthesCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacthesCustomCell.swift; sourceTree = "<group>"; };
 		47C24C59A03D54D627E59199 /* libPods-Devent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Devent.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9C72336C5BB7EF94115B23 /* Pods-Devent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Devent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Devent/Pods-Devent.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +112,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4690A5F51BDCDCD300B18403 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				46BF30541BD10584003AA0AE /* ViewController.swift */,
+				4692F4031BD6479E00B62564 /* LoginViewController.swift */,
+				4692F4051BD6521000B62564 /* SignUpViewController.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		4690A5F61BDCDCE600B18403 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				46BF305E1BD10584003AA0AE /* Info.plist */,
+				46BF305B1BD10584003AA0AE /* LaunchScreen.storyboard */,
+				46BF30591BD10584003AA0AE /* Assets.xcassets */,
+				46BF30521BD10584003AA0AE /* AppDelegate.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4690A5F81BDCDD1600B18403 /* Profile Tab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Profile Tab";
+			sourceTree = "<group>";
+		};
+		4690A5F91BDCDD3700B18403 /* Event Tab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Event Tab";
+			sourceTree = "<group>";
+		};
+		4690A5FA1BDCDD3F00B18403 /* Discover Tab */ = {
+			isa = PBXGroup;
+			children = (
+				4690A5FD1BDD7E0F00B18403 /* CardView.swift */,
+				4690A5FF1BDD7E5300B18403 /* SwipeView.swift */,
+				4690A6011BDD7E9900B18403 /* User.swift */,
+				4690A6031BDD807E00B18403 /* CardsViewController.swift */,
+			);
+			name = "Discover Tab";
+			sourceTree = "<group>";
+		};
+		4690A5FB1BDCDD4700B18403 /* Matches Tab */ = {
+			isa = PBXGroup;
+			children = (
+				46E58E0B1BDFA4D900FEA214 /* MacthesTableViewController.swift */,
+				46E58E071BDF7A3F00FEA214 /* eventMatch.swift */,
+				46E58E0D1BDFA51700FEA214 /* MacthesCustomCell.swift */,
+			);
+			name = "Matches Tab";
+			sourceTree = "<group>";
+		};
 		46BF30461BD10584003AA0AE = {
 			isa = PBXGroup;
 			children = (
@@ -123,14 +195,14 @@
 		46BF30511BD10584003AA0AE /* Devent */ = {
 			isa = PBXGroup;
 			children = (
-				46BF30521BD10584003AA0AE /* AppDelegate.swift */,
-				46BF30541BD10584003AA0AE /* ViewController.swift */,
 				46BF30561BD10584003AA0AE /* Main.storyboard */,
-				46BF30591BD10584003AA0AE /* Assets.xcassets */,
-				46BF305B1BD10584003AA0AE /* LaunchScreen.storyboard */,
-				46BF305E1BD10584003AA0AE /* Info.plist */,
-				4692F4031BD6479E00B62564 /* LoginViewController.swift */,
-				4692F4051BD6521000B62564 /* SignUpViewController.swift */,
+				46E58E091BDF89FC00FEA214 /* Deneme.swift */,
+				4690A5FB1BDCDD4700B18403 /* Matches Tab */,
+				4690A5FA1BDCDD3F00B18403 /* Discover Tab */,
+				4690A5F91BDCDD3700B18403 /* Event Tab */,
+				4690A5F81BDCDD1600B18403 /* Profile Tab */,
+				4690A5F61BDCDCE600B18403 /* Supporting Files */,
+				4690A5F51BDCDCD300B18403 /* Authentication */,
 				4692F4071BD6740300B62564 /* EditProfileViewController.swift */,
 				4692F4151BD8FB5D00B62564 /* CustomCell.swift */,
 				4692F4171BD8FBD500B62564 /* EventViewController.swift */,
@@ -360,12 +432,20 @@
 			files = (
 				46073D251BDA68190039A908 /* MyCustomCell.swift in Sources */,
 				4692F4041BD6479E00B62564 /* LoginViewController.swift in Sources */,
+				46E58E081BDF7A3F00FEA214 /* eventMatch.swift in Sources */,
+				4690A6001BDD7E5300B18403 /* SwipeView.swift in Sources */,
 				46BF30551BD10584003AA0AE /* ViewController.swift in Sources */,
 				4692F4181BD8FBD500B62564 /* EventViewController.swift in Sources */,
+				4690A5FE1BDD7E0F00B18403 /* CardView.swift in Sources */,
+				46E58E0A1BDF89FC00FEA214 /* Deneme.swift in Sources */,
 				4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */,
+				4690A6041BDD807E00B18403 /* CardsViewController.swift in Sources */,
 				4692F4081BD6740300B62564 /* EditProfileViewController.swift in Sources */,
+				4690A6021BDD7E9900B18403 /* User.swift in Sources */,
+				46E58E0E1BDFA51700FEA214 /* MacthesCustomCell.swift in Sources */,
 				46073D231BDA66170039A908 /* MyEventViewController.swift in Sources */,
 				4692F4161BD8FB5D00B62564 /* CustomCell.swift in Sources */,
+				46E58E0C1BDFA4D900FEA214 /* MacthesTableViewController.swift in Sources */,
 				46BF30531BD10584003AA0AE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
