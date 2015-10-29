@@ -10,6 +10,8 @@ import UIKit
 
 class MacthesTableViewController: PFQueryTableViewController {
 
+    var eventId = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         eventMatch()
@@ -35,10 +37,19 @@ class MacthesTableViewController: PFQueryTableViewController {
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery{
         
+        
+        
         var query = PFQuery(className: "MatchedEvent")
             .whereKey("byUser", equalTo: PFUser.currentUser()!.objectId!)
-        query.orderByAscending("matchedEvents")
-        return query
+       
+        var query2 = PFQuery(className: "MatchedEvent")
+            .whereKey("toUser", equalTo: PFUser.currentUser()!.objectId!)
+        
+        var query3 = PFQuery.orQueryWithSubqueries([query, query2])
+        query3.orderByAscending("matchedEvents")
+        
+        return query3
+        
     }
     
     
@@ -54,7 +65,11 @@ class MacthesTableViewController: PFQueryTableViewController {
         
         // Extract values from the PFObject to display in the table cell
         
-        if let username = object?["toUser"] as? String {
+        if var username = object?["toUser"] as? String {
+            
+            if (username == PFUser.currentUser()?.objectId) {
+            username = object?["byUser"] as! String
+            }
             
             var otherUserArray = [PFObject]()
             let queryUser = PFQuery(className: "_User")
@@ -67,10 +82,10 @@ class MacthesTableViewController: PFQueryTableViewController {
             catch {
                 
             }
+                
             
             cell.matchedUserName.text = otherUserArray[0]["firstName"] as! String
         }
-        
         
         if let eventName = object?["matchedEvents"] as? String {
             
@@ -86,14 +101,34 @@ class MacthesTableViewController: PFQueryTableViewController {
                 
             }
             
-            
             cell.matchedEventName.text = otherUserArray1[0]["Name"] as! String
         }
- 
-        
+
         return cell
     }
 
-   
+    override func objectAtIndexPath(indexPath: NSIndexPath?) -> PFObject? {
+        var obj : PFObject? = nil
+        if(indexPath!.row < self.objects?.count) {
+            obj = self.objects?[indexPath!.row] as! PFObject
+        }
+        return obj
+    }
+    
+    @IBAction func goToMessages(sender: AnyObject) {
+        let hitPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
+        let hitIndex = self.tableView.indexPathForRowAtPoint(hitPoint)
+        let event = objectAtIndexPath(hitIndex)
+        eventId = (event?.objectId)!
+        performSegueWithIdentifier("MessageSeque", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "MessageSeque" {
+                let destinationVC = segue.destinationViewController as! MessageViewController
+                destinationVC.groupId = eventId
+            
+        }
+    }
 
 }

@@ -9,6 +9,7 @@
 import Foundation
 
     func eventMatch() {
+        /*
         
         var result = [PFObject]()
         
@@ -28,7 +29,7 @@ import Foundation
             }
         }
         
-    
+    */
                 let mainquery = PFQuery(className: "Action")
                 .whereKey("toUser", equalTo: PFUser.currentUser()!.objectId!)
                 .whereKey("type", equalTo: "matched")
@@ -92,7 +93,7 @@ import Foundation
                             
                         }
                         
-                        print(myOtherUserArray)
+                      
                         for otherNumber in myCurrentUserArray {
                             for number in myOtherUserArray {
                                 if number == otherNumber {
@@ -103,18 +104,57 @@ import Foundation
                             }
                         }
                         
-                        print("2")
+                       
                         
                         if(matchingEvents.count > 0) {
+                                
+                                let sonquery = PFQuery(className: "MatchedEvent")
+                                    .whereKey("byUser", equalTo: PFUser.currentUser()!.objectId!)
+                                    .whereKey("toUser", equalTo: otherUserId)
+                                var sonEventarray = [String]()
+                                
+                                do {
+                                    var abc = try sonquery.findObjects()
+                                    
+                                    for object in abc {
+                                        var name = object["matchedEvents"] as! String?
+                                        sonEventarray.append(name!)
+                                    }
+                                }
+                                catch {
+                                    
+                                }
                             
-                            for event in matchingEvents {
+                            let sonquery2 = PFQuery(className: "MatchedEvent")
+                                .whereKey("byUser", equalTo: otherUserId)
+                                .whereKey("toUser", equalTo: PFUser.currentUser()!.objectId!)
                             
-                            let jointEvent = PFObject(className: "MatchedEvent")
-                                jointEvent.setObject(PFUser.currentUser()!.objectId!, forKey: "byUser")
-                                jointEvent.setObject(otherUserId, forKey: "toUser")
-                                jointEvent.setObject(event, forKey: "matchedEvents")
-                                jointEvent.saveInBackground()
-                                print("3")
+                            do {
+                                var abc = try sonquery2.findObjects()
+                                
+                                for object in abc {
+                                    var name = object["matchedEvents"] as! String?
+                                    sonEventarray.append(name!)
+                                }
+                            }
+                            catch {
+                                
+                            }
+                            
+                                for event in matchingEvents {
+                                
+                                if sonEventarray.contains(event) {
+                                    print("slresdy there")
+                            
+                                } else {
+
+                                    let jointEvent = PFObject(className: "MatchedEvent")
+                                    jointEvent.setObject(PFUser.currentUser()!.objectId!, forKey: "byUser")
+                                    jointEvent.setObject(otherUserId, forKey: "toUser")
+                                    jointEvent.setObject(event, forKey: "matchedEvents")
+                                    jointEvent.saveInBackground()
+                                
+                                }
                             
                             }
                         }

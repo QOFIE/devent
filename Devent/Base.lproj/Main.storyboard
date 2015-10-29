@@ -172,10 +172,24 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFp-uF-Jd0">
+                                            <rect key="frame" x="518" y="26" width="46" height="30"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Pn9-Qm-c8m"/>
+                                                <constraint firstAttribute="width" constant="46" id="YBf-ac-oDp"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="goToMessages:" destination="Qz0-ta-gsz" eventType="touchUpInside" id="ifm-XI-K8u"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="8oF-Jd-Oqh" firstAttribute="top" secondItem="gz3-qM-RHQ" secondAttribute="topMargin" constant="30" id="0kb-2F-Mcc"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="AFp-uF-Jd0" secondAttribute="trailing" constant="28" id="2V2-2V-SWK"/>
+                                        <constraint firstItem="AFp-uF-Jd0" firstAttribute="top" secondItem="gz3-qM-RHQ" secondAttribute="topMargin" constant="18" id="54N-il-Fmv"/>
                                         <constraint firstItem="sYK-0i-yQf" firstAttribute="leading" secondItem="gz3-qM-RHQ" secondAttribute="leadingMargin" constant="146" id="T9f-aV-Zv4"/>
                                         <constraint firstItem="8oF-Jd-Oqh" firstAttribute="leading" secondItem="gz3-qM-RHQ" secondAttribute="leadingMargin" constant="10" id="azW-vA-otD"/>
                                         <constraint firstItem="sYK-0i-yQf" firstAttribute="top" secondItem="gz3-qM-RHQ" secondAttribute="topMargin" constant="30" id="uTO-YQ-vym"/>
@@ -194,10 +208,71 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Matches" id="YZM-QI-dlc"/>
+                    <connections>
+                        <segue destination="cdh-eD-s4L" kind="show" identifier="MessageSeque" id="43M-LK-2ae"/>
+                        <segue destination="DMa-6Q-Ojh" kind="show" identifier="deneme2" id="ybT-Jz-Fie"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sos-P6-c3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1902" y="2074"/>
+        </scene>
+        <!--Deneme-->
+        <scene sceneID="Fqo-kh-acg">
+            <objects>
+                <viewController id="DMa-6Q-Ojh" customClass="Deneme" customModule="Devent" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9om-Ip-Hlj"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZLM-2b-gIf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VKF-Lo-SA7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7FV-C2-rcz">
+                                <rect key="frame" x="244" y="103" width="97" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="RDP-w8-fnz"/>
+                                    <constraint firstAttribute="width" constant="97" id="h5n-l2-652"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7FV-C2-rcz" firstAttribute="centerX" secondItem="VKF-Lo-SA7" secondAttribute="centerX" id="17z-VB-QNu"/>
+                            <constraint firstItem="7FV-C2-rcz" firstAttribute="top" secondItem="9om-Ip-Hlj" secondAttribute="bottom" constant="83" id="d5E-NR-CgZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="denemetext" destination="7FV-C2-rcz" id="fqG-Ke-PqZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9kE-IH-ss7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2628" y="1409"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="sZI-O2-mPc">
+            <objects>
+                <viewController id="cdh-eD-s4L" customClass="MessageViewController" customModule="Devent" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cfT-7p-sQE"/>
+                        <viewControllerLayoutGuide type="bottom" id="MpE-PQ-HBV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sFj-zY-lRb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GEb-Qm-aTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2632" y="2074"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WiR-Gm-g1h">

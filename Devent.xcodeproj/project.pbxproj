@@ -27,9 +27,11 @@
 		46BF30731BD10584003AA0AE /* DeventUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30721BD10584003AA0AE /* DeventUITests.swift */; };
 		46BF30811BD105CD003AA0AE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 46BF30801BD105CD003AA0AE /* Podfile */; settings = {ASSET_TAGS = (); }; };
 		46E58E081BDF7A3F00FEA214 /* eventMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E071BDF7A3F00FEA214 /* eventMatch.swift */; settings = {ASSET_TAGS = (); }; };
-		46E58E0A1BDF89FC00FEA214 /* Deneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E091BDF89FC00FEA214 /* Deneme.swift */; settings = {ASSET_TAGS = (); }; };
 		46E58E0C1BDFA4D900FEA214 /* MacthesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E0B1BDFA4D900FEA214 /* MacthesTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		46E58E0E1BDFA51700FEA214 /* MacthesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E0D1BDFA51700FEA214 /* MacthesCustomCell.swift */; settings = {ASSET_TAGS = (); }; };
+		46EF164F1BE1247C003E7F09 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EF164E1BE1247C003E7F09 /* MessageViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		46EF16511BE189B5003E7F09 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EF16501BE189B5003E7F09 /* Camera.swift */; settings = {ASSET_TAGS = (); }; };
+		46EF16531BE197C1003E7F09 /* Deneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EF16521BE197C1003E7F09 /* Deneme.swift */; settings = {ASSET_TAGS = (); }; };
 		A6C2A73E2B2030B9BFA75FEA /* libPods-Devent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C24C59A03D54D627E59199 /* libPods-Devent.a */; };
 /* End PBXBuildFile section */
 
@@ -79,9 +81,11 @@
 		46BF30801BD105CD003AA0AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		46BF30821BD1065C003AA0AE /* Devent-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Devent-Bridging-Header.h"; sourceTree = "<group>"; };
 		46E58E071BDF7A3F00FEA214 /* eventMatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventMatch.swift; sourceTree = "<group>"; };
-		46E58E091BDF89FC00FEA214 /* Deneme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deneme.swift; sourceTree = "<group>"; };
 		46E58E0B1BDFA4D900FEA214 /* MacthesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacthesTableViewController.swift; sourceTree = "<group>"; };
 		46E58E0D1BDFA51700FEA214 /* MacthesCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacthesCustomCell.swift; sourceTree = "<group>"; };
+		46EF164E1BE1247C003E7F09 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		46EF16501BE189B5003E7F09 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		46EF16521BE197C1003E7F09 /* Deneme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deneme.swift; sourceTree = "<group>"; };
 		47C24C59A03D54D627E59199 /* libPods-Devent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Devent.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9C72336C5BB7EF94115B23 /* Pods-Devent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Devent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Devent/Pods-Devent.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				46BF30561BD10584003AA0AE /* Main.storyboard */,
-				46E58E091BDF89FC00FEA214 /* Deneme.swift */,
 				4690A5FB1BDCDD4700B18403 /* Matches Tab */,
 				4690A5FA1BDCDD3F00B18403 /* Discover Tab */,
 				4690A5F91BDCDD3700B18403 /* Event Tab */,
@@ -208,6 +211,9 @@
 				4692F4171BD8FBD500B62564 /* EventViewController.swift */,
 				46073D221BDA66170039A908 /* MyEventViewController.swift */,
 				46073D241BDA68190039A908 /* MyCustomCell.swift */,
+				46EF164E1BE1247C003E7F09 /* MessageViewController.swift */,
+				46EF16501BE189B5003E7F09 /* Camera.swift */,
+				46EF16521BE197C1003E7F09 /* Deneme.swift */,
 			);
 			path = Devent;
 			sourceTree = "<group>";
@@ -437,13 +443,15 @@
 				46BF30551BD10584003AA0AE /* ViewController.swift in Sources */,
 				4692F4181BD8FBD500B62564 /* EventViewController.swift in Sources */,
 				4690A5FE1BDD7E0F00B18403 /* CardView.swift in Sources */,
-				46E58E0A1BDF89FC00FEA214 /* Deneme.swift in Sources */,
 				4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */,
+				46EF16531BE197C1003E7F09 /* Deneme.swift in Sources */,
+				46EF16511BE189B5003E7F09 /* Camera.swift in Sources */,
 				4690A6041BDD807E00B18403 /* CardsViewController.swift in Sources */,
 				4692F4081BD6740300B62564 /* EditProfileViewController.swift in Sources */,
 				4690A6021BDD7E9900B18403 /* User.swift in Sources */,
 				46E58E0E1BDFA51700FEA214 /* MacthesCustomCell.swift in Sources */,
 				46073D231BDA66170039A908 /* MyEventViewController.swift in Sources */,
+				46EF164F1BE1247C003E7F09 /* MessageViewController.swift in Sources */,
 				4692F4161BD8FB5D00B62564 /* CustomCell.swift in Sources */,
 				46E58E0C1BDFA4D900FEA214 /* MacthesTableViewController.swift in Sources */,
 				46BF30531BD10584003AA0AE /* AppDelegate.swift in Sources */,

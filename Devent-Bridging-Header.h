@@ -9,3 +9,7 @@
 #import <Bolts/Bolts.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <JSQMessagesViewController/JSQMessagesViewController.h>
+#import <JSQSystemSoundPlayer/JSQSystemSoundPlayer.h>
+#import <JSQMessagesViewController/JSQMessages.h>
+#import <JSQMessagesViewController/JSQMessageData.h>
