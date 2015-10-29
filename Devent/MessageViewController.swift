@@ -35,7 +35,7 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
         outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
         incomingBubbleImage = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
         
-        blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "nah-button-pressed"), diameter: 30)
+        blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "nah-button-press"), diameter: 30)
         
         isLoading = false
         self.loadMessages()

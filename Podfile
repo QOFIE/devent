@@ -11,5 +11,6 @@ pod 'ParseUI'
 pod 'ParseFacebookUtilsV4'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
-pod 'JSQMessagesViewController' 
+pod 'JSQMessagesViewController'
+
 end

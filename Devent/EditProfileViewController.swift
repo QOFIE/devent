@@ -3,69 +3,20 @@
 import UIKit
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // MARK: PROPOERTIES
 
-    @IBOutlet weak var profilePicture: UIImageView!
-    @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
+
     
-    @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var ageLabel: UILabel!
+    // MARK: ACTIONS
     
-    @IBAction func sliderValueChanged(sender: AnyObject) {
-        
-        var currentValue = Int(slider.value)
-        ageLabel.text = "\(currentValue)"
-    }
+    //add choose birthday function
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventMatch()
-        
-        print(PFUser.currentUser()?.objectForKey("firstName"))
-        
-        if(PFUser.currentUser()?.objectForKey("userAge") != nil)
-        {
-            let userAge = PFUser.currentUser()?.objectForKey("userAge") as! String
-            ageLabel.text = userAge
-        }
-        
-        
-        if(PFUser.currentUser()?.objectForKey("firstName") != nil)
-        {
-        let userFirstName = PFUser.currentUser()?.objectForKey("firstName") as! String
-        firstNameTextField.text = userFirstName
-        }
-        
-        if(PFUser.currentUser()?.objectForKey("lastName") != nil)
-        {
-        let userLastName = PFUser.currentUser()?.objectForKey("lastName") as? String
-        lastNameTextField.text = userLastName
-        }
-        
-        if(PFUser.currentUser()?.objectForKey("profilePicture") != nil)
-        {
-        
-        let userImageFile = PFUser.currentUser()?.objectForKey("profilePicture") as! PFFile
-        
-            userImageFile.getDataInBackgroundWithBlock(
-                {(imageData: NSData?, error: NSError?) -> Void in
-                    
-                    if(imageData != nil) {
-                    self.profilePicture.image = UIImage(data: imageData!)
-                    }
-            
-            })
-        
-        }
-        
-        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
     @IBAction func chooseProfilePictureButton(sender: AnyObject) {
@@ -111,13 +62,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
     }
 
-    @IBAction func logOutaction(sender: AnyObject) {
-        
-        PFUser.logOut()
-        self.performSegueWithIdentifier("logOutSeque", sender: self)
-        
-    }
-    
+
 
     
 }
