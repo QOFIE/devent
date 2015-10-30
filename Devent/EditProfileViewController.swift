@@ -16,7 +16,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+/*
     
 
     @IBAction func chooseProfilePictureButton(sender: AnyObject) {
@@ -62,7 +62,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
     }
 
-
+*/
 
     
 }
