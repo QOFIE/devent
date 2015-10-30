@@ -13,7 +13,7 @@ struct USER {
     static let lastName = "lastName"
     static let age = "userAge"
     static let profilePicture = "profilePicture"
-    static let location = "location"
+    static let location = "locationCity"
     static let about = "about"
     static let work = "work"
     static let education = "education"

@@ -69,6 +69,7 @@ class ProfileTableViewController: UITableViewController {
         }
     }
 
+
     
     // MARK: ACTIONS
     
@@ -100,6 +101,10 @@ class ProfileTableViewController: UITableViewController {
     }
 
     private func loadProfileData() {
+        
+        if profileDataTable.count > 0 {
+            profileDataTable.removeAll()
+        }
         
         // add profile picture (picture MUST exist)
         let pictureItem = ProfileInfo(category: CategoryIdentifier.picture, data: .PictureUser(self.user!))
@@ -149,8 +154,7 @@ class ProfileTableViewController: UITableViewController {
         // LATER!!!
         
         print("Profile data is loaded to the array.")
-        
-        
+
     }
     
     // MARK: VC LIFECYCLE
@@ -158,7 +162,7 @@ class ProfileTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadProfileData()
+        //loadProfileData()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         // Uncomment the following line to preserve selection between presentations
@@ -166,6 +170,12 @@ class ProfileTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        loadProfileData()
+        print("View will appear executed")
     }
 
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1667DFF01BE408B3007E01BC /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		1689D3061BE299AF003DAA4B /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3051BE299AF003DAA4B /* ImageCropper.swift */; settings = {ASSET_TAGS = (); }; };
 		1689D3081BE2A196003DAA4B /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3071BE2A196003DAA4B /* ProfileTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		1689D30A1BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3091BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -22,7 +23,6 @@
 		4690A6041BDD807E00B18403 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4690A6031BDD807E00B18403 /* CardsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4692F4041BD6479E00B62564 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4031BD6479E00B62564 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4051BD6521000B62564 /* SignUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		4692F4081BD6740300B62564 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4071BD6740300B62564 /* EditProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4692F4161BD8FB5D00B62564 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4151BD8FB5D00B62564 /* CustomCell.swift */; settings = {ASSET_TAGS = (); }; };
 		4692F4181BD8FBD500B62564 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4171BD8FBD500B62564 /* EventViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		46BF30531BD10584003AA0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30521BD10584003AA0AE /* AppDelegate.swift */; };
@@ -60,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		1689D3051BE299AF003DAA4B /* ImageCropper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
 		1689D3071BE2A196003DAA4B /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		1689D3091BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureTableViewCell.swift; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		4690A6031BDD807E00B18403 /* CardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		4692F4031BD6479E00B62564 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4692F4051BD6521000B62564 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		4692F4071BD6740300B62564 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		4692F4151BD8FB5D00B62564 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		4692F4171BD8FBD500B62564 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		46BF304F1BD10584003AA0AE /* Devent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Devent.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,12 +155,12 @@
 			isa = PBXGroup;
 			children = (
 				1689D3071BE2A196003DAA4B /* ProfileTableViewController.swift */,
-				4692F4071BD6740300B62564 /* EditProfileViewController.swift */,
 				1689D3051BE299AF003DAA4B /* ImageCropper.swift */,
 				1689D3091BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift */,
 				1689D30B1BE2ADD5003DAA4B /* UserNameAndAgeTableViewCell.swift */,
 				1689D30D1BE2ADE4003DAA4B /* AboutTableViewCell.swift */,
 				1689D30F1BE2ADF2003DAA4B /* UserInfoTableViewCell.swift */,
+				1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */,
 			);
 			name = "Profile Tab";
 			sourceTree = "<group>";
@@ -468,12 +468,12 @@
 				1689D3101BE2ADF2003DAA4B /* UserInfoTableViewCell.swift in Sources */,
 				46BF30551BD10584003AA0AE /* ViewController.swift in Sources */,
 				4692F4181BD8FBD500B62564 /* EventViewController.swift in Sources */,
+				1667DFF01BE408B3007E01BC /* EditProfileTableViewController.swift in Sources */,
 				4690A5FE1BDD7E0F00B18403 /* CardView.swift in Sources */,
 				4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */,
 				46EF16531BE197C1003E7F09 /* Deneme.swift in Sources */,
 				46EF16511BE189B5003E7F09 /* Camera.swift in Sources */,
 				4690A6041BDD807E00B18403 /* CardsViewController.swift in Sources */,
-				4692F4081BD6740300B62564 /* EditProfileViewController.swift in Sources */,
 				4690A6021BDD7E9900B18403 /* User.swift in Sources */,
 				46E58E0E1BDFA51700FEA214 /* MacthesCustomCell.swift in Sources */,
 				46073D231BDA66170039A908 /* MyEventViewController.swift in Sources */,
