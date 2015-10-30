@@ -4,14 +4,7 @@ import UIKit
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    // MARK: PROPOERTIES
-
-
-    
-    // MARK: ACTIONS
-    
-    //add choose birthday function
-    
+/*
     
     override func viewDidLoad() {
         super.viewDidLoad()
