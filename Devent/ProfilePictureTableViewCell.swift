@@ -12,7 +12,28 @@ class ProfilePictureTableViewCell: UITableViewCell {
     
     // MARK: PROPOERTIES
     
-    @IBOutlet weak var profilePictureImageView: UIView!
+    var user: PFUser? {
+        didSet {
+            updateUI()
+        }
+    }
+    
+    // MARK: ACTIONS
+    
+    private func updateUI() {
+        if let profilePictureFile = self.user?.objectForKey(USER.profilePicture) as! PFFile? {
+            profilePictureFile.getDataInBackgroundWithBlock(){ (imageData: NSData?, error: NSError?) -> Void in
+                if let validImageData = imageData {
+                    if let profilePictureFetched = UIImage(data: validImageData) {
+                        self.profilePictureImageView.image = squareImage(profilePictureFetched)
+                        print("Profile picture successfully fetched")
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBOutlet weak var profilePictureImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

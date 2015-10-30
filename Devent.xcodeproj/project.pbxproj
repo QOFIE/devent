@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1689D3041BE25615003DAA4B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3031BE25615003DAA4B /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		1689D3061BE299AF003DAA4B /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3051BE299AF003DAA4B /* ImageCropper.swift */; settings = {ASSET_TAGS = (); }; };
 		1689D3081BE2A196003DAA4B /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3071BE2A196003DAA4B /* ProfileTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		1689D30A1BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3091BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		1689D30C1BE2ADD5003DAA4B /* UserNameAndAgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D30B1BE2ADD5003DAA4B /* UserNameAndAgeTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		1689D30E1BE2ADE4003DAA4B /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D30D1BE2ADE4003DAA4B /* AboutTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		1689D3101BE2ADF2003DAA4B /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D30F1BE2ADF2003DAA4B /* UserInfoTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		16C8A26B1BE3DC1D0035EEF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C8A26A1BE3DC1D0035EEF8 /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
 		46073D231BDA66170039A908 /* MyEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46073D221BDA66170039A908 /* MyEventViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		46073D251BDA68190039A908 /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46073D241BDA68190039A908 /* MyCustomCell.swift */; settings = {ASSET_TAGS = (); }; };
 		4690A5FE1BDD7E0F00B18403 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4690A5FD1BDD7E0F00B18403 /* CardView.swift */; settings = {ASSET_TAGS = (); }; };
@@ -60,13 +60,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1689D3031BE25615003DAA4B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1689D3051BE299AF003DAA4B /* ImageCropper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
 		1689D3071BE2A196003DAA4B /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		1689D3091BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureTableViewCell.swift; sourceTree = "<group>"; };
 		1689D30B1BE2ADD5003DAA4B /* UserNameAndAgeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameAndAgeTableViewCell.swift; sourceTree = "<group>"; };
 		1689D30D1BE2ADE4003DAA4B /* AboutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
 		1689D30F1BE2ADF2003DAA4B /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
+		16C8A26A1BE3DC1D0035EEF8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		28101BB0201438D8E80B03C9 /* Pods-Devent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Devent.release.xcconfig"; path = "Pods/Target Support Files/Pods-Devent/Pods-Devent.release.xcconfig"; sourceTree = "<group>"; };
 		46073D221BDA66170039A908 /* MyEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventViewController.swift; sourceTree = "<group>"; };
 		46073D241BDA68190039A908 /* MyCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
@@ -154,10 +154,9 @@
 		4690A5F81BDCDD1600B18403 /* Profile Tab */ = {
 			isa = PBXGroup;
 			children = (
-				1689D3031BE25615003DAA4B /* ProfileViewController.swift */,
+				1689D3071BE2A196003DAA4B /* ProfileTableViewController.swift */,
 				4692F4071BD6740300B62564 /* EditProfileViewController.swift */,
 				1689D3051BE299AF003DAA4B /* ImageCropper.swift */,
-				1689D3071BE2A196003DAA4B /* ProfileTableViewController.swift */,
 				1689D3091BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift */,
 				1689D30B1BE2ADD5003DAA4B /* UserNameAndAgeTableViewCell.swift */,
 				1689D30D1BE2ADE4003DAA4B /* AboutTableViewCell.swift */,
@@ -221,6 +220,7 @@
 		46BF30511BD10584003AA0AE /* Devent */ = {
 			isa = PBXGroup;
 			children = (
+				16C8A26A1BE3DC1D0035EEF8 /* Constants.swift */,
 				46BF30561BD10584003AA0AE /* Main.storyboard */,
 				4690A5FB1BDCDD4700B18403 /* Matches Tab */,
 				4690A5FA1BDCDD3F00B18403 /* Discover Tab */,
@@ -459,12 +459,12 @@
 			files = (
 				46073D251BDA68190039A908 /* MyCustomCell.swift in Sources */,
 				4692F4041BD6479E00B62564 /* LoginViewController.swift in Sources */,
-				1689D3041BE25615003DAA4B /* ProfileViewController.swift in Sources */,
 				1689D30A1BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift in Sources */,
 				46E58E081BDF7A3F00FEA214 /* eventMatch.swift in Sources */,
 				4690A6001BDD7E5300B18403 /* SwipeView.swift in Sources */,
 				1689D30E1BE2ADE4003DAA4B /* AboutTableViewCell.swift in Sources */,
 				1689D3061BE299AF003DAA4B /* ImageCropper.swift in Sources */,
+				16C8A26B1BE3DC1D0035EEF8 /* Constants.swift in Sources */,
 				1689D3101BE2ADF2003DAA4B /* UserInfoTableViewCell.swift in Sources */,
 				46BF30551BD10584003AA0AE /* ViewController.swift in Sources */,
 				4692F4181BD8FBD500B62564 /* EventViewController.swift in Sources */,

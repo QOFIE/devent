@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -300,7 +300,7 @@
         <scene sceneID="l5J-Wf-unn">
             <objects>
                 <tableViewController title="Profile" id="HuQ-LN-4L6" customClass="ProfileTableViewController" customModule="Devent" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="FvD-PP-xep">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" id="FvD-PP-xep">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -336,25 +336,25 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="profilePictureImageView" destination="4xQ-az-lLb" id="HqC-8M-10K"/>
+                                    <outlet property="profilePictureImageView" destination="rA1-v4-OZ2" id="hiC-0v-w3P"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserNameAndAgeCell" rowHeight="64" id="v6C-I4-RTb" customClass="UserNameAndAgeTableViewCell" customModule="Devent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="237" width="600" height="64"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameAgeLocationCell" id="v6C-I4-RTb" customClass="UserNameAndAgeTableViewCell" customModule="Devent" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="237" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v6C-I4-RTb" id="BQx-3V-Uhe">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Lastname" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvm-f8-CZL">
                                             <rect key="frame" x="8" y="8" width="584" height="19.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                            <color key="textColor" red="1" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location (City)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPr-Ad-Qc0">
-                                            <rect key="frame" x="8" y="35" width="584" height="19.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Age, Location (City)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPr-Ad-Qc0">
+                                            <rect key="frame" x="8" y="35" width="584" height="77"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -364,12 +364,19 @@
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="jvm-f8-CZL" firstAttribute="leading" secondItem="BQx-3V-Uhe" secondAttribute="leadingMargin" id="DDC-1p-zsX"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="mPr-Ad-Qc0" secondAttribute="bottom" id="HhD-RC-FG9"/>
                                         <constraint firstItem="mPr-Ad-Qc0" firstAttribute="leading" secondItem="BQx-3V-Uhe" secondAttribute="leadingMargin" id="N4I-Bg-9Ff"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="mPr-Ad-Qc0" secondAttribute="bottom" id="gAw-LC-lcC"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="jvm-f8-CZL" secondAttribute="trailing" id="hat-jq-Y2F"/>
                                         <constraint firstAttribute="topMargin" secondItem="jvm-f8-CZL" secondAttribute="top" id="jcs-Fm-3R1"/>
-                                        <constraint firstItem="mPr-Ad-Qc0" firstAttribute="top" secondItem="jvm-f8-CZL" secondAttribute="bottom" constant="7.5" id="qbS-rk-5b3"/>
+                                        <constraint firstItem="mPr-Ad-Qc0" firstAttribute="top" secondItem="jvm-f8-CZL" secondAttribute="bottom" constant="8" symbolic="YES" id="qbS-rk-5b3"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="mPr-Ad-Qc0" secondAttribute="trailing" id="uPZ-UY-pe1"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="HhD-RC-FG9"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
@@ -377,15 +384,15 @@
                                     <outlet property="nameAndLastnameLabel" destination="jvm-f8-CZL" id="xAu-FD-p6X"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutCell" rowHeight="100" id="qfP-Q3-qYc" customClass="AboutTableViewCell" customModule="Devent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="301" width="600" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutCell" id="qfP-Q3-qYc" customClass="AboutTableViewCell" customModule="Devent" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="357" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qfP-Q3-qYc" id="JhK-ep-N2v">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5A7-YM-RLw">
-                                            <rect key="frame" x="8" y="8" width="584" height="19.5"/>
+                                            <rect key="frame" x="8" y="8" width="584" height="104"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -396,6 +403,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="5A7-YM-RLw" secondAttribute="trailing" id="Ljk-1O-7eY"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="5A7-YM-RLw" secondAttribute="leading" id="SEQ-Qe-4ZT"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5A7-YM-RLw" secondAttribute="bottom" id="dJc-eU-v5o"/>
                                         <constraint firstAttribute="topMargin" secondItem="5A7-YM-RLw" secondAttribute="top" id="s9f-wM-X1g"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -405,7 +413,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserInfoCell" rowHeight="52" id="Gfm-XN-9kP" customClass="UserInfoTableViewCell" customModule="Devent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="401" width="600" height="52"/>
+                                <rect key="frame" x="0.0" y="477" width="600" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gfm-XN-9kP" id="WGC-4i-FIy">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
@@ -432,7 +440,7 @@
                                         <constraint firstItem="Hm4-8r-tHM" firstAttribute="top" secondItem="WGC-4i-FIy" secondAttribute="topMargin" id="8AF-Ju-G2v"/>
                                         <constraint firstItem="k8A-rg-Owm" firstAttribute="top" secondItem="WGC-4i-FIy" secondAttribute="topMargin" id="B1R-st-GdY"/>
                                         <constraint firstItem="k8A-rg-Owm" firstAttribute="bottom" secondItem="WGC-4i-FIy" secondAttribute="bottomMargin" id="Cw9-f0-IYS"/>
-                                        <constraint firstItem="Hm4-8r-tHM" firstAttribute="leading" secondItem="k8A-rg-Owm" secondAttribute="trailing" constant="8" id="R9Z-cx-S4q"/>
+                                        <constraint firstItem="Hm4-8r-tHM" firstAttribute="leading" secondItem="k8A-rg-Owm" secondAttribute="trailing" constant="8" symbolic="YES" id="R9Z-cx-S4q"/>
                                         <constraint firstItem="Hm4-8r-tHM" firstAttribute="centerY" secondItem="WGC-4i-FIy" secondAttribute="centerY" id="SRE-7x-FbY"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Hm4-8r-tHM" secondAttribute="trailing" id="WI8-ql-cFu"/>
                                         <constraint firstItem="k8A-rg-Owm" firstAttribute="leading" secondItem="WGC-4i-FIy" secondAttribute="leadingMargin" id="btI-9v-gFb"/>
@@ -456,9 +464,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="vfE-Dc-Kno">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="Okj-1J-pTa"/>
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="Okj-1J-pTa">
+                            <connections>
+                                <action selector="logOut:" destination="HuQ-LN-4L6" id="A4Q-u5-Vhi"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit Profile" id="FHN-xB-GiF"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="logOutSegue" id="05L-jW-vUr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xFv-mZ-QVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
