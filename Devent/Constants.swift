@@ -8,6 +8,7 @@
 
 import Foundation
 
+// For user attributes
 struct USER {
     static let firstName = "firstName"
     static let lastName = "lastName"
@@ -21,4 +22,12 @@ struct USER {
     static let height = "height"
     static let tags = "tags"
     static let evetns = "events"
+}
+
+// For what kind of relationship the user is open to
+struct OpenTo {
+    static let relationship = "Relationship"
+    static let dating = "Dating"
+    static let casual = "Casual"
+    static let friendship = "Friendship"
 }

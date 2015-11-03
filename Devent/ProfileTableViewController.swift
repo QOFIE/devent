@@ -32,7 +32,7 @@ class ProfileTableViewController: UITableViewController {
     
     var profileDataTable: [ProfileInfo] = []
     
-    var profilePictureImage: UIImage? = UIImage(named: "nah-button-press")
+    var profilePictureImage: UIImage!
     
     // Cells will be allocated to different cell types based on the ProfileInfo.category, and filled with the ProfileInfo.data
     struct ProfileInfo: CustomStringConvertible {
@@ -113,6 +113,7 @@ class ProfileTableViewController: UITableViewController {
         // add name, age, location (name, age and location MUST exist)
         let nameItem = ProfileInfo(category: CategoryIdentifier.nameAgeLocation, data: .NameAgeLocation(fetchName(), fetchAgeLocation()))
         profileDataTable.append(nameItem)
+        print("\(nameItem.data.description)")
         
         // add about if it exists
         if let about = user?.objectForKey(USER.about) as? String {
@@ -133,9 +134,20 @@ class ProfileTableViewController: UITableViewController {
         }
         
         // add openTo if it exists
-        if let openTo = user?.objectForKey(USER.openTo) as? String {
-            let openToItem = ProfileInfo(category: CategoryIdentifier.info, data: ProfileInfoItem.OpenTo(openTo))
-            profileDataTable.append(openToItem)
+        if let openTo = user?.objectForKey(USER.openTo) as? [String] {
+            if openTo.count > 0 {
+                var openToString: String = ""
+                for (var i=0; i<openTo.count; i++) {
+                    if i == 0 {
+                        openToString += "\(openTo[i])"
+                    } else {
+                        openToString += ", \(openTo[i])"
+                    }
+                    
+                }
+                let openToItem = ProfileInfo(category: CategoryIdentifier.info, data: ProfileInfoItem.OpenTo(openToString))
+                profileDataTable.append(openToItem)
+            }
         }
         
         // add height if it exists
@@ -154,6 +166,7 @@ class ProfileTableViewController: UITableViewController {
         // LATER!!!
         
         print("Profile data is loaded to the array.")
+
 
     }
     
@@ -175,6 +188,8 @@ class ProfileTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         loadProfileData()
+        self.tableView.reloadData()
+        self.tableView.setNeedsDisplay()
         print("View will appear executed")
     }
 
@@ -214,7 +229,7 @@ class ProfileTableViewController: UITableViewController {
             
         case CategoryIdentifier.nameAgeLocation:
             let nameAgeLocationCell = tableView.dequeueReusableCellWithIdentifier(CategoryIdentifier.nameAgeLocation, forIndexPath: indexPath) as! UserNameAndAgeTableViewCell
-            //let (name, ageLocation) = item.data as! (String, String)
+
             switch item.data {
             case .NameAgeLocation(let name, let ageLocation):
                 nameAgeLocationCell.nameAndLastnameLabel.text = name

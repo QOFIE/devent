@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1667DFF01BE408B3007E01BC /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		1667DFF51BE6781A007E01BC /* ChooseHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		1689D3061BE299AF003DAA4B /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3051BE299AF003DAA4B /* ImageCropper.swift */; settings = {ASSET_TAGS = (); }; };
 		1689D3081BE2A196003DAA4B /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3071BE2A196003DAA4B /* ProfileTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		1689D30A1BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3091BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -61,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
+		1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseHeightViewController.swift; sourceTree = "<group>"; };
 		1689D3051BE299AF003DAA4B /* ImageCropper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
 		1689D3071BE2A196003DAA4B /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		1689D3091BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureTableViewCell.swift; sourceTree = "<group>"; };
@@ -155,12 +157,13 @@
 			isa = PBXGroup;
 			children = (
 				1689D3071BE2A196003DAA4B /* ProfileTableViewController.swift */,
+				1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */,
 				1689D3051BE299AF003DAA4B /* ImageCropper.swift */,
 				1689D3091BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift */,
 				1689D30B1BE2ADD5003DAA4B /* UserNameAndAgeTableViewCell.swift */,
 				1689D30D1BE2ADE4003DAA4B /* AboutTableViewCell.swift */,
 				1689D30F1BE2ADF2003DAA4B /* UserInfoTableViewCell.swift */,
-				1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */,
+				1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */,
 			);
 			name = "Profile Tab";
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				4690A6001BDD7E5300B18403 /* SwipeView.swift in Sources */,
 				1689D30E1BE2ADE4003DAA4B /* AboutTableViewCell.swift in Sources */,
 				1689D3061BE299AF003DAA4B /* ImageCropper.swift in Sources */,
+				1667DFF51BE6781A007E01BC /* ChooseHeightViewController.swift in Sources */,
 				16C8A26B1BE3DC1D0035EEF8 /* Constants.swift in Sources */,
 				1689D3101BE2ADF2003DAA4B /* UserInfoTableViewCell.swift in Sources */,
 				46BF30551BD10584003AA0AE /* ViewController.swift in Sources */,
