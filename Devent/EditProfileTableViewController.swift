@@ -16,6 +16,7 @@ class EditProfileTableViewController: UITableViewController {
     
     // MARK: GENERAL ACTIONS
     
+    //yenilikleri unutma
     
     @IBAction func saveChanges(sender: UIBarButtonItem) {
         
