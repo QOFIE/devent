@@ -23,9 +23,6 @@ class ProfileTableViewController: UITableViewController {
     
     var user = PFUser.currentUser() {
         didSet {
-            if !self.profileDataTable.isEmpty {
-                self.profileDataTable.removeAll()
-            }
             loadProfileData()
         }
     }
@@ -102,8 +99,8 @@ class ProfileTableViewController: UITableViewController {
 
     private func loadProfileData() {
         
-        if profileDataTable.count > 0 {
-            profileDataTable.removeAll()
+        if !self.profileDataTable.isEmpty {
+            self.profileDataTable.removeAll()
         }
         
         // add profile picture (picture MUST exist)
@@ -166,8 +163,6 @@ class ProfileTableViewController: UITableViewController {
         // LATER!!!
         
         print("Profile data is loaded to the array.")
-
-
     }
     
     // MARK: VC LIFECYCLE
@@ -175,7 +170,7 @@ class ProfileTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loadProfileData()
+        loadProfileData()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         // Uncomment the following line to preserve selection between presentations

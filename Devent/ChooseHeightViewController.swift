@@ -16,7 +16,13 @@ class ChooseHeightViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     var selectedHeight: String?
     
-    @IBOutlet weak var heightPickerView: UIPickerView!
+    @IBOutlet weak var heightPickerView: UIPickerView! {
+        didSet {
+            if self.heightOptionsArray.count > 1 {
+                heightPickerView.selectRow(Int(heightOptionsArray.count/2), inComponent: 1, animated: false)
+            }
+        }
+    }
     
     
     // MARK: ACTIONS
@@ -36,6 +42,7 @@ class ChooseHeightViewController: UIViewController, UIPickerViewDelegate, UIPick
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedHeight = heightOptionsArray[row]
     }
+    
     
     @IBAction func doneButton(sender: UIBarButtonItem) {
     }

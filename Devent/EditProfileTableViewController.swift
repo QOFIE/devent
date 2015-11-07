@@ -11,7 +11,7 @@ import UIKit
 // TO DO:
 // 1) Add Events
 // 2) Add Tags
-// 3) Connect UITextView and save the about me text
+// 3) Connect age range
 
 class EditProfileTableViewController: UITableViewController, UITextViewDelegate {
     
@@ -77,6 +77,7 @@ class EditProfileTableViewController: UITableViewController, UITextViewDelegate 
         if aboutMeDidChange {
             user?.setObject(aboutMeTextView.text, forKey: USER.about)
         }
+        
         
         user?.saveInBackground()
         
@@ -336,10 +337,14 @@ class EditProfileTableViewController: UITableViewController, UITextViewDelegate 
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("AgeRange", forIndexPath: indexPath) as! AgeRangeTableViewCell
+        if let maxAge = user?.objectForKey(USER.maxAge) as? Int{
+            if let minAge = user?.objectForKey(USER.minAge) as? Int {
+                cell.maxAge = maxAge
+                cell.minAge = minAge
+            }
+        }
         return cell
     }
     */
