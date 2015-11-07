@@ -69,6 +69,7 @@ func saveSkip(user: User) {
 }
 
 func saveLike(user: User) {
+
     PFQuery(className: "Action")
         .whereKey("byUser", equalTo: user.id)
         .whereKey("toUser", equalTo: PFUser.currentUser()!.objectId!)
@@ -94,7 +95,17 @@ func saveLike(user: User) {
             match.setObject(user.id, forKey: "toUser")
             match.setObject(matched ? "matched" : "liked", forKey: "type")
             match.saveInBackgroundWithBlock(nil)
+            
+            if matched {
+            
+            createEventMatchbyUserMatch(user.pfUser)
+            
+            }
+            
         })
+    
+    
+    
 }
 
 

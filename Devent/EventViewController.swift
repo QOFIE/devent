@@ -13,7 +13,6 @@ class EventViewController: PFQueryTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventMatch()
         
     }
         
@@ -93,12 +92,13 @@ class EventViewController: PFQueryTableViewController {
         
         if(sender.on) {
         relation?.addObject(event!)
-            print("oldu")
+        createEventMatchbyEventChoice(event!)
         }
         
         else {
         relation?.removeObject(event!)
-            print("olmadi")
+        deleteEventMatchbyEventChoice(event!)
+            
         }
         user?.saveInBackground()
         
@@ -108,5 +108,8 @@ class EventViewController: PFQueryTableViewController {
         self.performSegueWithIdentifier("lastSeque", sender: self)
         
     }
+    
+    
+    
 }
 

@@ -144,7 +144,6 @@ extension CardsViewController: SwipeViewDelegate {
         if let frontCard = frontCard {
             frontCard.swipeView.removeFromSuperview()
             saveLike(frontCard.user)
-            eventMatch()
             switchCards()
         }
     }

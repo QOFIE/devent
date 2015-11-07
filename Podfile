@@ -12,5 +12,7 @@ pod 'ParseFacebookUtilsV4'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 pod 'JSQMessagesViewController'
+pod 'Stripe', '~> 6.0'
+pod 'AFNetworking'
 
 end
