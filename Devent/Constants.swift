@@ -22,6 +22,10 @@ struct USER {
     static let height = "height"
     static let tags = "tags"
     static let evetns = "events"
+    static let gender = "gender"
+    static let genderInterestedIn = "genderInterestedIn"
+    static let minAge = "minAge"
+    static let maxAge = "maxAge"
 }
 
 // For what kind of relationship the user is open to

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditProfileTableViewController: UITableViewController {
+class EditProfileTableViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: GENERAL PROPERTIES
     
@@ -16,7 +16,43 @@ class EditProfileTableViewController: UITableViewController {
     
     // MARK: GENERAL ACTIONS
     
+    
+    private func startKeyboardObserver(){
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil) //WillShow and not Did ;) The View will run animated and smooth
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    private func stopKeyboardObserver() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let keyboardSize: CGSize =    userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue.size {
+                let contentInset = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height,  0.0);
+                
+                self.tableView.contentInset = contentInset
+                self.tableView.scrollIndicatorInsets = contentInset
+                
+                self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, 0 + keyboardSize.height)
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let keyboardSize: CGSize =  userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue.size {
+                let contentInset = UIEdgeInsetsZero;
+                self.tableView.contentInset = contentInset
+                self.tableView.scrollIndicatorInsets = contentInset
+                self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y)
+            }
+        }
+    }
+    
     //yenilikleri unutma
+
     
     @IBAction func saveChanges(sender: UIBarButtonItem) {
         
@@ -37,19 +73,58 @@ class EditProfileTableViewController: UITableViewController {
         
     }
     
+    // MARK: DISCOVERY SETTINGS
+    
+    @IBAction func genderButton(sender: UIButton) {
+        let actionSheet = UIAlertController(title: "I am a", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        addGenderAction("Man", actionSheet: actionSheet, sender: sender)
+        addGenderAction("Woman", actionSheet: actionSheet, sender: sender)
+        actionSheet.addAction(UIAlertAction(
+            title: "Cancel",
+            style: UIAlertActionStyle.Cancel) {
+                (action: UIAlertAction) -> Void in
+                // do nothing
+            }
+        )
+        presentViewController(actionSheet, animated: true, completion: nil)
+    }
+    
+    @IBAction func genderInterestedInButton(sender: UIButton) {
+        let actionSheet = UIAlertController(title: "Interested in", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        addGenderAction("Man", actionSheet: actionSheet, sender: sender)
+        addGenderAction("Woman", actionSheet: actionSheet, sender: sender)
+        addGenderAction("Woman", actionSheet: actionSheet, sender: sender)
+        actionSheet.addAction(UIAlertAction(
+            title: "Cancel",
+            style: UIAlertActionStyle.Cancel) {
+                (action: UIAlertAction) -> Void in
+                // do nothing
+            }
+        )
+        presentViewController(actionSheet, animated: true, completion: nil)
+    }
+    
+    private func addGenderAction(gender: String, actionSheet: UIAlertController, sender: UIButton) {
+        actionSheet.addAction(UIAlertAction(
+            title: gender,
+            style: UIAlertActionStyle.Default) {
+                (action: UIAlertAction) -> Void in
+                sender.setTitle(gender, forState: UIControlState.Normal)
+            }
+        )
+    }
+    
     // MARK: PHOTO SETTINGS
     
     var profilePicture: UIImage!
     
     @IBOutlet weak var profilePictureImageView: UIImageView! {
         didSet {
-            print("Profile picture view is set")
             if let profilePictureFile = self.user?.objectForKey(USER.profilePicture) as! PFFile? {
                 profilePictureFile.getDataInBackgroundWithBlock(){ (imageData: NSData?, error: NSError?) -> Void in
                     if let validImageData = imageData {
                         if let profilePictureFetched = UIImage(data: validImageData) {
                             self.profilePictureImageView.image = squareImage(profilePictureFetched)
-                            print("Profile picture successfully fetched")
                         }
                     }
                 }
@@ -75,7 +150,28 @@ class EditProfileTableViewController: UITableViewController {
     }
     
     @IBAction func editHeightButton(sender: UIButton) {
-        
+    }
+    
+    // MARK: ABOUT ME SETTINGS
+
+    @IBOutlet weak var aboutMeTextField: UITextField! {
+        didSet {
+            if let aboutMe = user?.objectForKey(USER.about) as? String {
+                aboutMeTextField.text = aboutMe
+            }
+        }
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 30
+        var newLength = string.characters.count - range.length
+        if let currentLength = textField.text?.characters.count {
+            newLength += currentLength
+        }
+        return (newLength <= maxLength) ? true : false
     }
 
     // MARK: OPEN TO SETTINGS
@@ -180,14 +276,14 @@ class EditProfileTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        aboutMeTextField.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -195,18 +291,22 @@ class EditProfileTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.tableView.reloadData()
+        self.startKeyboardObserver()
+    }
+    override func viewWillDisappear(animated: Bool) {
+        self.stopKeyboardObserver()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        return 7
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        if section == 0 { return 3 } else { return 1 }
     }
 
     /*

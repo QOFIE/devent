@@ -11,9 +11,7 @@ import UIKit
 func squareImage (image: UIImage) -> UIImage {
     
     let originalWidth  = image.size.width
-    print("Original Width: \(originalWidth)")
     let originalHeight = image.size.height
-    print("Original Height: \(originalHeight)")
     var x: CGFloat = 0.0
     var y: CGFloat = 0.0
     var edge: CGFloat = 0.0
@@ -34,7 +32,6 @@ func squareImage (image: UIImage) -> UIImage {
         edge = originalWidth
     }
     let cropSquare = CGRectMake(x, y, edge, edge)
-    print("x = \(x), y = \(y), edge = \(edge) ")
     
     let imageRef = CGImageCreateWithImageInRect(image.CGImage, cropSquare);
     
