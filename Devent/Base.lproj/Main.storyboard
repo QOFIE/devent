@@ -615,7 +615,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DR3-y4-YED">
+                                                <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DR3-y4-YED">
                                                     <rect key="frame" x="7" y="35.5" width="300" height="20"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -848,31 +848,31 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="About Me" id="Amv-cI-9hS">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Work" id="EV5-Cw-rea">
-                                        <rect key="frame" x="0.0" y="496" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Work" rowHeight="100" id="EV5-Cw-rea">
+                                        <rect key="frame" x="0.0" y="496" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EV5-Cw-rea" id="ZCI-0r-A60">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Say a few words about yourself!" textAlignment="natural" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YhW-dT-iHV">
-                                                    <rect key="frame" x="8" y="8" width="584" height="27.5"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="Say a few words about yourself!" translatesAutoresizingMaskIntoConstraints="NO" id="0pq-v1-Si6">
+                                                    <rect key="frame" x="8" y="8" width="584" height="83.5"/>
                                                     <animations/>
-                                                    <color key="tintColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="T1A-Mm-ixr" id="Itp-El-eRJ"/>
+                                                        <outlet property="delegate" destination="T1A-Mm-ixr" id="Kd0-0D-aLf"/>
                                                     </connections>
-                                                </textField>
+                                                </textView>
                                             </subviews>
                                             <animations/>
                                             <color key="tintColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="YhW-dT-iHV" secondAttribute="bottom" id="Jyh-85-j0m"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="YhW-dT-iHV" secondAttribute="trailing" id="Z6u-JM-X37"/>
-                                                <constraint firstAttribute="topMargin" secondItem="YhW-dT-iHV" secondAttribute="top" id="cCD-bs-mPy"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="YhW-dT-iHV" secondAttribute="leading" id="gmm-ac-cEp"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="0pq-v1-Si6" secondAttribute="leading" id="0dm-Sd-CRq"/>
+                                                <constraint firstAttribute="topMargin" secondItem="0pq-v1-Si6" secondAttribute="top" id="8RY-rz-dTv"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0pq-v1-Si6" secondAttribute="bottom" id="DQQ-ze-DgS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="0pq-v1-Si6" secondAttribute="trailing" id="nEu-XJ-gNS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -882,7 +882,7 @@
                             <tableViewSection headerTitle="Open To:" id="a7m-2Y-cNR">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OpenToCell" id="Al0-Ln-KZp" customClass="OpenToTableViewCell" customModule="Devent" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="568" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="624" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" tableViewCell="Al0-Ln-KZp" id="JSF-YO-jin">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -965,7 +965,7 @@
                             <tableViewSection headerTitle="Tags" id="ktK-q3-9SX">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Work" id="TbQ-MT-WOM">
-                                        <rect key="frame" x="0.0" y="640" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="696" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TbQ-MT-WOM" id="oGC-6b-Rzm">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -1007,7 +1007,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="aboutMeTextField" destination="YhW-dT-iHV" id="mcb-GA-Lma"/>
+                        <outlet property="aboutMeTextView" destination="0pq-v1-Si6" id="GlC-Ls-Xig"/>
                         <outlet property="heightLabel" destination="Yzf-zA-3ts" id="rXl-hs-m7z"/>
                         <outlet property="profilePictureImageView" destination="36b-55-a3H" id="IeD-0A-Edd"/>
                         <outletCollection property="openToButtons" destination="qs5-N5-HgX" collectionClass="NSMutableArray" id="O3u-gU-c2U"/>
@@ -1086,14 +1086,14 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="7Gc-0P-ya7">
-                            <rect key="frame" x="0.0" y="0.0" width="800" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <items>
                                 <navigationItem title="Title" id="6lc-ml-sql">
                                     <barButtonItem key="rightBarButtonItem" style="plain" id="fce-fA-F4e">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7Jn-HQ-K6y">
-                                            <rect key="frame" x="647" y="7" width="133" height="30"/>
+                                            <rect key="frame" x="447" y="7" width="133" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <state key="normal" title="Button"/>

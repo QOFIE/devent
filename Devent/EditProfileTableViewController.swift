@@ -8,17 +8,25 @@
 
 import UIKit
 
-class EditProfileTableViewController: UITableViewController, UITextFieldDelegate {
+// TO DO:
+// 1) Add Events
+// 2) Add Tags
+// 3) Connect UITextView and save the about me text
+
+class EditProfileTableViewController: UITableViewController, UITextViewDelegate {
     
-    // MARK: GENERAL PROPERTIES
+    // MARK: GENERAL PROPERTIES //
     
     let user = PFUser.currentUser()
     
-    // MARK: GENERAL ACTIONS
+    // MARK: GENERAL ACTIONS //
     
+    @IBAction func unwindToEditProfileVC(segue: UIStoryboardSegue) {
+        // do nothing
+    }
     
     private func startKeyboardObserver(){
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil) //WillShow and not Did ;) The View will run animated and smooth
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
@@ -31,10 +39,8 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         if let userInfo = notification.userInfo {
             if let keyboardSize: CGSize =    userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue.size {
                 let contentInset = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height,  0.0);
-                
                 self.tableView.contentInset = contentInset
                 self.tableView.scrollIndicatorInsets = contentInset
-                
                 self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, 0 + keyboardSize.height)
             }
         }
@@ -51,8 +57,6 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         }
     }
     
-    //yenilikleri unutma
-
     
     @IBAction func saveChanges(sender: UIBarButtonItem) {
         
@@ -69,11 +73,16 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
             user?.setObject(height, forKey: USER.height)
         }
         
+        // Save the about me text
+        if aboutMeDidChange {
+            user?.setObject(aboutMeTextView.text, forKey: USER.about)
+        }
+        
         user?.saveInBackground()
         
     }
     
-    // MARK: DISCOVERY SETTINGS
+    // MARK: DISCOVERY SETTINGS //
     
     @IBAction func genderButton(sender: UIButton) {
         let actionSheet = UIAlertController(title: "I am a", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -93,7 +102,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         let actionSheet = UIAlertController(title: "Interested in", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         addGenderAction("Man", actionSheet: actionSheet, sender: sender)
         addGenderAction("Woman", actionSheet: actionSheet, sender: sender)
-        addGenderAction("Woman", actionSheet: actionSheet, sender: sender)
+        addGenderAction("Man & Woman", actionSheet: actionSheet, sender: sender)
         actionSheet.addAction(UIAlertAction(
             title: "Cancel",
             style: UIAlertActionStyle.Cancel) {
@@ -114,7 +123,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         )
     }
     
-    // MARK: PHOTO SETTINGS
+    // MARK: PHOTO SETTINGS //
     
     var profilePicture: UIImage!
     
@@ -132,7 +141,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         }
     }
     
-    // MARK: HEIGHT SETTINGS
+    // MARK: HEIGHT SETTINGS //
     
     var currentHeight: String? {
         get {
@@ -145,36 +154,61 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     
     @IBOutlet weak var heightLabel: UILabel! {
         didSet {
-            heightLabel.text = currentHeight
+            if let height = currentHeight {
+                heightLabel.text = height
+            } else {
+                heightLabel.text = "Not specified"
+            }
         }
     }
     
     @IBAction func editHeightButton(sender: UIButton) {
     }
     
-    // MARK: ABOUT ME SETTINGS
-
-    @IBOutlet weak var aboutMeTextField: UITextField! {
+    // MARK: ABOUT ME SETTINGS //
+    
+    var aboutMeDidChange = false
+    var characterLimit = 140
+    
+    @IBOutlet weak var aboutMeTextView: UITextView! {
         didSet {
             if let aboutMe = user?.objectForKey(USER.about) as? String {
-                aboutMeTextField.text = aboutMe
+                print("About me \(aboutMe)")
+                if aboutMe.characters.count <= characterLimit {
+                    aboutMeTextView.text = aboutMe
+                }
             }
         }
     }
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        // do nothing
         return true
     }
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let maxLength = 30
-        var newLength = string.characters.count - range.length
-        if let currentLength = textField.text?.characters.count {
+    
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        textView.resignFirstResponder()
+        aboutMeDidChange = true
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        var newLength = text.characters.count - range.length
+        if let currentLength = textView.text?.characters.count {
             newLength += currentLength
         }
-        return (newLength <= maxLength) ? true : false
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return (newLength <= characterLimit) ? true : false
     }
-
-    // MARK: OPEN TO SETTINGS
+    
+    // MARK: OPEN TO SETTINGS //
     
     var relationshipButtonSelected = false
     var datingButtonSelected = false
@@ -267,16 +301,11 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     }
     
     
-    @IBAction func unwindToEditProfileVC(segue: UIStoryboardSegue) {
-        
-    }
-    
-    
-    // MARK: VC LIFECYCLE
+    // MARK: VC LIFECYCLE //
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        aboutMeTextField.delegate = self
+        aboutMeTextView.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -284,13 +313,9 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillAppear(animated: Bool) {
         self.tableView.reloadData()
+        self.tableView.setNeedsDisplay()
         self.startKeyboardObserver()
     }
     override func viewWillDisappear(animated: Bool) {
