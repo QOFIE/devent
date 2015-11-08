@@ -10,6 +10,10 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
     var isLoading: Bool = false
     
     var groupId: String = ""
+    var byUserIdForPicture = ""
+    var toUserIdForPicture = ""
+    var userImage1 = UIImage()
+    var userImage2 = UIImage()
     
     var messages = [JSQMessage]()
     var avatars = Dictionary<String, JSQMessagesAvatarImage>()
@@ -19,7 +23,7 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
     var incomingBubbleImage: JSQMessagesBubbleImage!
     
     var blankAvatarImage: JSQMessagesAvatarImage!
-
+    
     var senderImageUrl: String!
     var batchMessages = true
     
@@ -35,7 +39,46 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
         outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
         incomingBubbleImage = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
         
-        blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "nah-button-press"), diameter: 30)
+        blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "Erman"), diameter: 30)
+        
+        let user1PictureQuery = PFQuery(className: "_User").whereKey("objectId", equalTo: byUserIdForPicture)
+        user1PictureQuery.findObjectsInBackgroundWithBlock({object, error in
+            
+            for action in object! {
+                
+                if let userPicture = action.valueForKey("profilePicture") as? PFFile {
+                    userPicture.getDataInBackgroundWithBlock({
+                        (imageData: NSData?, error NSError) -> Void in
+                        if (error == nil) {
+                            self.userImage1 = UIImage(data:imageData!)!
+                        }
+                    })
+                }
+                
+                
+            }
+            
+        })
+        
+        let user2PictureQuery = PFQuery(className: "_User").whereKey("objectId", equalTo: toUserIdForPicture)
+        user2PictureQuery.findObjectsInBackgroundWithBlock({object, error in
+            
+            for action in object! {
+                
+                if let userPicture = action.valueForKey("profilePicture") as? PFFile {
+                    userPicture.getDataInBackgroundWithBlock({
+                        (imageData: NSData?, error NSError) -> Void in
+                        if (error == nil) {
+                            self.userImage2 = UIImage(data:imageData!)!
+                        }
+                    })
+                }
+                
+                
+            }
+            
+        })
+        
         
         isLoading = false
         self.loadMessages()
@@ -196,9 +239,14 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
-       
-        return blankAvatarImage
+        
+        let message = self.messages[indexPath.item]
+        if message.senderId == self.senderId {
+            return JSQMessagesAvatarImageFactory.avatarImageWithImage(userImage1, diameter: 30)
+        }
+        return JSQMessagesAvatarImageFactory.avatarImageWithImage(userImage2, diameter: 30)
     }
+    
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
         if indexPath.item % 3 == 0 {

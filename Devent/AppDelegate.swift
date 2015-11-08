@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("PfsCpWJ98VU24gkNi0kLG7Mzp2rswH0RAxzWTVXb", clientKey: "ngNO5sZZaOFlziDKG0UyVjx6LAW9kaTN7OZhzTb8")
             PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions);
         
+            Stripe.setDefaultPublishableKey("pk_test_tXBn3ZaMxvMcbkr8jzwhL1Sk")
+        
                 return true
     }
     

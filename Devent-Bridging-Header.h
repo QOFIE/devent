@@ -13,3 +13,5 @@
 #import <JSQSystemSoundPlayer/JSQSystemSoundPlayer.h>
 #import <JSQMessagesViewController/JSQMessages.h>
 #import <JSQMessagesViewController/JSQMessageData.h>
+#import <Stripe/Stripe.h>
+#import <AFNetworking/AFNetworking.h>

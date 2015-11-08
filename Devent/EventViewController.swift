@@ -13,7 +13,6 @@ class EventViewController: PFQueryTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventMatch()
         
     }
         
@@ -92,13 +91,14 @@ class EventViewController: PFQueryTableViewController {
         let relation = user?.relationForKey("userEvents")
         
         if(sender.on) {
-        relation?.addObject(event!)
-            print("oldu")
+            relation?.addObject(event!)
+            createEventMatchbyEventChoice(event!)
         }
-        
+            
         else {
-        relation?.removeObject(event!)
-            print("olmadi")
+            relation?.removeObject(event!)
+            deleteEventMatchbyEventChoice(event!)
+            
         }
         user?.saveInBackground()
         

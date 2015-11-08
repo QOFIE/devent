@@ -8,16 +8,28 @@
 
 import UIKit
 
-class MacthesTableViewController: PFQueryTableViewController {
-
+class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegate {
+    
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
     var eventId = ""
+    var eventNameId = ""
+    var byUserId = ""
+    var toUserId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventMatch()
-
+        searchBar.delegate = self
+        
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        self.loadObjects()
+    }
+    
+    
     // Initialise the PFQueryTable tableview
     override init(style: UITableViewStyle, className: String!) {
         super.init(style: style, className: className)
@@ -37,22 +49,26 @@ class MacthesTableViewController: PFQueryTableViewController {
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery{
         
+        let query = PFQuery(className: "MatchedEvent").whereKey("byUser", equalTo: PFUser.currentUser()!.objectId!)
+        let query2 = PFQuery(className: "MatchedEvent").whereKey("toUser", equalTo: PFUser.currentUser()!.objectId!)
         
         
-        var query = PFQuery(className: "MatchedEvent")
-            .whereKey("byUser", equalTo: PFUser.currentUser()!.objectId!)
-       
-        var query2 = PFQuery(className: "MatchedEvent")
-            .whereKey("toUser", equalTo: PFUser.currentUser()!.objectId!)
-        
-        var query3 = PFQuery.orQueryWithSubqueries([query, query2])
-        query3.orderByAscending("matchedEvents")
-        
-        return query3
+        if searchBar.text == "" {
+            
+            let query3 = PFQuery.orQueryWithSubqueries([query, query2])
+            query3.orderByAscending("matchedEventName")
+            return query3
+            
+        }
+            
+        else {
+            let query3 = PFQuery.orQueryWithSubqueries([query, query2]).whereKey("matchedEventName", containsString: searchBar.text)
+            query3.orderByAscending("matchedEventName")
+            return query3
+            
+        }
         
     }
-    
-    
     
     //override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     
@@ -68,7 +84,7 @@ class MacthesTableViewController: PFQueryTableViewController {
         if var username = object?["toUser"] as? String {
             
             if (username == PFUser.currentUser()?.objectId) {
-            username = object?["byUser"] as! String
+                username = object?["byUser"] as! String
             }
             
             var otherUserArray = [PFObject]()
@@ -76,59 +92,103 @@ class MacthesTableViewController: PFQueryTableViewController {
                 .whereKey("objectId", equalTo: username)
             
             do {
-                otherUserArray = try queryUser.findObjects()
-                
-            }
-            catch {
-                
-            }
-                
+                otherUserArray = try queryUser.findObjects()}
+            catch {}
             
-            cell.matchedUserName.text = otherUserArray[0]["firstName"] as! String
+            cell.matchedUserName.text = otherUserArray[0]["firstName"] as? String
+            
+            let initialThumbnail = UIImage(named: "question")
+            cell.matchedEventProfilePicture.image = initialThumbnail
+            if let thumbnail = otherUserArray[0]["profilePicture"] as? PFFile{
+                thumbnail.getDataInBackgroundWithBlock({
+                    (imageData: NSData?, error: NSError?) -> Void in
+                    if (error == nil) {
+                        cell.matchedEventProfilePicture.image = UIImage(data:imageData!)
+                    }
+                })
+            }
+            
         }
         
-        if let eventName = object?["matchedEvents"] as? String {
+        
+        cell.matchedEventName.text = object?["matchedEventName"] as? String
+        
+        if PFUser.currentUser()?.objectId != object?["PaidUserId1"] as? String && PFUser.currentUser()?.objectId != object?["PaidUserId2"] as? String{
             
-            var otherUserArray1 = [PFObject]()
-            let queryUser1 = PFQuery(className: "Events")
-                .whereKey("objectId", equalTo: eventName)
+            cell.payButtonOutlet.setTitle("Pay", forState: .Normal)
             
-            do {
-                otherUserArray1 = try queryUser1.findObjects()
-                
-            }
-            catch {
-                
-            }
+        } else if PFUser.currentUser()?.objectId == object?["PaidUserId1"] as? String && object?["PaidUserId2"] as? String == nil {
             
-            cell.matchedEventName.text = otherUserArray1[0]["Name"] as! String
+            cell.payButtonOutlet.setTitle("Paid", forState: .Normal)
+            
+        } else {
+            
+            cell.payButtonOutlet.setTitle("Message", forState: .Normal)
+            
         }
-
+        
         return cell
     }
-
+    
     override func objectAtIndexPath(indexPath: NSIndexPath?) -> PFObject? {
         var obj : PFObject? = nil
         if(indexPath!.row < self.objects?.count) {
-            obj = self.objects?[indexPath!.row] as! PFObject
+            obj = self.objects?[indexPath!.row] as? PFObject
         }
         return obj
     }
     
-    @IBAction func goToMessages(sender: AnyObject) {
+    @IBAction func payOrMessage(sender: AnyObject) {
         let hitPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
         let hitIndex = self.tableView.indexPathForRowAtPoint(hitPoint)
         let event = objectAtIndexPath(hitIndex)
         eventId = (event?.objectId)!
-        performSegueWithIdentifier("MessageSeque", sender: self)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "MessageSeque" {
-                let destinationVC = segue.destinationViewController as! MessageViewController
-                destinationVC.groupId = eventId
+        eventNameId = (event?["matchedEvents"])! as! String
+        byUserId = (event?["byUser"])! as! String
+        toUserId = (event?["toUser"])! as! String
+        
+        print(sender.titleLabel!!.text)
+        
+        if sender.titleLabel?!.text == "Message" {
+            performSegueWithIdentifier("MessageSeque", sender: self)
+        }
             
+        else if sender.titleLabel?!.text == "Pay" {
+            performSegueWithIdentifier("paySeque", sender: self)
+        }
+            
+        else {
         }
     }
 
+
+   
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "MessageSeque" {
+            let destinationVC = segue.destinationViewController as! MessageViewController
+            destinationVC.groupId = eventId
+            destinationVC.byUserIdForPicture = byUserId
+            destinationVC.toUserIdForPicture = toUserId
+            
+        }
+            
+        else if segue.identifier == "paySeque" {
+            let destinationVC = segue.destinationViewController as! PaymentPageViewController
+            destinationVC.groupId = eventNameId
+            destinationVC.macthedEventObjectId = eventId
+            
+        }
+            
+        else {
+        }
+        
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        self.loadObjects()
+    }
+    
 }

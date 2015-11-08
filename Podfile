@@ -5,12 +5,13 @@ workspace 'Devent'
 
 target :Devent, :exclusive => true do
     
-    
-pod 'Parse'
-pod 'ParseUI'
-pod 'ParseFacebookUtilsV4'
-pod 'FBSDKCoreKit'
-pod 'FBSDKLoginKit'
-pod 'JSQMessagesViewController'
+    pod 'Parse'
+    pod 'ParseUI'
+    pod 'ParseFacebookUtilsV4'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
+    pod 'JSQMessagesViewController'
+    pod 'Stripe', '~> 6.0'
+    pod 'AFNetworking'
 
 end

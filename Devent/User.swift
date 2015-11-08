@@ -81,20 +81,30 @@ func saveLike(user: User) {
             if object != nil {
                 
                 
-                    matched = true
-                    object!.setObject("matched", forKey: "type")
-                    object!.saveInBackgroundWithBlock(nil)
-                    
-                }
+                matched = true
+                object!.setObject("matched", forKey: "type")
+                object!.saveInBackgroundWithBlock(nil)
                 
+            }
             
-
+            
+            
             let match = PFObject(className: "Action")
             match.setObject(PFUser.currentUser()!.objectId!, forKey: "byUser")
             match.setObject(user.id, forKey: "toUser")
             match.setObject(matched ? "matched" : "liked", forKey: "type")
             match.saveInBackgroundWithBlock(nil)
+            
+            if matched {
+                
+                createEventMatchbyUserMatch(user.pfUser)
+                
+            }
+            
         })
+    
+    
+    
 }
 
 
