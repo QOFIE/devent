@@ -25,6 +25,10 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     override func viewDidAppear(animated: Bool) {
         self.loadObjects()
     }
@@ -78,6 +82,9 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         if cell == nil {
             cell = MacthesCustomCell(style: UITableViewCellStyle.Default, reuseIdentifier: "matchCell")
         }
+        
+        cell.layer.borderWidth = 0.3
+        cell.layer.borderColor = UIColor.grayColor().CGColor
         
         // Extract values from the PFObject to display in the table cell
         
@@ -167,10 +174,11 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "MessageSeque" {
-            let destinationVC = segue.destinationViewController as! MessageViewController
-            destinationVC.groupId = eventId
-            destinationVC.byUserIdForPicture = byUserId
-            destinationVC.toUserIdForPicture = toUserId
+            let destinationVC = segue.destinationViewController as! UINavigationController
+            let messageVC = destinationVC.topViewController as! MessageViewController
+            messageVC.groupId = eventId
+            messageVC.byUserIdForPicture = byUserId
+            messageVC.toUserIdForPicture = toUserId
             
         }
             
@@ -189,6 +197,10 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
         self.loadObjects()
+    }
+    
+    @IBAction func unwindToMacthesVC(segue: UIStoryboardSegue) {
+        // do nothing
     }
     
 }

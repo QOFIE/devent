@@ -136,7 +136,7 @@
             </objects>
             <point key="canvasLocation" x="1902" y="793"/>
         </scene>
-        <!--Message View Controller-->
+        <!--Messages-->
         <scene sceneID="sZI-O2-mPc">
             <objects>
                 <viewController id="cdh-eD-s4L" customClass="MessageViewController" customModule="Devent" customModuleProvider="target" sceneMemberID="viewController">
@@ -150,10 +150,14 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Messages" id="Iff-js-pPZ">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Ckp-Fz-Soy"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="h93-HJ-IHe"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEb-Qm-aTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2676" y="1694"/>
+            <point key="canvasLocation" x="3471" y="1694"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WiR-Gm-g1h">
@@ -957,7 +961,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUx-Bk-RsZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="XJZ-Pj-Tj0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4988" y="1622"/>
+            <point key="canvasLocation" x="5800" y="1622"/>
         </scene>
         <!--Events-->
         <scene sceneID="soz-m2-DT0">
@@ -1158,7 +1162,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XIu-sA-LON" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4216" y="1622"/>
+            <point key="canvasLocation" x="5028" y="1622"/>
         </scene>
         <!--Payment Page View Controller-->
         <scene sceneID="I3m-mk-iFT">
@@ -1205,7 +1209,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBp-yL-r38">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBp-yL-r38">
                                 <rect key="frame" x="285" y="310" width="30" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -1296,11 +1300,11 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOp-LL-ZbU">
-                                            <rect key="frame" x="493" y="45" width="83" height="33"/>
+                                            <rect key="frame" x="501" y="29" width="83" height="33"/>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="83" id="gql-HY-5Pw"/>
-                                                <constraint firstAttribute="height" constant="33" id="h5R-Kf-yNV"/>
+                                                <constraint firstAttribute="height" constant="33" id="2kJ-nl-oZ3"/>
+                                                <constraint firstAttribute="width" constant="83" id="qts-SD-qq6"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <state key="normal" title="Pay">
@@ -1314,16 +1318,17 @@
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="UIF-p8-m18" firstAttribute="centerY" secondItem="AhU-uw-Uu2" secondAttribute="centerY" id="0ee-qD-uBg"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="iOp-LL-ZbU" secondAttribute="trailing" constant="8" id="1hB-8h-ALH"/>
                                         <constraint firstItem="fdD-70-7br" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" id="2sl-o8-Wpe"/>
+                                        <constraint firstItem="iOp-LL-ZbU" firstAttribute="centerY" secondItem="AhU-uw-Uu2" secondAttribute="centerY" id="9I4-dp-mgb"/>
                                         <constraint firstItem="fdD-70-7br" firstAttribute="top" secondItem="q1p-sT-ffi" secondAttribute="bottom" constant="8" id="9IM-qs-gHJ"/>
-                                        <constraint firstItem="iOp-LL-ZbU" firstAttribute="top" secondItem="AhU-uw-Uu2" secondAttribute="topMargin" constant="37" id="DY1-iM-n1w"/>
                                         <constraint firstItem="q1p-sT-ffi" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" id="Smv-Jd-vTh"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="iOp-LL-ZbU" secondAttribute="trailing" constant="16" id="ihk-Ol-7eu"/>
                                         <constraint firstItem="q1p-sT-ffi" firstAttribute="top" secondItem="AhU-uw-Uu2" secondAttribute="topMargin" constant="11" id="wg7-8z-nmJ"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="UIF-p8-m18" secondAttribute="leading" id="ymL-43-18V"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="matchedEventName" destination="fdD-70-7br" id="Nem-EX-NoM"/>
                                     <outlet property="matchedEventProfilePicture" destination="UIF-p8-m18" id="74x-h5-3pN"/>
@@ -1339,9 +1344,10 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Matches" id="Vvg-ei-ceB"/>
                     <navigationItem key="navigationItem" id="uGE-xr-dq9"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="jsn-vw-7xz" id="3iI-Dd-nY0"/>
-                        <segue destination="cdh-eD-s4L" kind="show" identifier="MessageSeque" id="dzy-Dd-6or"/>
+                        <segue destination="5cm-Uz-MDt" kind="show" identifier="MessageSeque" id="dzy-Dd-6or"/>
                         <segue destination="fFM-w1-SGN" kind="show" identifier="paySeque" id="gcn-as-mt4"/>
                     </connections>
                 </tableViewController>
@@ -1478,13 +1484,14 @@
                             </barButtonItem>
                             <barButtonItem title="Delete" id="4nF-WE-yhj">
                                 <connections>
-                                    <action selector="deletePhoto:" destination="rDR-87-cca" id="df6-1N-znb"/>
+                                    <action selector="deletePhotoAction:" destination="rDR-87-cca" id="Lf6-LM-ZNZ"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="2Bg-5y-kbj" id="ooJ-Os-7Jy"/>
+                        <outlet property="imageDeleteButton" destination="4nF-WE-yhj" id="EVs-64-T4m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTk-cv-cnn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1511,6 +1518,25 @@
             </objects>
             <point key="canvasLocation" x="4216" y="2480"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rNz-wN-3Gf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5cm-Uz-MDt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rfi-5f-epm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cdh-eD-s4L" kind="relationship" relationship="rootViewController" id="9yw-vs-rz0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RYR-qg-anJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2684" y="1694"/>
+        </scene>
     </scenes>
     <resources>
         <image name="nah-button" width="75" height="75"/>
@@ -1518,6 +1544,6 @@
         <image name="yeah-button" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cNA-CR-vvs"/>
+        <segue reference="KZN-30-Qpj"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,6 +11,7 @@ import UIKit
 class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate, RAReorderableLayoutDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
+    @IBOutlet weak var imageDeleteButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     
     
@@ -24,12 +25,15 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
+        
+        // Create Array to Upload Data
+        
         let photoQuery = PFQuery(className: "_User").whereKey("objectId", equalTo: (PFUser.currentUser()?.objectId)!)
         photoQuery.findObjectsInBackgroundWithBlock({object, error in
             
             for action in object! {
                 
-                if let userPicture1Data = action.valueForKey("P1") as? PFFile {
+                if let userPicture1Data = action.valueForKey("profilePicture") as? PFFile {
                     userPicture1Data.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error NSError) -> Void in
                         if (imageData != nil) {
@@ -137,6 +141,18 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
      
             cell.imageView.image = self.imagesForSection0[indexPath.item]
         
+            if self.imageDeleteButton.title == "Delete" {
+            cell.deleteButton.hidden = true
+            
+            }   else {
+        
+                 cell.deleteButton.hidden = false
+             }
+
+        
+        cell.deleteButton.layer.setValue(indexPath.row, forKey: "index")
+        cell.deleteButton.addTarget(self, action: "deletePhoto:", forControlEvents: UIControlEvents.TouchUpInside)
+        
         return cell
     }
     
@@ -174,11 +190,24 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
     
     
     @IBAction func addPhoto(sender: AnyObject) {
-        var myPickerController = UIImagePickerController()
+        
+        if imagesForSection0.count < 5 {
+        
+        let myPickerController = UIImagePickerController()
         myPickerController.delegate = self
         myPickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         
         self.presentViewController(myPickerController, animated: true, completion: nil)
+        }
+        
+        else {
+            let alertController = UIAlertController(title: "Picture Limit", message:
+                "You can't add more than 5 pictures", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
     }
     
    
@@ -191,21 +220,32 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
     }
     
     
-    @IBAction func deletePhoto(sender: AnyObject) {
+  
+    @IBAction func deletePhotoAction(sender: AnyObject) {
+        
+        if self.imageDeleteButton.title == "Delete" {
+        
+            self.imageDeleteButton.title = "Done"
+        
+        } else {
+        
+        self.imageDeleteButton.title = "Delete"
+        
+        }
+        
+        self.collectionView.reloadData()
     }
     
 
     @IBAction func savePhoto(sender: AnyObject) {
-       
-        print(imagesForSection0.count)
-        
+
         
         if imagesForSection0.count == 1 {
             let P1Imagedata = UIImageJPEGRepresentation(imagesForSection0[0], 1)
             
             if(P1Imagedata != nil) {
                 let P1FileObject = PFFile(data:P1Imagedata!)
-                PFUser.currentUser()!.setObject(P1FileObject!, forKey: "P1")
+                PFUser.currentUser()!.setObject(P1FileObject!, forKey: "profilePicture")
                 
                 PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                     
@@ -217,14 +257,14 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
         
         }
         
-        if imagesForSection0.count == 2 {
+        else if imagesForSection0.count == 2 {
             let P1Imagedata = UIImageJPEGRepresentation(imagesForSection0[0], 1)
             let P2Imagedata = UIImageJPEGRepresentation(imagesForSection0[1], 1)
             
             if(P1Imagedata != nil && P2Imagedata != nil) {
                 let P1FileObject = PFFile(data:P1Imagedata!)
                 let P2FileObject = PFFile(data:P2Imagedata!)
-                PFUser.currentUser()!.setObject(P1FileObject!, forKey: "P1")
+                PFUser.currentUser()!.setObject(P1FileObject!, forKey: "profilePicture")
                 PFUser.currentUser()!.setObject(P2FileObject!, forKey: "P2")
 
                 
@@ -239,7 +279,7 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
             
         }
         
-        if imagesForSection0.count == 3 {
+        else if imagesForSection0.count == 3 {
             let P1Imagedata = UIImageJPEGRepresentation(imagesForSection0[0], 1)
             let P2Imagedata = UIImageJPEGRepresentation(imagesForSection0[1], 1)
             let P3Imagedata = UIImageJPEGRepresentation(imagesForSection0[2], 1)
@@ -249,7 +289,7 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
                 let P2FileObject = PFFile(data:P2Imagedata!)
                 let P3FileObject = PFFile(data:P3Imagedata!)
                 
-                PFUser.currentUser()!.setObject(P1FileObject!, forKey: "P1")
+                PFUser.currentUser()!.setObject(P1FileObject!, forKey: "profilePicture")
                 PFUser.currentUser()!.setObject(P2FileObject!, forKey: "P2")
                 PFUser.currentUser()!.setObject(P3FileObject!, forKey: "P3")
                 
@@ -264,7 +304,7 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
             
         }
         
-        if imagesForSection0.count == 4 {
+        else if imagesForSection0.count == 4 {
             let P1Imagedata = UIImageJPEGRepresentation(imagesForSection0[0], 1)
             let P2Imagedata = UIImageJPEGRepresentation(imagesForSection0[1], 1)
             let P3Imagedata = UIImageJPEGRepresentation(imagesForSection0[2], 1)
@@ -276,7 +316,7 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
                 let P3FileObject = PFFile(data:P3Imagedata!)
                 let P4FileObject = PFFile(data:P4Imagedata!)
                 
-                PFUser.currentUser()!.setObject(P1FileObject!, forKey: "P1")
+                PFUser.currentUser()!.setObject(P1FileObject!, forKey: "profilePicture")
                 PFUser.currentUser()!.setObject(P2FileObject!, forKey: "P2")
                 PFUser.currentUser()!.setObject(P3FileObject!, forKey: "P3")
                 PFUser.currentUser()!.setObject(P4FileObject!, forKey: "P4")
@@ -292,7 +332,7 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
             
         }
         
-        if imagesForSection0.count == 5 {
+        else {
             let P1Imagedata = UIImageJPEGRepresentation(imagesForSection0[0], 1)
             let P2Imagedata = UIImageJPEGRepresentation(imagesForSection0[1], 1)
             let P3Imagedata = UIImageJPEGRepresentation(imagesForSection0[2], 1)
@@ -306,7 +346,7 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
                 let P4FileObject = PFFile(data:P4Imagedata!)
                 let P5FileObject = PFFile(data:P5Imagedata!)
                 
-                PFUser.currentUser()!.setObject(P1FileObject!, forKey: "P1")
+                PFUser.currentUser()!.setObject(P1FileObject!, forKey: "profilePicture")
                 PFUser.currentUser()!.setObject(P2FileObject!, forKey: "P2")
                 PFUser.currentUser()!.setObject(P3FileObject!, forKey: "P3")
                 PFUser.currentUser()!.setObject(P4FileObject!, forKey: "P4")
@@ -323,18 +363,20 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
         }
         
         
-        
-        
-        
-        
-        
     }
     
+    
+    func deletePhoto(sender:UIButton) {
+        let i : Int = (sender.layer.valueForKey("index")) as! Int
+        imagesForSection0.removeAtIndex(i)
+        self.collectionView!.reloadData()
+    }
 
 }
 
 class RACollectionViewCell: UICollectionViewCell {
     var imageView: UIImageView!
+    var deleteButton: UIButton!
     var gradientLayer: CAGradientLayer?
     var hilightedCover: UIView!
     override var highlighted: Bool {
@@ -361,11 +403,22 @@ class RACollectionViewCell: UICollectionViewCell {
         self.imageView.contentMode = UIViewContentMode.ScaleAspectFill
         self.addSubview(self.imageView)
         
+        self.deleteButton = UIButton()
+        self.deleteButton.setImage(UIImage(named: "close"), forState: .Normal)
+        self.deleteButton.frame = CGRectMake(0, 0, 30, 30)
+        //self.deleteButton.backgroundColor = UIColor.whiteColor()
+        self.deleteButton.imageView?.contentMode = UIViewContentMode.ScaleToFill
+        self.addSubview(deleteButton)
+        
         self.hilightedCover = UIView()
         self.hilightedCover.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         self.hilightedCover.backgroundColor = UIColor(white: 0, alpha: 0.5)
         self.hilightedCover.hidden = true
         self.addSubview(self.hilightedCover)
+        
+    
+        self.bringSubviewToFront(deleteButton)
+        
     }
     
     private func applyGradation(gradientView: UIView!) {

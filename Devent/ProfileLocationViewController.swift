@@ -28,7 +28,7 @@ class ProfileLocationViewController: UIViewController, MKMapViewDelegate, CLLoca
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         
-        var uilgr = UITapGestureRecognizer(target: self, action: "addAnnotation:")
+        let uilgr = UITapGestureRecognizer(target: self, action: "addAnnotation:")
         uilgr.numberOfTapsRequired = 1
         uilgr.numberOfTouchesRequired = 1
         map.addGestureRecognizer(uilgr)
@@ -39,11 +39,10 @@ class ProfileLocationViewController: UIViewController, MKMapViewDelegate, CLLoca
     func addAnnotation(gestureRecognizer:UIGestureRecognizer){
         let annotationsToRemove = map.annotations.filter { $0 !== map.userLocation }
         map.removeAnnotations(annotationsToRemove )
-        var touchPoint = gestureRecognizer.locationInView(map)
-        var newCoordinates = map.convertPoint(touchPoint, toCoordinateFromView: map)
+        let touchPoint = gestureRecognizer.locationInView(map)
+        let newCoordinates = map.convertPoint(touchPoint, toCoordinateFromView: map)
         finalAnnotation.coordinate = newCoordinates
         self.map.addAnnotation(finalAnnotation)
-        print(finalAnnotation.coordinate.latitude)
         self.setUsersClosestCity()
     }
     
@@ -60,14 +59,13 @@ class ProfileLocationViewController: UIViewController, MKMapViewDelegate, CLLoca
     
     func setUsersClosestCity()
     {
-        var geocoder = CLGeocoder()
-        var location = CLLocation(latitude: finalAnnotation.coordinate.latitude, longitude: finalAnnotation.coordinate.longitude)
+        let geocoder = CLGeocoder()
+        let location = CLLocation(latitude: finalAnnotation.coordinate.latitude, longitude: finalAnnotation.coordinate.longitude)
         geocoder.reverseGeocodeLocation(location) {
             (placemarks, error) -> Void in
-            if let placemarks = placemarks as? [CLPlacemark]! where placemarks.count > 0 {
-                var placemark = placemarks[0]
-                var state = placemark.addressDictionary?["State"] as! String
-                print(state)
+            if let placemarks = placemarks as [CLPlacemark]! where placemarks.count > 0 {
+                let placemark = placemarks[0]
+                let state = placemark.addressDictionary?["State"] as! String
                 self.user!.setObject(state, forKey: "locationCity")
                 self.user!.setObject(self.finalAnnotation.coordinate.latitude.description, forKey: "latitude")
                 self.user!.setObject(self.finalAnnotation.coordinate.latitude.description, forKey: "longtitude")
