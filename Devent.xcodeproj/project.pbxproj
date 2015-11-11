@@ -21,13 +21,13 @@
 		16C8A26B1BE3DC1D0035EEF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C8A26A1BE3DC1D0035EEF8 /* Constants.swift */; };
 		46073D231BDA66170039A908 /* MyEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46073D221BDA66170039A908 /* MyEventViewController.swift */; };
 		46073D251BDA68190039A908 /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46073D241BDA68190039A908 /* MyCustomCell.swift */; };
-		466B351A1BEF63A60058A8B9 /* deleteEventMatchbyEventChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B35191BEF63A60058A8B9 /* deleteEventMatchbyEventChoice.swift */; settings = {ASSET_TAGS = (); }; };
-		466B351C1BEF63AA0058A8B9 /* createEventMatchbyEventChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B351B1BEF63AA0058A8B9 /* createEventMatchbyEventChoice.swift */; settings = {ASSET_TAGS = (); }; };
-		466B351E1BEF63B70058A8B9 /* createEventMatchbyUserMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B351D1BEF63B70058A8B9 /* createEventMatchbyUserMatch.swift */; settings = {ASSET_TAGS = (); }; };
-		466B35221BEF66F40058A8B9 /* PaymentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B35211BEF66F40058A8B9 /* PaymentPageViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		466B35241BEF6D350058A8B9 /* ProfileLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B35231BEF6D350058A8B9 /* ProfileLocationViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		466B35271BEF723E0058A8B9 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B35251BEF723E0058A8B9 /* PhotoGalleryViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		466B35281BEF723E0058A8B9 /* RAReorderableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B35261BEF723E0058A8B9 /* RAReorderableLayout.swift */; settings = {ASSET_TAGS = (); }; };
+		466B351A1BEF63A60058A8B9 /* deleteEventMatchbyEventChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B35191BEF63A60058A8B9 /* deleteEventMatchbyEventChoice.swift */; };
+		466B351C1BEF63AA0058A8B9 /* createEventMatchbyEventChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B351B1BEF63AA0058A8B9 /* createEventMatchbyEventChoice.swift */; };
+		466B351E1BEF63B70058A8B9 /* createEventMatchbyUserMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B351D1BEF63B70058A8B9 /* createEventMatchbyUserMatch.swift */; };
+		466B35221BEF66F40058A8B9 /* PaymentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B35211BEF66F40058A8B9 /* PaymentPageViewController.swift */; };
+		466B35241BEF6D350058A8B9 /* ProfileLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B35231BEF6D350058A8B9 /* ProfileLocationViewController.swift */; };
+		466B35271BEF723E0058A8B9 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B35251BEF723E0058A8B9 /* PhotoGalleryViewController.swift */; };
+		466B35281BEF723E0058A8B9 /* RAReorderableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B35261BEF723E0058A8B9 /* RAReorderableLayout.swift */; };
 		4690A5FE1BDD7E0F00B18403 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4690A5FD1BDD7E0F00B18403 /* CardView.swift */; };
 		4690A6001BDD7E5300B18403 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4690A5FF1BDD7E5300B18403 /* SwipeView.swift */; };
 		4690A6021BDD7E9900B18403 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4690A6011BDD7E9900B18403 /* User.swift */; };
@@ -276,16 +276,16 @@
 		46BF30511BD10584003AA0AE /* Devent */ = {
 			isa = PBXGroup;
 			children = (
+				46BF30561BD10584003AA0AE /* Main.storyboard */,
 				466B35201BEF66ED0058A8B9 /* Payment */,
 				466B351F1BEF646B0058A8B9 /* Messaging */,
-				46BF30561BD10584003AA0AE /* Main.storyboard */,
 				16A60D1A1BEDEFD00075DFBA /* Model */,
 				4690A5FB1BDCDD4700B18403 /* Matches Tab */,
 				4690A5FA1BDCDD3F00B18403 /* Discover Tab */,
 				4690A5F91BDCDD3700B18403 /* Event Tab */,
+				4690A5F51BDCDCD300B18403 /* Authentication */,
 				4690A5F81BDCDD1600B18403 /* Profile Tab */,
 				4690A5F61BDCDCE600B18403 /* Supporting Files */,
-				4690A5F51BDCDCD300B18403 /* Authentication */,
 			);
 			path = Devent;
 			sourceTree = "<group>";
