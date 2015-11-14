@@ -18,6 +18,8 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     var eventNameId = ""
     var byUserId = ""
     var toUserId = ""
+    var localStore = [PFObject]()
+    var shouldUpdateFromServer:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.loadObjects()
+     
     }
     
     
@@ -47,31 +49,71 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         self.parseClassName = "MatchedEvent"
         self.textKey = "matchedEvents"
         self.pullToRefreshEnabled = true
-        self.paginationEnabled = false
+        self.paginationEnabled = true
+        self.objectsPerPage = 10
+        
+    }
+    
+    func baseQuery() -> PFQuery {
+        let query = PFQuery(className: "MatchedEvent").whereKey("byUser", equalTo: PFUser.currentUser()!.objectId!)
+        let query2 = PFQuery(className: "MatchedEvent").whereKey("toUser", equalTo: PFUser.currentUser()!.objectId!)
+        
+        if searchBar.text == "" {
+            let query3 = PFQuery.orQueryWithSubqueries([query, query2])
+            query3.orderByAscending("matchedEventName")
+            return query3 }
+            
+        else {
+            let query3 = PFQuery.orQueryWithSubqueries([query, query2]).whereKey("matchedEventName", containsString: searchBar.text)
+            query3.orderByAscending("matchedEventName")
+            return query3 }
     }
     
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery{
         
-        let query = PFQuery(className: "MatchedEvent").whereKey("byUser", equalTo: PFUser.currentUser()!.objectId!)
-        let query2 = PFQuery(className: "MatchedEvent").whereKey("toUser", equalTo: PFUser.currentUser()!.objectId!)
+        return baseQuery().fromLocalDatastore()
         
+    }
+    
+    func refreshLocalDataStoreFromServer() {
         
-        if searchBar.text == "" {
+        self.baseQuery().findObjectsInBackgroundWithBlock({
+            object, error in
             
-            let query3 = PFQuery.orQueryWithSubqueries([query, query2])
-            query3.orderByAscending("matchedEventName")
-            return query3
+            PFObject.unpinAllInBackground(self.objects as? [PFObject], block: { (succeeded: Bool, error: NSError?) -> Void in
+            if error == nil {
             
+            for action in object! {
+               self.localStore.append(action) }
+                
+            PFObject.pinAllInBackground(self.localStore, block: { (succeeded: Bool, error: NSError?) -> Void in
+                    if error == nil {
+                        // Once we've updated the local datastore, update the view with local datastore
+                        self.shouldUpdateFromServer = false
+                        self.loadObjects()
+                    } else {
+                        print("Failed to pin objects")
+                    }
+                })
+                
+                }
+            else {
+                print("Failed to unpin objects")
+                }
+            })
+        })
+
+    }
+    
+    override func objectsDidLoad(error: NSError?) {
+        super.objectsDidLoad(error)
+        // If we just updated from the server, do nothing, otherwise update from server.
+        if self.shouldUpdateFromServer {
+            self.refreshLocalDataStoreFromServer()
+        } else {
+            self.shouldUpdateFromServer = true
         }
-            
-        else {
-            let query3 = PFQuery.orQueryWithSubqueries([query, query2]).whereKey("matchedEventName", containsString: searchBar.text)
-            query3.orderByAscending("matchedEventName")
-            return query3
-            
-        }
-        
     }
     
     //override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -87,37 +129,33 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         cell.layer.borderColor = UIColor.grayColor().CGColor
         
         // Extract values from the PFObject to display in the table cell
-        
-        if var username = object?["toUser"] as? String {
+    
+        let username = object?["toUser"] as? String
             
             if (username == PFUser.currentUser()?.objectId) {
-                username = object?["byUser"] as! String
-            }
-            
-            var otherUserArray = [PFObject]()
-            let queryUser = PFQuery(className: "_User")
-                .whereKey("objectId", equalTo: username)
-            
-            do {
-                otherUserArray = try queryUser.findObjects()}
-            catch {}
-            
-            cell.matchedUserName.text = otherUserArray[0]["firstName"] as? String
-            
-            let initialThumbnail = UIImage(named: "question")
-            cell.matchedEventProfilePicture.image = initialThumbnail
-            if let thumbnail = otherUserArray[0]["profilePicture"] as? PFFile{
-                thumbnail.getDataInBackgroundWithBlock({
-                    (imageData: NSData?, error: NSError?) -> Void in
-                    if (error == nil) {
-                        cell.matchedEventProfilePicture.image = UIImage(data:imageData!)
-                    }
-                })
-            }
-            
-        }
+                cell.matchedUserName.text = object?["byUserName"] as? String
+                if let thumbnail = object?["byUserPicture"] as? PFFile{
+                    thumbnail.getDataInBackgroundWithBlock({
+                        (imageData: NSData?, error: NSError?) -> Void in
+                        if (error == nil) {
+                            cell.matchedEventProfilePicture.image = UIImage(data:imageData!)
+                        }
+                    })
+                }
+            } else {
+                cell.matchedUserName.text = object?["toUserName"] as? String
+                if let thumbnail = object?["toUserPicture"] as? PFFile{
+                    thumbnail.getDataInBackgroundWithBlock({
+                        (imageData: NSData?, error: NSError?) -> Void in
+                        if (error == nil) {
+                            cell.matchedEventProfilePicture.image = UIImage(data:imageData!)
+                        }
+                    })
+                }
         
+            }
         
+
         cell.matchedEventName.text = object?["matchedEventName"] as? String
         
         if PFUser.currentUser()?.objectId != object?["PaidUserId1"] as? String && PFUser.currentUser()?.objectId != object?["PaidUserId2"] as? String{
@@ -183,9 +221,10 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         }
             
         else if segue.identifier == "paySeque" {
-            let destinationVC = segue.destinationViewController as! PaymentPageViewController
-            destinationVC.groupId = eventNameId
-            destinationVC.macthedEventObjectId = eventId
+            let destinationVC = segue.destinationViewController as! UINavigationController
+            let payVc = destinationVC.topViewController as! PaymentPageViewController
+            payVc.groupId = eventNameId
+            payVc.macthedEventObjectId = eventId
             
         }
             

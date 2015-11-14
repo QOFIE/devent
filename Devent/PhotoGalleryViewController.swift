@@ -246,15 +246,8 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
             if(P1Imagedata != nil) {
                 let P1FileObject = PFFile(data:P1Imagedata!)
                 PFUser.currentUser()!.setObject(P1FileObject!, forKey: "profilePicture")
-                
-                PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                    
-                }
-                
+                PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in }
             }
-            
-            
-        
         }
         
         else if imagesForSection0.count == 2 {
@@ -266,17 +259,8 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
                 let P2FileObject = PFFile(data:P2Imagedata!)
                 PFUser.currentUser()!.setObject(P1FileObject!, forKey: "profilePicture")
                 PFUser.currentUser()!.setObject(P2FileObject!, forKey: "P2")
-
-                
-                PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                    
-                    print(success)
-                    
-                }
-                
+                PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in }
             }
-            
-            
         }
         
         else if imagesForSection0.count == 3 {
@@ -292,16 +276,8 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
                 PFUser.currentUser()!.setObject(P1FileObject!, forKey: "profilePicture")
                 PFUser.currentUser()!.setObject(P2FileObject!, forKey: "P2")
                 PFUser.currentUser()!.setObject(P3FileObject!, forKey: "P3")
-                
-                
-                PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                    
-                }
-                
+                PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in }
             }
-            
-            
-            
         }
         
         else if imagesForSection0.count == 4 {
@@ -320,16 +296,8 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
                 PFUser.currentUser()!.setObject(P2FileObject!, forKey: "P2")
                 PFUser.currentUser()!.setObject(P3FileObject!, forKey: "P3")
                 PFUser.currentUser()!.setObject(P4FileObject!, forKey: "P4")
-                
-                
-                PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                    
-                }
-                
+                PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in }
             }
-            
-            
-            
         }
         
         else {
@@ -351,17 +319,11 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
                 PFUser.currentUser()!.setObject(P3FileObject!, forKey: "P3")
                 PFUser.currentUser()!.setObject(P4FileObject!, forKey: "P4")
                 PFUser.currentUser()!.setObject(P5FileObject!, forKey: "P5")
-                
-                
-                PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                    
-                }
-                
+                PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in }
             }
-            
-            
         }
         
+        //performSegueWithIdentifier("savedPhoteGallery", sender: self)
         
     }
     

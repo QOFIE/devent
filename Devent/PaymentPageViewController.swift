@@ -14,40 +14,89 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventPrice: UILabel!
     @IBOutlet weak var payButtonSon: UIButton!
+    @IBOutlet weak var eventPictureForPayment: UIImageView!
+    
     
     var groupId: String = ""
     var macthedEventObjectId: String = ""
     let backendChargeURLString = "https://deventpayment.herokuapp.com"
     var paymentTextField = STPPaymentCardTextField()
+    let screenSize: CGRect = UIScreen.mainScreen().bounds
+    
 
+    func refreshLocalDataStoreFromServer() {
+        
+        let query = PFQuery(className: "Events")
+            .whereKey("objectId", equalTo: groupId)
+        query.findObjectsInBackgroundWithBlock({object, error in
+            if (error == nil) {
+            for action in object! {
+                action.pinInBackground()
+                self.eventName.text = action["Name"] as? String
+                let amount = action["Price"] as? String
+                self.eventPrice.text = ("$\(amount!)")
+                
+                let initialThumbnail = UIImage(named: "question")
+                self.eventPictureForPayment.image = initialThumbnail
+                if let thumbnail = action["Picture"] as? PFFile{
+                    thumbnail.getDataInBackgroundWithBlock({
+                        (imageData: NSData?, error: NSError?) -> Void in
+                        if (error == nil) {
+                            self.eventPictureForPayment.image = UIImage(data:imageData!)}
+                    })}
+                
+            }
+            }
+        })
+ 
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        paymentTextField.frame = CGRectMake(50, 50, 250, 100)
-        paymentTextField.center = view.center
+        
+        
+        self.paymentTextField.frame = CGRectMake(screenSize.width*0.1, screenSize.height*0.7, screenSize.width*0.8, screenSize.height*0.1)
         paymentTextField.delegate = self
         view.addSubview(paymentTextField)
+
+        self.refreshLocalDataStoreFromServer()
         
         let query = PFQuery(className: "Events")
         .whereKey("objectId", equalTo: groupId)
+        query.fromLocalDatastore()
         query.findObjectsInBackgroundWithBlock({object, error in
+            
+            
             
             for action in object! {
             self.eventName.text = action["Name"] as? String
-            self.eventPrice.text = action["Price"] as? String
+            let amount = action["Price"] as? String
+            self.eventPrice.text = ("$\(amount!)")
+
+                
+            let initialThumbnail = UIImage(named: "question")
+            self.eventPictureForPayment.image = initialThumbnail
+            if let thumbnail = action["Picture"] as? PFFile{
+                thumbnail.getDataInBackgroundWithBlock({
+                    (imageData: NSData?, error: NSError?) -> Void in
+                    if (error == nil) {
+                        self.eventPictureForPayment.image = UIImage(data:imageData!)}
+                    })}
 
            }
             
         })
         
-
+       
+     
     }
 
     func paymentCardTextFieldDidChange(textField: STPPaymentCardTextField) {
         payButtonSon.enabled = textField.valid
-        print(textField.valid)
+
     }
+
     
     
     @IBAction func realPayment(sender: AnyObject) {
