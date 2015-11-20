@@ -55,7 +55,7 @@ class NewEventTableViewController: PFQueryTableViewController {
     
     /*
     override func objectsDidLoad(error: NSError?) {
-        // Do any setup when table query objects load
+    // Do any setup when table query objects load
     }
     */
     
@@ -63,7 +63,7 @@ class NewEventTableViewController: PFQueryTableViewController {
     // MARK: TABLEVIEW METHODS
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
-
+        
         var cell: PFTableViewCell?
         
         if indexPath.row == 0 {
@@ -72,7 +72,7 @@ class NewEventTableViewController: PFQueryTableViewController {
                 return featuredEventsCell
             }
         }
-        
+            
         else if indexPath.row == 1 {
             print("Index 1")
             if let sortingCell = tableView.dequeueReusableCellWithIdentifier(EventTableViewCellIdentifier.sorting) as? SortingCell {
@@ -80,7 +80,7 @@ class NewEventTableViewController: PFQueryTableViewController {
                 return sortingCell
             }
         }
-        
+            
         else {
             if let eventCell = tableView.dequeueReusableCellWithIdentifier(EventTableViewCellIdentifier.event) as? EventCell {
                 // Extract values from the PFObject to display in the table cell
@@ -116,14 +116,16 @@ class NewEventTableViewController: PFQueryTableViewController {
         return cell!
     }
     
-    
     override func objectAtIndexPath(indexPath: NSIndexPath?) -> PFObject? {
         var obj: PFObject?
-       
-        if(indexPath!.row < self.objects?.count) {
-            obj = self.objects?[indexPath!.row] as? PFObject
+        if let index = indexPath?.row, let count = self.objects?.count {
+            
+            if (index > 1) && (index < count + 2) {
+                obj = self.objects?[(index - 2)] as? PFObject
+            }
+            
         }
-       
+        
         return obj
     }
     
@@ -146,7 +148,7 @@ class NewEventTableViewController: PFQueryTableViewController {
     
     
     // MARK: VC LIFECYCLE
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.featuredEvents = findFeaturedEvents()
@@ -166,15 +168,15 @@ class NewEventTableViewController: PFQueryTableViewController {
         self.paginationEnabled = false
         
     }
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
