@@ -130,6 +130,22 @@ class NewEventTableViewController: PFQueryTableViewController {
         return obj
     }
     
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ((self.objects?.count)! + 2)
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let width = self.view.bounds.size.width
+        let featuredEventImageAspectRatio: CGFloat = 600 / 328
+        switch indexPath.row {
+        case 0:
+            return width / featuredEventImageAspectRatio
+        case 1:
+            return UITableViewAutomaticDimension
+        default:
+            return 80
+        }
+    }
     
     
     // MARK: VC LIFECYCLE
