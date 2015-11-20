@@ -118,12 +118,33 @@ class NewEventTableViewController: PFQueryTableViewController {
     
     override func objectAtIndexPath(indexPath: NSIndexPath?) -> PFObject? {
         var obj: PFObject?
-        if(indexPath!.row < self.objects?.count) {
-            obj = self.objects?[indexPath!.row] as? PFObject
+        if let index = indexPath?.row, let count = self.objects?.count {
+            
+            if (index > 1) && (index < count + 2) {
+                obj = self.objects?[(index - 2)] as? PFObject
+            }
+            
         }
+
         return obj
     }
     
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ((self.objects?.count)! + 2)
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let width = self.view.bounds.size.width
+        let featuredEventImageAspectRatio: CGFloat = 600 / 328
+        switch indexPath.row {
+        case 0:
+            return width / featuredEventImageAspectRatio
+        case 1:
+            return UITableViewAutomaticDimension
+        default:
+            return 80
+        }
+    }
     
     
     // MARK: VC LIFECYCLE
