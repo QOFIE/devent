@@ -116,9 +116,6 @@ class NewEventTableViewController: PFQueryTableViewController {
         return cell!
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
     
     override func objectAtIndexPath(indexPath: NSIndexPath?) -> PFObject? {
         var obj: PFObject?
