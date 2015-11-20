@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16100F161BF7590500768784 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16100F151BF7590500768784 /* Event.swift */; };
 		1667DFF01BE408B3007E01BC /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */; };
 		1667DFF51BE6781A007E01BC /* ChooseHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */; };
 		1689D3061BE299AF003DAA4B /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3051BE299AF003DAA4B /* ImageCropper.swift */; };
@@ -15,6 +16,10 @@
 		1689D30C1BE2ADD5003DAA4B /* UserNameAndAgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D30B1BE2ADD5003DAA4B /* UserNameAndAgeTableViewCell.swift */; };
 		1689D30E1BE2ADE4003DAA4B /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D30D1BE2ADE4003DAA4B /* AboutTableViewCell.swift */; };
 		1689D3101BE2ADF2003DAA4B /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D30F1BE2ADF2003DAA4B /* UserInfoTableViewCell.swift */; };
+		169BC41D1BF92B99004A51A5 /* NewEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC41C1BF92B99004A51A5 /* NewEventTableViewController.swift */; };
+		169BC41F1BF92DC4004A51A5 /* FeaturedEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC41E1BF92DC4004A51A5 /* FeaturedEventsCell.swift */; };
+		169BC4211BF92E3F004A51A5 /* SortingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC4201BF92E3F004A51A5 /* SortingCell.swift */; };
+		169BC4231BF92E4C004A51A5 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC4221BF92E4C004A51A5 /* EventCell.swift */; };
 		16A60D171BEBC7F40075DFBA /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A60D161BEBC7F40075DFBA /* RangeSlider.swift */; };
 		16A60D191BEBCBFA0075DFBA /* AgeRangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A60D181BEBCBFA0075DFBA /* AgeRangeTableViewCell.swift */; };
 		16A60D1C1BEDEFEA0075DFBA /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A60D1B1BEDEFEA0075DFBA /* CurrentUser.swift */; };
@@ -69,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16100F151BF7590500768784 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseHeightViewController.swift; sourceTree = "<group>"; };
 		1689D3051BE299AF003DAA4B /* ImageCropper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
@@ -77,6 +83,10 @@
 		1689D30B1BE2ADD5003DAA4B /* UserNameAndAgeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameAndAgeTableViewCell.swift; sourceTree = "<group>"; };
 		1689D30D1BE2ADE4003DAA4B /* AboutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
 		1689D30F1BE2ADF2003DAA4B /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
+		169BC41C1BF92B99004A51A5 /* NewEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventTableViewController.swift; sourceTree = "<group>"; };
+		169BC41E1BF92DC4004A51A5 /* FeaturedEventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedEventsCell.swift; sourceTree = "<group>"; };
+		169BC4201BF92E3F004A51A5 /* SortingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingCell.swift; sourceTree = "<group>"; };
+		169BC4221BF92E4C004A51A5 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		16A60D161BEBC7F40075DFBA /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		16A60D181BEBCBFA0075DFBA /* AgeRangeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeRangeTableViewCell.swift; sourceTree = "<group>"; };
 		16A60D1B1BEDEFEA0075DFBA /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
@@ -219,10 +229,15 @@
 		4690A5F91BDCDD3700B18403 /* Event Tab */ = {
 			isa = PBXGroup;
 			children = (
+				169BC41C1BF92B99004A51A5 /* NewEventTableViewController.swift */,
+				169BC41E1BF92DC4004A51A5 /* FeaturedEventsCell.swift */,
+				169BC4201BF92E3F004A51A5 /* SortingCell.swift */,
+				169BC4221BF92E4C004A51A5 /* EventCell.swift */,
 				46073D241BDA68190039A908 /* MyCustomCell.swift */,
 				46073D221BDA66170039A908 /* MyEventViewController.swift */,
 				4692F4171BD8FBD500B62564 /* EventViewController.swift */,
 				4692F4151BD8FB5D00B62564 /* CustomCell.swift */,
+				16100F151BF7590500768784 /* Event.swift */,
 			);
 			name = "Event Tab";
 			sourceTree = "<group>";
@@ -531,11 +546,16 @@
 				4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */,
 				46EF16511BE189B5003E7F09 /* Camera.swift in Sources */,
 				466B35221BEF66F40058A8B9 /* PaymentPageViewController.swift in Sources */,
+				169BC41F1BF92DC4004A51A5 /* FeaturedEventsCell.swift in Sources */,
 				16A60D191BEBCBFA0075DFBA /* AgeRangeTableViewCell.swift in Sources */,
 				4690A6041BDD807E00B18403 /* CardsViewController.swift in Sources */,
+				169BC41D1BF92B99004A51A5 /* NewEventTableViewController.swift in Sources */,
 				466B35271BEF723E0058A8B9 /* PhotoGalleryViewController.swift in Sources */,
 				4690A6021BDD7E9900B18403 /* User.swift in Sources */,
+				169BC4211BF92E3F004A51A5 /* SortingCell.swift in Sources */,
 				46E58E0E1BDFA51700FEA214 /* MacthesCustomCell.swift in Sources */,
+				16100F161BF7590500768784 /* Event.swift in Sources */,
+				169BC4231BF92E4C004A51A5 /* EventCell.swift in Sources */,
 				46073D231BDA66170039A908 /* MyEventViewController.swift in Sources */,
 				46EF164F1BE1247C003E7F09 /* MessageViewController.swift in Sources */,
 				4692F4161BD8FB5D00B62564 /* CustomCell.swift in Sources */,
