@@ -8,26 +8,36 @@
 
 import UIKit
 
+protocol SortingCellDelegate {
+    var sortType: String? { get set }
+    func getSortType (sender: PFTableViewCell) -> String
+}
+
 class SortingCell: PFTableViewCell {
     
     // MARK: PROPERTIES
     
-    lazy var sortBy: String = SortBy.popularity
+    var delegate: SortingCellDelegate?
     
     // MARK: ACTIONS
     
     @IBAction func sortingSegmentedControl(sender: UISegmentedControl) {
         
         switch sender.selectedSegmentIndex {
-        case 0: self.sortBy = SortBy.popularity
-        case 1: self.sortBy = SortBy.date
-        case 2: self.sortBy = SortBy.price
+        case 0:
+            self.delegate?.sortType = SortBy.popularity
+            
+        case 1:
+            self.delegate?.sortType = SortBy.date
+            
+        case 2:
+            self.delegate?.sortType = SortBy.price
+            
         default: break
-        
+            
         }
-        
-        // Don't forget to set a protocol to notify the View Controller everytime the user touches the segmented control
-        
+        //print("Sorting delegate is \(self.delegate?.sortType)")
+        self.delegate?.getSortType(self)
     }
     
     /*

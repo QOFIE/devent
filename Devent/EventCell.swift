@@ -32,13 +32,23 @@ class EventCell: PFTableViewCell {
     */
     
     
-    /*
+    
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
-    // Drawing code
+
+        let lineWidth: CGFloat = 1.0
+        let startingPoint = CGPointMake(self.bounds.minX, self.bounds.minY)
+        let endingPoint = CGPointMake(self.bounds.maxX, self.bounds.minY)
+        var linePath = UIBezierPath()
+        linePath.moveToPoint(startingPoint)
+        linePath.addLineToPoint(endingPoint)
+        linePath.lineWidth = lineWidth
+        UIColor.lightGrayColor().setStroke()
+        linePath.stroke()
+
     }
-    */
+    
     
     // MARK: VIEW LIFECYCLE
     /*

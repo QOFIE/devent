@@ -1,20 +1,20 @@
 //
-//  NewEventTableViewController.swift
+//  EventsTableViewController.swift
 //  Devent
 //
-//  Created by Can Ceran on 15/11/15.
+//  Created by Can Ceran on 22/11/15.
 //  Copyright © 2015 ES. All rights reserved.
 //
 
 import UIKit
 
-class NewEventTableViewController: PFQueryTableViewController {
-    
+class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate {
     
     // MARK: PROPOERTIES
     
     // Load featured events separetely into an array (there are only 5 of them!)
     var featuredEvents: [PFObject]?
+    var sortType: String?
     
     // MARK: ACTIONS
     
@@ -22,13 +22,12 @@ class NewEventTableViewController: PFQueryTableViewController {
     override func queryForTable() -> PFQuery {
         let query = PFQuery(className: "Events")
         query.whereKey(EVENT.featured, equalTo: false)
-        query.orderByAscending(EVENT.popularity)
-        return query
-    }
-    
-    private func queryForTableOrderedBy(order: String) -> PFQuery {
-        let query = queryForTable()
-        query.orderByAscending(order)
+        if let sortBy = sortType {
+            query.orderByAscending(sortBy)
+        } else {
+            query.orderByAscending(EVENT.popularity)
+        }
+        
         return query
     }
     
@@ -53,6 +52,17 @@ class NewEventTableViewController: PFQueryTableViewController {
         return featuredEventsArray
     }
     
+    func getSortType (sender: PFTableViewCell) -> String {
+        var sorting = SortBy.popularity
+        if self.sortType != nil {
+            sorting = self.sortType!
+            print("The table needs to be sorted by \(sorting)")
+            loadObjects()
+            self.tableView.reloadData()
+        }
+        return sorting
+    }
+    
     /*
     override func objectsDidLoad(error: NSError?) {
     // Do any setup when table query objects load
@@ -68,7 +78,7 @@ class NewEventTableViewController: PFQueryTableViewController {
         
         if indexPath.row == 0 {
             print("Index 0")
-            if let featuredEventsCell = tableView.dequeueReusableCellWithIdentifier("FeaturedEventsCell") as? FeaturedEventsCell {
+            if let featuredEventsCell = tableView.dequeueReusableCellWithIdentifier(EventTableViewCellIdentifier.featured) as? FeaturedEventsCell {
                 return featuredEventsCell
             }
         }
@@ -77,6 +87,7 @@ class NewEventTableViewController: PFQueryTableViewController {
             print("Index 1")
             if let sortingCell = tableView.dequeueReusableCellWithIdentifier(EventTableViewCellIdentifier.sorting) as? SortingCell {
                 print("Sorting cell is executed.")
+                sortingCell.delegate = self
                 return sortingCell
             }
         }
@@ -86,22 +97,23 @@ class NewEventTableViewController: PFQueryTableViewController {
                 // Extract values from the PFObject to display in the table cell
                 if let eventName = object?[EVENT.name] as? String {
                     eventCell.eventTitleLabel.text = eventName
-                    print("Event name is: \(eventName)")
+                    //print("Event name is: \(eventName)")
                 }
                 if let eventDate = object?[EVENT.date] as? String {
-                    print("Event date is: \(eventDate)")
+                    //print("Event date is: \(eventDate)")
                     eventCell.eventDateLabel.text = eventDate
                 }
                 if let eventAddress = object?[EVENT.address] as? String {
                     eventCell.eventLocationLabel.text = eventAddress
-                    print("Event is at: \(eventAddress)")
+                    //print("Event is at: \(eventAddress)")
                 }
                 let defaultImage = UIImage(named: "default-event")
                 if let eventImage = object?[EVENT.image] as? PFFile {
                     eventImage.getDataInBackgroundWithBlock {
                         (imageData: NSData?, error: NSError?) -> Void in
                         if (error == nil) {
-                            eventCell.eventImageView.image = UIImage(data:imageData!)
+                            let squaredImage = squareImage(UIImage(data:imageData!)!)
+                            eventCell.eventImageView.image = squaredImage
                         } else {
                             print("Event image cannot be retrieved from the network")
                         }
@@ -152,6 +164,7 @@ class NewEventTableViewController: PFQueryTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.featuredEvents = findFeaturedEvents()
+        self.sortType = SortBy.popularity
     }
     
     // Initialise the PFQueryTable tableview
@@ -178,5 +191,5 @@ class NewEventTableViewController: PFQueryTableViewController {
     // Pass the selected object to the new view controller.
     }
     */
-    
+
 }

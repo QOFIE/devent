@@ -33,7 +33,7 @@ func createEventMatchbyUserMatch(user: PFUser) {
     var otherUserArray = [String]()
     
     do {
-        let abc = try otherUserQuery!.findObjects()
+        let abc = try otherUserQuery.findObjects()
         
         for object in abc {
             let name = object.objectId as String?
