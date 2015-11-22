@@ -30,7 +30,6 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(groupId)
         
         let user = PFUser.currentUser()
         self.senderId = user!.objectId
@@ -42,43 +41,103 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
         blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "Erman"), diameter: 30)
         
         let user1PictureQuery = PFQuery(className: "_User").whereKey("objectId", equalTo: byUserIdForPicture)
-        user1PictureQuery.findObjectsInBackgroundWithBlock({object, error in
+        
+        if (Reachability.isConnectedToNetwork() == false) {
+            user1PictureQuery.fromLocalDatastore()
+        }
+        
+        
+        do {
+            let abcd = try user1PictureQuery.findObjects()
             
-            for action in object! {
-                
+            for action in abcd {
+                action.pinInBackground()
                 if let userPicture = action.valueForKey("profilePicture") as? PFFile {
                     userPicture.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error NSError) -> Void in
-                        if (error == nil) {
-                            self.userImage1 = UIImage(data:imageData!)!
-                        }
+                        self.userImage1 = UIImage(data:imageData!)!
+                        
                     })
                 }
                 
                 
             }
             
+            
+            
+        }
+        catch{}
+        
+        
+        /*
+        user1PictureQuery.findObjectsInBackgroundWithBlock({object, error in
+        
+        for action in object! {
+        action.pinInBackground()
+        if let userPicture = action.valueForKey("profilePicture") as? PFFile {
+        userPicture.getDataInBackgroundWithBlock({
+        (imageData: NSData?, error NSError) -> Void in
+        if (error == nil) {
+        self.userImage1 = UIImage(data:imageData!)!
+        }
         })
+        }
+        
+        
+        }
+        
+        })
+        */
         
         let user2PictureQuery = PFQuery(className: "_User").whereKey("objectId", equalTo: toUserIdForPicture)
-        user2PictureQuery.findObjectsInBackgroundWithBlock({object, error in
+        
+        if (Reachability.isConnectedToNetwork() == false) {
+            user2PictureQuery.fromLocalDatastore()
+        }
+        
+        do {
+            let abcd = try user2PictureQuery.findObjects()
             
-            for action in object! {
-                
+            for action in abcd {
+                action.pinInBackground()
                 if let userPicture = action.valueForKey("profilePicture") as? PFFile {
                     userPicture.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error NSError) -> Void in
-                        if (error == nil) {
-                            self.userImage2 = UIImage(data:imageData!)!
-                        }
+                        self.userImage2 = UIImage(data:imageData!)!
+                        
                     })
                 }
                 
                 
             }
             
-        })
+            
+            
+        }
+        catch{}
         
+        
+        
+        
+        /*
+        user2PictureQuery.findObjectsInBackgroundWithBlock({object, error in
+        
+        for action in object! {
+        action.pinInBackground()
+        if let userPicture = action.valueForKey("profilePicture") as? PFFile {
+        userPicture.getDataInBackgroundWithBlock({
+        (imageData: NSData?, error NSError) -> Void in
+        if (error == nil) {
+        self.userImage2 = UIImage(data:imageData!)!
+        }
+        })
+        }
+        
+        
+        }
+        
+        })
+        */
         
         isLoading = false
         self.loadMessages()
@@ -98,11 +157,11 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
     
     // Mark: - Backend methods
     
+    
     func loadMessages() {
         if self.isLoading == false {
             self.isLoading = true
             let lastMessage = messages.last
-            
             let query = PFQuery(className: "Messages")
             query.whereKey("eventId", equalTo: groupId)
             if lastMessage != nil {
@@ -110,10 +169,16 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
             }
             query.orderByDescending("createdAt")
             query.limit = 50
+            
+            if (Reachability.isConnectedToNetwork() == false) {
+                query.fromLocalDatastore()
+            }
+            
             query.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
                     self.automaticallyScrollsToMostRecentMessage = false
-                    for object in Array(Array((objects as! [PFObject]!).reverse())) {
+                    for object in Array(Array((objects as [PFObject]!).reverse())) {
+                        object.pinInBackground()
                         self.addMessage(object)
                     }
                     if objects!.count > 0 {
@@ -132,23 +197,23 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
     func addMessage(object: PFObject) {
         
         var message: JSQMessage!
-        var user = object["userID"] as! String
-        var name = user
+        let user = object["userID"] as! String
+        let name = user
         
-        var videoFile = object["videoMessage"] as? PFFile
-        var pictureFile = object["pictureMessage"] as? PFFile
+        let videoFile = object["videoMessage"] as? PFFile
+        let pictureFile = object["pictureMessage"] as? PFFile
         
         if videoFile == nil && pictureFile == nil {
             message = JSQMessage(senderId: user, senderDisplayName: name, date: object.createdAt, text: (object["textMessage"] as? String))
         }
         
         if videoFile != nil {
-            var mediaItem = JSQVideoMediaItem(fileURL: NSURL(string: videoFile!.url!), isReadyToPlay: true)
+            let mediaItem = JSQVideoMediaItem(fileURL: NSURL(string: videoFile!.url!), isReadyToPlay: true)
             message = JSQMessage(senderId: user, senderDisplayName: name, date: object.createdAt, media: mediaItem)
         }
         
         if pictureFile != nil {
-            var mediaItem = JSQPhotoMediaItem(image: nil)
+            let mediaItem = JSQPhotoMediaItem(image: nil)
             mediaItem.appliesMediaViewMaskAsOutgoing = (user == self.senderId)
             message = JSQMessage(senderId: user, senderDisplayName: name, date: object.createdAt, media: mediaItem)
             
@@ -170,7 +235,6 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
         if let video = video {
             text = "[Video message]"
             videoFile = PFFile(name: "video.mp4", data: NSFileManager.defaultManager().contentsAtPath(video.path!)!)
-            
             videoFile.saveInBackgroundWithBlock({ (succeeed: Bool, error: NSError?) -> Void in
                 if error != nil {
                     print("Network error")
@@ -198,17 +262,31 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
         if let pictureFile = pictureFile {
             object["pictureMessage"] = pictureFile
         }
-        object.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
-            if error == nil {
-                JSQSystemSoundPlayer.jsq_playMessageSentSound()
-                self.loadMessages()
-            } else {
-                print("Network error")
-            }
-        }
         
-        //PushNotication.sendPushNotification(groupId, text: text)
-        //Messages.updateMessageCounter(groupId, lastMessage: text)
+        if (Reachability.isConnectedToNetwork() == false) {
+            
+            let alertController = UIAlertController(title: "No Internet Connection", message:
+                "Please connect to internet to send a message!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+        }
+            
+        else {
+            
+            object.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
+                if error == nil {
+                    JSQSystemSoundPlayer.jsq_playMessageSentSound()
+                    self.loadMessages()
+                } else {
+                    print("Network error")
+                }
+            }
+            
+            //PushNotication.sendPushNotification(groupId, text: text)
+            //Messages.updateMessageCounter(groupId, lastMessage: text)
+            
+        }
         
         self.finishSendingMessage()
     }
@@ -242,9 +320,9 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
         
         let message = self.messages[indexPath.item]
         if message.senderId == self.senderId {
-            return JSQMessagesAvatarImageFactory.avatarImageWithImage(userImage1, diameter: 30)
+            return JSQMessagesAvatarImageFactory.avatarImageWithImage(userImage2, diameter: 30)
         }
-        return JSQMessagesAvatarImageFactory.avatarImageWithImage(userImage2, diameter: 30)
+        return JSQMessagesAvatarImageFactory.avatarImageWithImage(userImage1, diameter: 30)
     }
     
     

@@ -297,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				46BF30561BD10584003AA0AE /* Main.storyboard */,
+				46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */,
 				466B35201BEF66ED0058A8B9 /* Payment */,
 				466B351F1BEF646B0058A8B9 /* Messaging */,
 				16A60D1A1BEDEFD00075DFBA /* Model */,
@@ -306,7 +307,6 @@
 				4690A5F51BDCDCD300B18403 /* Authentication */,
 				4690A5F81BDCDD1600B18403 /* Profile Tab */,
 				4690A5F61BDCDCE600B18403 /* Supporting Files */,
-				46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */,
 			);
 			path = Devent;
 			sourceTree = "<group>";

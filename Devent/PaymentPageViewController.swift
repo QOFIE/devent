@@ -16,6 +16,7 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
     @IBOutlet weak var payButtonSon: UIButton!
     @IBOutlet weak var eventPictureForPayment: UIImageView!
     
+    @IBOutlet weak var loadingSign: UIActivityIndicatorView!
     
     var groupId: String = ""
     var macthedEventObjectId: String = ""
@@ -63,7 +64,10 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
         STPAPIClient.sharedClient().createTokenWithCard(paymentTextField.card!, completion: { (token, error) -> Void in
             
             if error != nil {
-                self.handleError(error!)
+                let alertController = UIAlertController(title: "Error", message:
+                    "Please try again!", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
                 return
             }
             
@@ -77,18 +81,12 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
             })
         })
     }
-
-    func handleError(error: NSError) {
-        UIAlertView(title: "Please Try Again",
-            message: error.localizedDescription,
-            delegate: nil,
-            cancelButtonTitle: "OK").show()
-    }
  
     func createBackendChargeWithToken(token: STPToken, completion: STPTokenSubmissionHandler) {
         if backendChargeURLString != "" {
             if let url = NSURL(string: backendChargeURLString  + "/charge") {
                 
+                self.loadingSign.startAnimating()
                 let eventPriceValue = Int(eventPrice.text!) as Int?
                 let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
                 let request = NSMutableURLRequest(URL: url)
@@ -125,15 +123,16 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
                             self.performSegueWithIdentifier("successPaySeque", sender: self)
                             
                         })
-                        
-                        
 
-                        
-                        
                     } else {
                         if error != nil {
-                            completion(.Failure, error)
+                            self.loadingSign.stopAnimating()
+                            let alertController = UIAlertController(title: "Error", message:
+                                "Please try again!", preferredStyle: UIAlertControllerStyle.Alert)
+                            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                            self.presentViewController(alertController, animated: true, completion: nil)
                         } else {
+                            self.loadingSign.stopAnimating()
                             completion(.Failure, NSError(domain: StripeDomain, code: 50, userInfo: [NSLocalizedDescriptionKey: "There was an error communicating with your payment backend."]))
                         }
                         

@@ -1206,11 +1206,20 @@
                                     <constraint firstAttribute="width" constant="320" id="oGO-aU-Cf4"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hQU-PM-GES">
+                                <rect key="frame" x="290" y="460" width="20" height="20"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="10D-ik-aUO"/>
+                                    <constraint firstAttribute="height" constant="20" id="udg-OZ-4Wr"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="O4t-DH-dXM" firstAttribute="centerX" secondItem="SBp-yL-r38" secondAttribute="centerX" id="0ZB-pJ-gzu"/>
+                            <constraint firstItem="SBp-yL-r38" firstAttribute="top" secondItem="hQU-PM-GES" secondAttribute="bottom" constant="18" id="117-WX-nt7"/>
                             <constraint firstItem="fkf-Ec-SFP" firstAttribute="top" secondItem="O4t-DH-dXM" secondAttribute="bottom" constant="35" id="1gJ-UP-019"/>
                             <constraint firstItem="fkf-Ec-SFP" firstAttribute="leading" secondItem="pRy-na-Vtd" secondAttribute="leading" id="Byg-05-mZd"/>
                             <constraint firstItem="pRy-na-Vtd" firstAttribute="top" secondItem="O4t-DH-dXM" secondAttribute="bottom" constant="8" symbolic="YES" id="E74-OZ-PUq"/>
@@ -1218,6 +1227,7 @@
                             <constraint firstItem="O4t-DH-dXM" firstAttribute="top" secondItem="Kff-sz-1dh" secondAttribute="bottom" constant="29" id="Oa4-X1-wUZ"/>
                             <constraint firstItem="ysp-d3-0ZJ" firstAttribute="top" secondItem="SBp-yL-r38" secondAttribute="bottom" constant="23" id="ZLh-T6-Thi"/>
                             <constraint firstItem="pRy-na-Vtd" firstAttribute="centerX" secondItem="O4t-DH-dXM" secondAttribute="centerX" id="iBO-II-aHT"/>
+                            <constraint firstItem="hQU-PM-GES" firstAttribute="centerX" secondItem="2Bq-sM-hTB" secondAttribute="centerX" id="icy-65-0J6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jYq-aB-sdo">
@@ -1231,6 +1241,7 @@
                         <outlet property="eventName" destination="pRy-na-Vtd" id="RLK-8A-sHT"/>
                         <outlet property="eventPictureForPayment" destination="O4t-DH-dXM" id="DNo-y3-daz"/>
                         <outlet property="eventPrice" destination="fkf-Ec-SFP" id="DKO-h5-r7F"/>
+                        <outlet property="loadingSign" destination="hQU-PM-GES" id="TH0-Ix-lIV"/>
                         <outlet property="payButtonSon" destination="SBp-yL-r38" id="CLU-aV-JJa"/>
                         <segue destination="PTT-kG-tNm" kind="presentation" id="FLd-yH-giI"/>
                     </connections>
@@ -1845,6 +1856,6 @@
         <image name="yeah-button" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cNA-CR-vvs"/>
+        <segue reference="FLd-yH-giI"/>
     </inferredMetricsTieBreakers>
 </document>
