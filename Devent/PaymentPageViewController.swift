@@ -23,58 +23,26 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
     var paymentTextField = STPPaymentCardTextField()
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     
-
-    func refreshLocalDataStoreFromServer() {
-        
-        let query = PFQuery(className: "Events")
-            .whereKey("objectId", equalTo: groupId)
-        query.findObjectsInBackgroundWithBlock({object, error in
-            if (error == nil) {
-            for action in object! {
-                action.pinInBackground()
-                self.eventName.text = action["Name"] as? String
-                let amount = action["Price"] as? String
-                self.eventPrice.text = ("$\(amount!)")
-                
-                let initialThumbnail = UIImage(named: "question")
-                self.eventPictureForPayment.image = initialThumbnail
-                if let thumbnail = action["Picture"] as? PFFile{
-                    thumbnail.getDataInBackgroundWithBlock({
-                        (imageData: NSData?, error: NSError?) -> Void in
-                        if (error == nil) {
-                            self.eventPictureForPayment.image = UIImage(data:imageData!)}
-                    })}
-                
-            }
-            }
-        })
- 
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         self.paymentTextField.frame = CGRectMake(screenSize.width*0.1, screenSize.height*0.7, screenSize.width*0.8, screenSize.height*0.1)
         paymentTextField.delegate = self
         view.addSubview(paymentTextField)
-
-        self.refreshLocalDataStoreFromServer()
         
-        let query = PFQuery(className: "Events")
-        .whereKey("objectId", equalTo: groupId)
-        query.fromLocalDatastore()
+        let query = PFQuery(className: "Events").whereKey("objectId", equalTo: groupId)
+        
+        if(Reachability.isConnectedToNetwork() == false) {
+        query.fromLocalDatastore()}
+
         query.findObjectsInBackgroundWithBlock({object, error in
-            
-            
-            
+            PFObject.unpinAllInBackground(object)
             for action in object! {
+            action.pinInBackground()
             self.eventName.text = action["Name"] as? String
             let amount = action["Price"] as? String
             self.eventPrice.text = ("$\(amount!)")
-
-                
+   
             let initialThumbnail = UIImage(named: "question")
             self.eventPictureForPayment.image = initialThumbnail
             if let thumbnail = action["Picture"] as? PFFile{
@@ -83,22 +51,14 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
                     if (error == nil) {
                         self.eventPictureForPayment.image = UIImage(data:imageData!)}
                     })}
-
            }
-            
         })
-        
-       
-     
     }
 
     func paymentCardTextFieldDidChange(textField: STPPaymentCardTextField) {
         payButtonSon.enabled = textField.valid
-
     }
 
-    
-    
     @IBAction func realPayment(sender: AnyObject) {
         STPAPIClient.sharedClient().createTokenWithCard(paymentTextField.card!, completion: { (token, error) -> Void in
             
@@ -107,7 +67,6 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
                 return
             }
             
-            print(token)
             self.createBackendChargeWithToken(token!, completion: { (result, error) -> Void in
                 if result == STPBackendChargeResult.Success {
                     //completion(PKPaymentAuthorizationStatus.Success)
@@ -118,16 +77,12 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
             })
         })
     }
-    
-    
-    
-    
+
     func handleError(error: NSError) {
         UIAlertView(title: "Please Try Again",
             message: error.localizedDescription,
             delegate: nil,
             cancelButtonTitle: "OK").show()
-        
     }
  
     func createBackendChargeWithToken(token: STPToken, completion: STPTokenSubmissionHandler) {
