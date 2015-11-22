@@ -68,7 +68,7 @@ class NewEventTableViewController: PFQueryTableViewController {
         
         if indexPath.row == 0 {
             print("Index 0")
-            if let featuredEventsCell = tableView.dequeueReusableCellWithIdentifier(EventTableViewCellIdentifier.featured) as? FeaturedEventsCell {
+            if let featuredEventsCell = tableView.dequeueReusableCellWithIdentifier("FeaturedEventsCell") as? FeaturedEventsCell {
                 return featuredEventsCell
             }
         }

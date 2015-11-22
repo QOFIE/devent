@@ -1597,48 +1597,60 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="328"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Quc-5C-sxo">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mk7-DR-dsl">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="328"/>
                                             <animations/>
-                                            <gestureRecognizers/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="56k-PG-QSo">
+                                                <size key="itemSize" width="552" height="318"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="denemeCell" id="qXN-3O-g7U" customClass="DenemeCollectionViewCell" customModule="Devent" customModuleProvider="target">
+                                                    <rect key="frame" x="5" y="5" width="552" height="318"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                        <rect key="frame" x="0.0" y="0.0" width="552" height="318"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dea-Y2-37i">
+                                                                <rect key="frame" x="0.0" y="0.0" width="552" height="318"/>
+                                                                <animations/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <animations/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="dea-Y2-37i" secondAttribute="trailing" id="7by-4H-GXb"/>
+                                                        <constraint firstAttribute="bottom" secondItem="dea-Y2-37i" secondAttribute="bottom" id="LQN-d9-41d"/>
+                                                        <constraint firstItem="dea-Y2-37i" firstAttribute="leading" secondItem="qXN-3O-g7U" secondAttribute="leading" id="nDI-9h-J5e"/>
+                                                        <constraint firstItem="dea-Y2-37i" firstAttribute="top" secondItem="qXN-3O-g7U" secondAttribute="top" id="nYd-rk-0Fs"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="featuredEventImage" destination="dea-Y2-37i" id="J3i-Vw-L12"/>
+                                                    </connections>
+                                                </collectionViewCell>
+                                            </cells>
                                             <connections>
-                                                <outletCollection property="gestureRecognizers" destination="sUf-B3-uv7" appends="YES" id="aS7-zS-wMR"/>
-                                                <outletCollection property="gestureRecognizers" destination="gFw-TZ-wcy" appends="YES" id="HGg-Kf-F6T"/>
+                                                <outlet property="dataSource" destination="mb0-kZ-EdN" id="4KG-Jz-qlI"/>
+                                                <outlet property="delegate" destination="mb0-kZ-EdN" id="uFk-K3-HdU"/>
                                             </connections>
-                                        </imageView>
-                                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="hRt-DF-ndI">
-                                            <rect key="frame" x="265" y="275" width="71" height="37"/>
-                                            <animations/>
-                                            <connections>
-                                                <action selector="pageControl:" destination="mb0-kZ-EdN" eventType="valueChanged" id="IKJ-1f-lXT"/>
-                                            </connections>
-                                        </pageControl>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQ5-4e-kzZ">
-                                            <rect key="frame" x="8" y="247.5" width="584" height="20"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                            <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        </collectionView>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="hRt-DF-ndI" firstAttribute="top" secondItem="TQ5-4e-kzZ" secondAttribute="bottom" constant="8" id="0h5-ZI-Add"/>
-                                        <constraint firstAttribute="trailing" secondItem="Quc-5C-sxo" secondAttribute="trailing" id="Hh8-Db-c73"/>
-                                        <constraint firstItem="TQ5-4e-kzZ" firstAttribute="leading" secondItem="haq-T2-fxX" secondAttribute="leadingMargin" id="ORe-fo-BL3"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="hRt-DF-ndI" secondAttribute="bottom" constant="8" id="Z2g-Wq-CcR"/>
-                                        <constraint firstItem="TQ5-4e-kzZ" firstAttribute="trailing" secondItem="haq-T2-fxX" secondAttribute="trailingMargin" id="ZoP-Je-qDR"/>
-                                        <constraint firstAttribute="bottom" secondItem="Quc-5C-sxo" secondAttribute="bottom" id="cx5-ON-LLc"/>
-                                        <constraint firstItem="Quc-5C-sxo" firstAttribute="leading" secondItem="haq-T2-fxX" secondAttribute="leading" id="hTz-Bn-HBl"/>
-                                        <constraint firstItem="hRt-DF-ndI" firstAttribute="centerX" secondItem="haq-T2-fxX" secondAttribute="centerX" id="l8d-GR-4O1"/>
-                                        <constraint firstItem="Quc-5C-sxo" firstAttribute="top" secondItem="haq-T2-fxX" secondAttribute="top" id="wRI-GR-Pj7"/>
+                                        <constraint firstAttribute="trailing" secondItem="Mk7-DR-dsl" secondAttribute="trailing" id="Cyu-7y-0x5"/>
+                                        <constraint firstAttribute="bottom" secondItem="Mk7-DR-dsl" secondAttribute="bottom" id="S6u-KN-GAh"/>
+                                        <constraint firstItem="Mk7-DR-dsl" firstAttribute="leading" secondItem="haq-T2-fxX" secondAttribute="leading" id="bVT-C0-350"/>
+                                        <constraint firstItem="Mk7-DR-dsl" firstAttribute="top" secondItem="haq-T2-fxX" secondAttribute="top" id="bYy-29-9VQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
-                                <connections>
-                                    <outlet property="eventTitleLabel" destination="TQ5-4e-kzZ" id="2nL-bm-7B5"/>
-                                    <outlet property="featuredEventImageView" destination="Quc-5C-sxo" id="2PE-6s-0dB"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SortingCell" id="8PM-Ve-kw4" customClass="SortingCell" customModule="Devent" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="420" width="600" height="44"/>
