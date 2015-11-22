@@ -42,6 +42,7 @@
 		4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4051BD6521000B62564 /* SignUpViewController.swift */; };
 		4692F4161BD8FB5D00B62564 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4151BD8FB5D00B62564 /* CustomCell.swift */; };
 		4692F4181BD8FBD500B62564 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4171BD8FBD500B62564 /* EventViewController.swift */; };
+		46B911CE1C01C48F00A36009 /* checkInternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */; };
 		46BF30531BD10584003AA0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30521BD10584003AA0AE /* AppDelegate.swift */; };
 		46BF30551BD10584003AA0AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30541BD10584003AA0AE /* ViewController.swift */; };
 		46BF30581BD10584003AA0AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BF30561BD10584003AA0AE /* Main.storyboard */; };
@@ -111,6 +112,7 @@
 		4692F4051BD6521000B62564 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4692F4151BD8FB5D00B62564 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		4692F4171BD8FBD500B62564 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkInternetConnection.swift; sourceTree = "<group>"; };
 		46BF304F1BD10584003AA0AE /* Devent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Devent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BF30521BD10584003AA0AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46BF30541BD10584003AA0AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				4690A5F51BDCDCD300B18403 /* Authentication */,
 				4690A5F81BDCDD1600B18403 /* Profile Tab */,
 				4690A5F61BDCDCE600B18403 /* Supporting Files */,
+				46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */,
 			);
 			path = Devent;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				1689D30C1BE2ADD5003DAA4B /* UserNameAndAgeTableViewCell.swift in Sources */,
 				1689D3081BE2A196003DAA4B /* ProfileTableViewController.swift in Sources */,
 				46BF30531BD10584003AA0AE /* AppDelegate.swift in Sources */,
+				46B911CE1C01C48F00A36009 /* checkInternetConnection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
