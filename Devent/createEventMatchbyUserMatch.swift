@@ -77,7 +77,7 @@ func createEventMatchbyUserMatch(user: PFUser) {
                 jointEvent.setObject(user["firstName"], forKey: "toUserName")
                 jointEvent.setObject(user["profilePicture"], forKey: "toUserPicture")
                 jointEvent.setObject(event, forKey: "matchedEvents")
-                jointEvent.setObject(eventNameArray[0]["Name"], forKey: "matchedEventName")
+                jointEvent.setObject(eventNameArray[0]["name"], forKey: "matchedEventName")
                 jointEvent.saveInBackground()
                 
             }

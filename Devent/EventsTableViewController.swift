@@ -16,25 +16,65 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     var featuredEvents: [PFObject]?
     var sortType: String?
     var selectedEvent: AnyObject?
+    var localStore = [PFObject]()
+    var shouldUpdateFromServer:Bool = true
     
     // MARK: ACTIONS
     
     // Define the query that will provide the data for the table view
-    override func queryForTable() -> PFQuery {
+    
+    func baseQuery() -> PFQuery {
         let query = PFQuery(className: "Events")
         query.whereKey(EVENT.featured, equalTo: false)
         if let sortBy = sortType {
-            query.orderByAscending(sortBy)
+            return query.orderByAscending(sortBy)
         } else {
-            query.orderByAscending(EVENT.popularity)
+           return query.orderByAscending(EVENT.popularity)
         }
-        
-        return query
     }
     
+    override func queryForTable() -> PFQuery {
+        return self.baseQuery()
+    }
+    
+    func refreshLocalDataStoreFromServer() {
+        
+        self.baseQuery().findObjectsInBackgroundWithBlock({
+            object, error in
+            
+            PFObject.unpinAllInBackground(self.objects as? [PFObject], block: { (succeeded: Bool, error: NSError?) -> Void in
+                if error == nil {
+                    
+                    for action in object! {
+                        self.localStore.append(action) }
+                    
+                    PFObject.pinAllInBackground(self.localStore, block: { (succeeded: Bool, error: NSError?) -> Void in
+                        if error == nil {
+                            // Once we've updated the local datastore, update the view with local datastore
+                            self.shouldUpdateFromServer = false
+                            self.loadObjects()
+                        } else {
+                            print("Failed to pin objects")
+                        }
+                    })
+                    
+                }
+                else {
+                    print("Failed to unpin objects")
+                }
+            })
+        })
+        
+    }
+
     private func findFeaturedEvents() -> [PFObject]? {
         var featuredEventsArray: [PFObject]?
         let query = PFQuery(className: "Events").whereKey(EVENT.featured, equalTo: true)
+        
+        if (Reachability.isConnectedToNetwork() == false) {
+        query.fromLocalDatastore()
+        }
+        
         query.findObjectsInBackgroundWithBlock {
             (events: [PFObject]?, error: NSError?) -> Void in
             
@@ -42,6 +82,8 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
                 // The find succeeded.
                 print("Successfully retrieved \(events!.count) featured events!")
                 // Do something with the found objects
+                PFObject.unpinAllInBackground(self.objects as? [PFObject])
+                PFObject.pinAllInBackground(events)
                 if events != nil {
                     featuredEventsArray = events!
                 }
