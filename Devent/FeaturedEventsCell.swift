@@ -1,125 +1,98 @@
 
 import UIKit
 
-class FeaturedEventsCell: PFTableViewCell, UIScrollViewDelegate  {
+class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    @IBOutlet weak var deneme: UICollectionView!
+    var featuredEventsArray: [PFObject]?
+    var featuredEventImageArray: [UIImage]?
     
     
-    @IBOutlet weak var featuredEventScrollvIEW: UIScrollView!
-    
-    var pageImages: [UIImage] = []
-    var pageViews: [UIImageView?] = []
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         
-        // 1
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+
+    }
+    
+    
+    // MARK: UICollectionViewDataSource
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 500
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("denemeCell", forIndexPath: indexPath) as! DenemeCollectionViewCell
+        let defaultImage = UIImage(named: "default-event")
+        cell.featuredEventImage.image = defaultImage
         
         let query = PFQuery(className: "Events").whereKey(EVENT.featured, equalTo: true)
-        do {
-            let featuredEventsArray = try query.findObjects()
-            for i in 0..<3 {
-            if let eventImage = featuredEventsArray[i][EVENT.image] as? PFFile {
-                eventImage.getDataInBackgroundWithBlock {
-                    (imageData: NSData?, error: NSError?) -> Void in
-                    if (error == nil) {
-                        self.pageImages.append(UIImage(data:imageData!)!)
+        query.findObjectsInBackgroundWithBlock {
+            (events: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(events!.count) featured events!")
+                // Do something with the found objects
+                if events != nil {
+                    self.featuredEventsArray = events!
+                
+                    let defaultImage = UIImage(named: "default-event")
+                    if let eventImage = self.featuredEventsArray![indexPath.row][EVENT.image] as? PFFile {
+                        eventImage.getDataInBackgroundWithBlock {
+                            (imageData: NSData?, error: NSError?) -> Void in
+                            if (error == nil) {
+                                cell.featuredEventImage.image = UIImage(data:imageData!)
+                               
+                                
+                            } else {
+                                print("Event image cannot be retrieved from the network")
+                            }
+                        }
                     } else {
-                        print("Event image cannot be retrieved from the network")
+                        cell.featuredEventImage.image = defaultImage
                     }
+   
                 }
-                print(pageImages)
-                }}} catch {}
-        
-        let pageCount = pageImages.count
-        
-        // 3
-        for _ in 0..<pageCount {
-            pageViews.append(nil)
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+
+
+        let delay = 8.0 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            if(indexPath.row < 3) {
+            var newIndexPath: NSIndexPath = NSIndexPath(forItem: indexPath.row + 1, inSection: 0)
+            self.deneme.scrollToItemAtIndexPath(newIndexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+            }
+            else {
+                self.deneme.scrollToItemAtIndexPath(NSIndexPath(forItem: indexPath.row - 3, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Left , animated: false)
+            }
         }
         
-        // 4
-        let pagesScrollViewSize = featuredEventScrollvIEW.frame.size
-        featuredEventScrollvIEW.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(pageImages.count),
-            height: pagesScrollViewSize.height)
         
-        // 5
-        loadVisiblePages()
+        return cell
     }
     
-    func loadPage(page: Int) {
-        if page < 0 || page >= pageImages.count {
-            // If it's outside the range of what you have to display, then do nothing
-            return
-        }
-        
-        // 1
-        if let pageView = pageViews[page] {
-            // Do nothing. The view is already loaded.
-        } else {
-            // 2
-            var frame = featuredEventScrollvIEW.bounds
-            frame.origin.x = frame.size.width * CGFloat(page)
-            frame.origin.y = 0.0
-            
-            // 3
-            let newPageView = UIImageView(image: pageImages[page])
-            newPageView.contentMode = .ScaleAspectFit
-            newPageView.frame = frame
-            featuredEventScrollvIEW.addSubview(newPageView)
-            
-            // 4
-            pageViews[page] = newPageView
-        }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let hardCodedPadding:CGFloat = 5
+        let itemWidth = (collectionView.bounds.width * 1) 
+        let itemHeight = collectionView.bounds.height - (2 * hardCodedPadding)
+        return CGSize(width: itemWidth, height: itemHeight)
     }
+
     
-    func loadVisiblePages() {
-        // First, determine which page is currently visible
-        let pageWidth = featuredEventScrollvIEW.frame.size.width
-        let page = Int(floor((featuredEventScrollvIEW.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
-        
-        // Work out which pages you want to load
-        let firstPage = page - 1
-        let lastPage = page + 1
-        
-        // Purge anything before the first page
-        for var index = 0; index < firstPage; ++index {
-            purgePage(index)
-        }
-        
-        // Load pages in our range
-        for index in firstPage...lastPage {
-            loadPage(index)
-        }
-        
-        // Purge anything after the last page
-        for var index = lastPage+1; index < pageImages.count; ++index {
-            purgePage(index)
-        }
-    }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        // Load the pages that are now on screen
-        loadVisiblePages()
-    }
-    
-    func purgePage(page: Int) {
-        if page < 0 || page >= pageImages.count {
-            // If it's outside the range of what you have to display, then do nothing
-            return
-        }
-        
-        // Remove a page from the scroll view and reset the container array
-        if let pageView = pageViews[page] {
-            pageView.removeFromSuperview()
-            pageViews[page] = nil
-        }
-    }
-    
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-  
 }

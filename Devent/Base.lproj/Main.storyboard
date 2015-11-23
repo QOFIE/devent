@@ -1608,25 +1608,62 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="328"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EPD-o0-tS9">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mk7-DR-dsl">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="328"/>
                                             <animations/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="56k-PG-QSo">
+                                                <size key="itemSize" width="600" height="318"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="denemeCell" id="qXN-3O-g7U" customClass="DenemeCollectionViewCell" customModule="Devent" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="5" width="600" height="318"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="318"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dea-Y2-37i">
+                                                                <rect key="frame" x="0.0" y="0.0" width="600" height="318"/>
+                                                                <animations/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <animations/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="dea-Y2-37i" firstAttribute="leading" secondItem="qXN-3O-g7U" secondAttribute="leading" id="4lO-ZN-EW5"/>
+                                                        <constraint firstItem="dea-Y2-37i" firstAttribute="top" secondItem="qXN-3O-g7U" secondAttribute="top" id="57l-Qu-ooZ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="dea-Y2-37i" secondAttribute="bottom" id="UV7-BQ-gnA"/>
+                                                        <constraint firstAttribute="trailing" secondItem="dea-Y2-37i" secondAttribute="trailing" id="c4e-yK-XGR"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="featuredEventImage" destination="dea-Y2-37i" id="J3i-Vw-L12"/>
+                                                    </connections>
+                                                </collectionViewCell>
+                                            </cells>
                                             <connections>
-                                                <outlet property="delegate" destination="mb0-kZ-EdN" id="K9N-ec-e7h"/>
+                                                <outlet property="dataSource" destination="mb0-kZ-EdN" id="0e2-7i-dce"/>
+                                                <outlet property="delegate" destination="mb0-kZ-EdN" id="uFk-K3-HdU"/>
                                             </connections>
-                                        </scrollView>
+                                        </collectionView>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="EPD-o0-tS9" firstAttribute="top" secondItem="haq-T2-fxX" secondAttribute="top" id="KOu-uv-Dy0"/>
-                                        <constraint firstAttribute="bottom" secondItem="EPD-o0-tS9" secondAttribute="bottom" id="Xhn-Fb-JKe"/>
-                                        <constraint firstAttribute="trailing" secondItem="EPD-o0-tS9" secondAttribute="trailing" id="a3c-Bp-zjb"/>
-                                        <constraint firstItem="EPD-o0-tS9" firstAttribute="leading" secondItem="haq-T2-fxX" secondAttribute="leading" id="krf-ky-Ouz"/>
+                                        <constraint firstItem="Mk7-DR-dsl" firstAttribute="top" secondItem="haq-T2-fxX" secondAttribute="top" id="4WF-fn-bKG"/>
+                                        <constraint firstAttribute="trailing" secondItem="Mk7-DR-dsl" secondAttribute="trailing" id="L93-Kv-eX1"/>
+                                        <constraint firstAttribute="bottom" secondItem="Mk7-DR-dsl" secondAttribute="bottom" id="jSt-d2-Nfl"/>
+                                        <constraint firstItem="Mk7-DR-dsl" firstAttribute="leading" secondItem="haq-T2-fxX" secondAttribute="leading" id="wIY-o9-RxG"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="featuredEventScrollvIEW" destination="EPD-o0-tS9" id="k8J-b9-UGP"/>
+                                    <outlet property="deneme" destination="Mk7-DR-dsl" id="Ilg-0x-WMk"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SortingCell" id="8PM-Ve-kw4" customClass="SortingCell" customModule="Devent" customModuleProvider="target">
@@ -1732,7 +1769,7 @@
                                                     <state key="normal" title="Details"/>
                                                     <connections>
                                                         <action selector="eventDetailsButton:" destination="F54-gm-heg" eventType="touchUpInside" id="iJQ-d8-DoN"/>
-                                                        <segue destination="dfJ-X2-2Lu" kind="show" id="TTH-KY-hFw"/>
+                                                        <segue destination="dfJ-X2-2Lu" kind="show" identifier="EventDetailsSegue" id="TTH-KY-hFw"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

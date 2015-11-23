@@ -67,7 +67,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         
     }
 
-    private func findFeaturedEvents() -> [PFObject]? {
+    func findFeaturedEvents() -> [PFObject]? {
         var featuredEventsArray: [PFObject]?
         let query = PFQuery(className: "Events").whereKey(EVENT.featured, equalTo: true)
         
@@ -198,6 +198,8 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         }
     }
     
+    
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row > 1 {
             print("in the selection function")
@@ -239,11 +241,14 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if let edvc = segue.destinationViewController as? EventDetailsTableViewController {
+        
             print("obtained the right vc")
+            print(selectedEvent?.objectId)
             if let event = selectedEvent {
                 edvc.event = event
                 print ("set the event")
             }
+            else {print("patates")}
         }
     }
 
