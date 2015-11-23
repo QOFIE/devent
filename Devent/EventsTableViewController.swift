@@ -15,6 +15,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     // Load featured events separetely into an array (there are only 5 of them!)
     var featuredEvents: [PFObject]?
     var sortType: String?
+    var selectedEvent: AnyObject?
     
     // MARK: ACTIONS
     
@@ -56,7 +57,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         var sorting = SortBy.popularity
         if self.sortType != nil {
             sorting = self.sortType!
-            print("The table needs to be sorted by \(sorting)")
+            //print("The table needs to be sorted by \(sorting)")
             loadObjects()
             self.tableView.reloadData()
         }
@@ -86,7 +87,6 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         else if indexPath.row == 1 {
             print("Index 1")
             if let sortingCell = tableView.dequeueReusableCellWithIdentifier(EventTableViewCellIdentifier.sorting) as? SortingCell {
-                print("Sorting cell is executed.")
                 sortingCell.delegate = self
                 return sortingCell
             }
@@ -131,13 +131,11 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     override func objectAtIndexPath(indexPath: NSIndexPath?) -> PFObject? {
         var obj: PFObject?
         if let index = indexPath?.row, let count = self.objects?.count {
-            
             if (index > 1) && (index < count + 2) {
                 obj = self.objects?[(index - 2)] as? PFObject
             }
             
         }
-        
         return obj
     }
     
@@ -155,6 +153,17 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
             return UITableViewAutomaticDimension
         default:
             return 80
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row > 1 {
+            print("in the selection function")
+            if let eventToPass = objectAtIndexPath(indexPath) {
+                selectedEvent = eventToPass
+            }
+            performSegueWithIdentifier("EventDetailsSegue", sender: self.navigationController)
+            print("end of the selection function")
         }
     }
     
@@ -182,14 +191,18 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         
     }
     
-    /*
-    // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // MARK: NAVIGATION
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        
+        if let edvc = segue.destinationViewController as? EventDetailsTableViewController {
+            print("obtained the right vc")
+            if let event = selectedEvent {
+                edvc.event = event
+                print ("set the event")
+            }
+        }
     }
-    */
 
 }

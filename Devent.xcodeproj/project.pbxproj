@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		160B67EE1C01DC9B00D05B07 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160B67ED1C01DC9B00D05B07 /* EventsTableViewController.swift */; };
 		160B67F01C01DD2500D05B07 /* EventDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160B67EF1C01DD2500D05B07 /* EventDetailsTableViewController.swift */; };
+		160B67F31C02121400D05B07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160B67F11C02121400D05B07 /* Main.storyboard */; };
 		16100F161BF7590500768784 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16100F151BF7590500768784 /* Event.swift */; };
 		1667DFF01BE408B3007E01BC /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */; };
 		1667DFF51BE6781A007E01BC /* ChooseHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */; };
@@ -45,7 +46,6 @@
 		46B911CE1C01C48F00A36009 /* checkInternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */; };
 		46BF30531BD10584003AA0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30521BD10584003AA0AE /* AppDelegate.swift */; };
 		46BF30551BD10584003AA0AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30541BD10584003AA0AE /* ViewController.swift */; };
-		46BF30581BD10584003AA0AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BF30561BD10584003AA0AE /* Main.storyboard */; };
 		46BF305A1BD10584003AA0AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BF30591BD10584003AA0AE /* Assets.xcassets */; };
 		46BF305D1BD10584003AA0AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BF305B1BD10584003AA0AE /* LaunchScreen.storyboard */; };
 		46BF30681BD10584003AA0AE /* DeventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30671BD10584003AA0AE /* DeventTests.swift */; };
@@ -78,6 +78,7 @@
 /* Begin PBXFileReference section */
 		160B67ED1C01DC9B00D05B07 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		160B67EF1C01DD2500D05B07 /* EventDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsTableViewController.swift; sourceTree = "<group>"; };
+		160B67F21C02121400D05B07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Devent/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16100F151BF7590500768784 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseHeightViewController.swift; sourceTree = "<group>"; };
@@ -116,7 +117,6 @@
 		46BF304F1BD10584003AA0AE /* Devent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Devent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BF30521BD10584003AA0AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46BF30541BD10584003AA0AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		46BF30571BD10584003AA0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		46BF30591BD10584003AA0AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46BF305C1BD10584003AA0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		46BF305E1BD10584003AA0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -273,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				46BF30801BD105CD003AA0AE /* Podfile */,
+				160B67F11C02121400D05B07 /* Main.storyboard */,
 				46BF30511BD10584003AA0AE /* Devent */,
 				46BF30661BD10584003AA0AE /* DeventTests */,
 				46BF30711BD10584003AA0AE /* DeventUITests */,
@@ -296,7 +297,6 @@
 		46BF30511BD10584003AA0AE /* Devent */ = {
 			isa = PBXGroup;
 			children = (
-				46BF30561BD10584003AA0AE /* Main.storyboard */,
 				46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */,
 				466B35201BEF66ED0058A8B9 /* Payment */,
 				466B351F1BEF646B0058A8B9 /* Messaging */,
@@ -456,7 +456,7 @@
 				46BF305D1BD10584003AA0AE /* LaunchScreen.storyboard in Resources */,
 				46BF305A1BD10584003AA0AE /* Assets.xcassets in Resources */,
 				46BF30811BD105CD003AA0AE /* Podfile in Resources */,
-				46BF30581BD10584003AA0AE /* Main.storyboard in Resources */,
+				160B67F31C02121400D05B07 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,10 +606,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		46BF30561BD10584003AA0AE /* Main.storyboard */ = {
+		160B67F11C02121400D05B07 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				46BF30571BD10584003AA0AE /* Base */,
+				160B67F21C02121400D05B07 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
