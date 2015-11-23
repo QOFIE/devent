@@ -11,7 +11,8 @@ import UIKit
 class EventDetailsTableViewController: UITableViewController {
     
     // MARK: PROPOERTIES
-    
+
+    // Object to pass to detail VC
     var event: AnyObject?
     
     @IBOutlet weak var eventImageView: UIImageView!
