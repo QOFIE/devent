@@ -27,8 +27,12 @@ class EventDetailsTableViewController: UITableViewController {
     // MARK: ACTIONS
     
     @IBAction func yesButton(sender: UIButton) {
-        
-        
+        let user = PFUser.currentUser()
+        let relation = user?.relationForKey("userEvent2")
+        let PFevent = event as? PFObject
+        relation?.addObject(PFevent!)
+        createEventMatchbyEventChoice(PFevent!)
+
     }
     @IBAction func noButton(sender: UIButton) {
     }
