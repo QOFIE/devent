@@ -27,6 +27,8 @@ class EventDetailsTableViewController: UITableViewController {
     // MARK: ACTIONS
     
     @IBAction func yesButton(sender: UIButton) {
+        
+        
     }
     @IBAction func noButton(sender: UIButton) {
     }
