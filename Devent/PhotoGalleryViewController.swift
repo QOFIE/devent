@@ -25,71 +25,61 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        
-        // Create Array to Upload Data
-        
-        let photoQuery = PFQuery(className: "_User").whereKey("objectId", equalTo: (PFUser.currentUser()?.objectId)!)
-        photoQuery.findObjectsInBackgroundWithBlock({object, error in
-            
-            for action in object! {
-                
-                if let userPicture1Data = action.valueForKey("profilePicture") as? PFFile {
+                if let userPicture1Data = PFUser.currentUser()?.valueForKey("profilePicture") as? PFFile {
                     userPicture1Data.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error NSError) -> Void in
                         if (imageData != nil) {
-                            let userImage1 = UIImage(data:imageData!)!
-                            self.imagesForSection0.append(userImage1)
+                            //let userImage1 = UIImage(data:imageData!)!
+                            self.imagesForSection0.append(UIImage(data:imageData!)!)
                         }
                     })
                 }
                 
-                if let userPicture2Data = action.valueForKey("P2") as? PFFile {
+                if let userPicture2Data = PFUser.currentUser()?.valueForKey("P2") as? PFFile {
                     userPicture2Data.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error NSError) -> Void in
                         if (imageData != nil) {
-                            let userImage2 = UIImage(data:imageData!)!
-                            self.imagesForSection0.append(userImage2)
+                            //let userImage2 = UIImage(data:imageData!)!
+                            self.imagesForSection0.append(UIImage(data:imageData!)!)
                         }
                     })
                 }
                 
-                if let userPicture3Data = action.valueForKey("P3") as? PFFile {
+                if let userPicture3Data = PFUser.currentUser()?.valueForKey("P3") as? PFFile {
                     userPicture3Data.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error NSError) -> Void in
                         if (imageData != nil) {
-                            let userImage3 = UIImage(data:imageData!)!
-                            self.imagesForSection0.append(userImage3)
-                        }
+                            //let userImage3 = UIImage(data:imageData!)!
+                            self.imagesForSection0.append(UIImage(data:imageData!)!)
+                            }
                     })
                 }
                 
-                if let userPicture4Data = action.valueForKey("P4") as? PFFile {
+                if let userPicture4Data = PFUser.currentUser()?.valueForKey("P4") as? PFFile {
                     userPicture4Data.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error NSError) -> Void in
                         if (imageData != nil) {
-                            let userImage4 = UIImage(data:imageData!)!
-                            self.imagesForSection0.append(userImage4)
+                            //let userImage4 = UIImage(data:imageData!)!
+                            self.imagesForSection0.append(UIImage(data:imageData!)!)
                         }
                     })
                 }
                 
-                if let userPicture5Data = action.valueForKey("P5") as? PFFile {
+                if let userPicture5Data = PFUser.currentUser()?.valueForKey("P5") as? PFFile {
                     userPicture5Data.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error NSError) -> Void in
                         if (imageData != nil) {
-                            let userImage5 = UIImage(data:imageData!)!
-                            self.imagesForSection0.append(userImage5)
+                            //let userImage5 = UIImage(data:imageData!)!
+                            self.imagesForSection0.append(UIImage(data:imageData!)!)
                         }
                     })
                 }
                 
-                
-            }
-            
-        })
-        
+       print(imagesForSection0.count)
+       self.collectionView.reloadData()
+       
     }
-    
+
     
     override func viewDidAppear(animated: Bool) {
         self.collectionView.reloadData()
@@ -115,11 +105,11 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 2.0
+        return 1.0
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 2.0
+        return 1.0
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -138,8 +128,10 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("verticalCell", forIndexPath: indexPath) as! RACollectionViewCell
-     
-            cell.imageView.image = self.imagesForSection0[indexPath.item]
+        
+            print(imagesForSection0.count)
+        
+            cell.imageView.image = self.imagesForSection0[indexPath.row]
         
             if self.imageDeleteButton.title == "Delete" {
             cell.deleteButton.hidden = true
@@ -167,9 +159,6 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
         var photo: UIImage
      
             photo = self.imagesForSection0.removeAtIndex(atIndexPath.item)
-       
-        
-       
             self.imagesForSection0.insert(photo, atIndex: toIndexPath.item)
        
     }
@@ -239,13 +228,17 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
 
     @IBAction func savePhoto(sender: AnyObject) {
 
-        
+        print(imagesForSection0.count)
         if imagesForSection0.count == 1 {
             let P1Imagedata = UIImageJPEGRepresentation(imagesForSection0[0], 1)
             
             if(P1Imagedata != nil) {
                 let P1FileObject = PFFile(data:P1Imagedata!)
                 PFUser.currentUser()!.setObject(P1FileObject!, forKey: "profilePicture")
+                PFUser.currentUser()!.removeObjectForKey("P2")
+                PFUser.currentUser()!.removeObjectForKey("P3")
+                PFUser.currentUser()!.removeObjectForKey("P4")
+                PFUser.currentUser()!.removeObjectForKey("P5")
                 PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in }
             }
         }
@@ -259,6 +252,9 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
                 let P2FileObject = PFFile(data:P2Imagedata!)
                 PFUser.currentUser()!.setObject(P1FileObject!, forKey: "profilePicture")
                 PFUser.currentUser()!.setObject(P2FileObject!, forKey: "P2")
+                PFUser.currentUser()!.removeObjectForKey("P3")
+                PFUser.currentUser()!.removeObjectForKey("P4")
+                PFUser.currentUser()!.removeObjectForKey("P5")
                 PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in }
             }
         }
@@ -276,6 +272,8 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
                 PFUser.currentUser()!.setObject(P1FileObject!, forKey: "profilePicture")
                 PFUser.currentUser()!.setObject(P2FileObject!, forKey: "P2")
                 PFUser.currentUser()!.setObject(P3FileObject!, forKey: "P3")
+                PFUser.currentUser()!.removeObjectForKey("P4")
+                PFUser.currentUser()!.removeObjectForKey("P5")
                 PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in }
             }
         }
@@ -296,6 +294,7 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
                 PFUser.currentUser()!.setObject(P2FileObject!, forKey: "P2")
                 PFUser.currentUser()!.setObject(P3FileObject!, forKey: "P3")
                 PFUser.currentUser()!.setObject(P4FileObject!, forKey: "P4")
+                PFUser.currentUser()!.removeObjectForKey("P5")
                 PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in }
             }
         }
@@ -322,15 +321,14 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
                 PFUser.currentUser()!.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in }
             }
         }
-        
-        //performSegueWithIdentifier("savedPhoteGallery", sender: self)
+
         
     }
     
     
     func deletePhoto(sender:UIButton) {
         let i : Int = (sender.layer.valueForKey("index")) as! Int
-        imagesForSection0.removeAtIndex(i)
+        self.imagesForSection0.removeAtIndex(i)
         self.collectionView!.reloadData()
     }
 

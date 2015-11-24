@@ -34,7 +34,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     }
     
     override func queryForTable() -> PFQuery {
-        return self.baseQuery()
+        return self.baseQuery().fromLocalDatastore()
     }
     
     func refreshLocalDataStoreFromServer() {
@@ -65,6 +65,16 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
             })
         })
         
+    }
+    
+    override func objectsDidLoad(error: NSError?) {
+        super.objectsDidLoad(error)
+        // If we just updated from the server, do nothing, otherwise update from server.
+        if self.shouldUpdateFromServer {
+            self.refreshLocalDataStoreFromServer()
+        } else {
+            self.shouldUpdateFromServer = true
+        }
     }
 
     func findFeaturedEvents() -> [PFObject]? {

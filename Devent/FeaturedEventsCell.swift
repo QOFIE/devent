@@ -37,6 +37,11 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
         cell.featuredEventImage.image = defaultImage
         
         let query = PFQuery(className: "Events").whereKey(EVENT.featured, equalTo: true)
+        
+        if (Reachability.isConnectedToNetwork() == false) {
+        query.fromLocalDatastore()
+        }
+        
         query.findObjectsInBackgroundWithBlock {
             (events: [PFObject]?, error: NSError?) -> Void in
             
@@ -45,7 +50,20 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
                 print("Successfully retrieved \(events!.count) featured events!")
                 // Do something with the found objects
                 if events != nil {
+                    
                     self.featuredEventsArray = events!
+                    
+                    PFObject.unpinAllInBackground(events, block: { (succeeded: Bool, error: NSError?) -> Void in
+                        if error == nil {
+
+                            PFObject.pinAllInBackground(events)
+                            
+                        }
+                        else {
+                            print("Failed to unpin objects")
+                        }
+                    })
+                    
                 
                     let defaultImage = UIImage(named: "default-event")
                     if let eventImage = self.featuredEventsArray![indexPath.row][EVENT.image] as? PFFile {
