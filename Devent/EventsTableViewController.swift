@@ -76,34 +76,6 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
             self.shouldUpdateFromServer = true
         }
     }
-
-    func findFeaturedEvents() -> [PFObject]? {
-        var featuredEventsArray: [PFObject]?
-        let query = PFQuery(className: "Events").whereKey(EVENT.featured, equalTo: true)
-        
-        if (Reachability.isConnectedToNetwork() == false) {
-        query.fromLocalDatastore()
-        }
-        
-        query.findObjectsInBackgroundWithBlock {
-            (events: [PFObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(events!.count) featured events!")
-                // Do something with the found objects
-                PFObject.unpinAllInBackground(self.objects as? [PFObject])
-                PFObject.pinAllInBackground(events)
-                if events != nil {
-                    featuredEventsArray = events!
-                }
-            } else {
-                // Log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
-            }
-        }
-        return featuredEventsArray
-    }
     
     func getSortType (sender: PFTableViewCell) -> String {
         var sorting = SortBy.popularity
@@ -226,7 +198,6 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.featuredEvents = findFeaturedEvents()
         self.sortType = SortBy.popularity
     }
     
