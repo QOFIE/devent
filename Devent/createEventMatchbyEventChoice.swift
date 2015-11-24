@@ -37,7 +37,7 @@ func createEventMatchbyEventChoice(event: PFObject) {
                 var myOtherUserArray = [String]()
                 
                 do {
-                    let abcd = try otherUserQuery!.findObjects()
+                    let abcd = try otherUserQuery.findObjects()
                     
                     for object in abcd {
                         let name = object.objectId as String?
