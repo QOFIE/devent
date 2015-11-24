@@ -53,6 +53,18 @@ class EventDetailsTableViewController: UITableViewController {
 
     // MARK: TABLEVIEW METHODS
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let width = self.view.bounds.size.width
+        let featuredEventViewAspectRatio: CGFloat = 600 / 328
+        switch indexPath.row {
+        case 0:
+            return width / featuredEventViewAspectRatio
+        default:
+            return UITableViewAutomaticDimension
+        }
+
+    }
+    
     /*
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
