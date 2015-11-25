@@ -31,6 +31,7 @@ class EventDetailsTableViewController: UITableViewController {
         let relation = user?.relationForKey("userEvent2")
         let PFevent = event as? PFObject
         relation?.addObject(PFevent!)
+        user!.saveInBackground()
         createEventMatchbyEventChoice(PFevent!)
 
     }
