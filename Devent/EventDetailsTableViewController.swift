@@ -36,6 +36,13 @@ class EventDetailsTableViewController: UITableViewController {
 
     }
     @IBAction func noButton(sender: UIButton) {
+        let user = PFUser.currentUser()
+        let relation = user?.relationForKey("userEvent2")
+        let PFevent = event as? PFObject
+        relation?.removeObject(PFevent!)
+        user!.saveInBackground()
+        deleteEventMatchbyEventChoice(PFevent!)
+        
     }
     
     private func updateUI() {

@@ -23,9 +23,11 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
     let backendChargeURLString = "https://deventpayment.herokuapp.com"
     var paymentTextField = STPPaymentCardTextField()
     let screenSize: CGRect = UIScreen.mainScreen().bounds
+    var price: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadingSign.hidden = true
         
         self.paymentTextField.frame = CGRectMake(screenSize.width*0.1, screenSize.height*0.7, screenSize.width*0.8, screenSize.height*0.1)
         paymentTextField.delegate = self
@@ -40,13 +42,14 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
             PFObject.unpinAllInBackground(object)
             for action in object! {
             action.pinInBackground()
-            self.eventName.text = action["Name"] as? String
-            let amount = action["Price"] as? String
+            self.eventName.text = action["name"] as? String
+            let amount = action["price"] as? Int
+            self.price = amount!
             self.eventPrice.text = ("$\(amount!)")
    
             let initialThumbnail = UIImage(named: "question")
             self.eventPictureForPayment.image = initialThumbnail
-            if let thumbnail = action["Picture"] as? PFFile{
+            if let thumbnail = action["image"] as? PFFile{
                 thumbnail.getDataInBackgroundWithBlock({
                     (imageData: NSData?, error: NSError?) -> Void in
                     if (error == nil) {
@@ -85,13 +88,13 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
     func createBackendChargeWithToken(token: STPToken, completion: STPTokenSubmissionHandler) {
         if backendChargeURLString != "" {
             if let url = NSURL(string: backendChargeURLString  + "/charge") {
-                
+                self.loadingSign.hidden = false
                 self.loadingSign.startAnimating()
-                let eventPriceValue = Int(eventPrice.text!) as Int?
+                let eventPriceValue = self.price
                 let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
                 let request = NSMutableURLRequest(URL: url)
                 request.HTTPMethod = "POST"
-                let postBody = "stripeToken=\(token.tokenId)&amount=\(eventPriceValue!*100)"
+                let postBody = "stripeToken=\(token.tokenId)&amount=\(eventPriceValue*100)"
                 let postData = postBody.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
                 session.uploadTaskWithRequest(request, fromData: postData, completionHandler: { data, response, error in
                     let successfulResponse = (response as? NSHTTPURLResponse)?.statusCode == 200

@@ -11,7 +11,7 @@ import Foundation
 func createEventMatchbyUserMatch(user: PFUser) {
 
     let currentUser = PFUser.currentUser()
-    let currentUserRelation = currentUser?.relationForKey("userEvents")
+    let currentUserRelation = currentUser?.relationForKey("userEvent2")
     let currentUserQuery = currentUserRelation?.query()
     
     var CurrentUserArray = [String]()
@@ -27,7 +27,7 @@ func createEventMatchbyUserMatch(user: PFUser) {
     catch {
     }
 
-    let otherUserRelation = user.relationForKey("userEvents")
+    let otherUserRelation = user.relationForKey("userEvent2")
     let otherUserQuery = otherUserRelation.query()
     
     var otherUserArray = [String]()

@@ -32,7 +32,7 @@ func createEventMatchbyEventChoice(event: PFObject) {
                 catch {
                 }
                 
-                let otherUserRelation = otherUserArray[0].relationForKey("userEvents")
+                let otherUserRelation = otherUserArray[0].relationForKey("userEvent2")
                 let otherUserQuery = otherUserRelation.query()
                 var myOtherUserArray = [String]()
                 
