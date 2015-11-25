@@ -30,7 +30,7 @@ class MyEventViewController: PFQueryTableViewController {
     override func queryForTable() -> PFQuery{
         
         let user = PFUser.currentUser()
-        let relation = user?.relationForKey("userEvents")
+        let relation = user?.relationForKey("userEvent2")
         var query = relation?.query()
         query!.orderByAscending("Name")
         return query!
