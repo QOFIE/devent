@@ -154,10 +154,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Messages" id="Iff-js-pPZ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Ckp-Fz-Soy"/>
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="h93-HJ-IHe"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="h93-HJ-IHe">
+                            <connections>
+                                <segue destination="4qd-iJ-YuA" kind="unwind" unwindAction="unwindToMacthesVC:" id="dgR-Dz-QCF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEb-Qm-aTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="4qd-iJ-YuA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3471" y="1694"/>
         </scene>
@@ -1248,6 +1253,7 @@
                         <outlet property="eventPrice" destination="fkf-Ec-SFP" id="DKO-h5-r7F"/>
                         <outlet property="loadingSign" destination="hQU-PM-GES" id="TH0-Ix-lIV"/>
                         <outlet property="payButtonSon" destination="SBp-yL-r38" id="CLU-aV-JJa"/>
+                        <segue destination="PTT-kG-tNm" kind="presentation" identifier="successPaySeque" id="eU2-hZ-FKJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csB-k6-XTE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2070,4 +2076,7 @@
         <image name="welcome_bg" width="4000" height="2667"/>
         <image name="yeah-button" width="75" height="75"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="eU2-hZ-FKJ"/>
+    </inferredMetricsTieBreakers>
 </document>
