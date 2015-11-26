@@ -13,5 +13,6 @@ target :Devent, :exclusive => true do
     pod 'JSQMessagesViewController'
     pod 'Stripe', '~> 6.0'
     pod 'AFNetworking'
+    pod 'CardIO'
 
 end

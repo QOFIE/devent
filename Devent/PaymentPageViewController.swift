@@ -9,7 +9,7 @@
 import UIKit
 import PassKit
 
-class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelegate {
+class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelegate, CardIOPaymentViewControllerDelegate {
 
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventPrice: UILabel!
