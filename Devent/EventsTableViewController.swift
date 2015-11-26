@@ -104,6 +104,8 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         if indexPath.row == 0 {
             print("Index 0")
             if let featuredEventsCell = tableView.dequeueReusableCellWithIdentifier(EventTableViewCellIdentifier.featured) as? FeaturedEventsCell {
+                
+                featuredEventsCell.showDetailDelegate = self
                 return featuredEventsCell
             }
         }
