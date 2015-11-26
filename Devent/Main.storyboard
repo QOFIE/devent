@@ -1164,7 +1164,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EventName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRy-na-Vtd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EventName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRy-na-Vtd">
                                 <rect key="frame" x="128" y="247" width="344" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -1175,7 +1175,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkf-Ec-SFP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkf-Ec-SFP">
                                 <rect key="frame" x="128" y="274" width="347" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -1186,7 +1186,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBp-yL-r38">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBp-yL-r38">
                                 <rect key="frame" x="285" y="498" width="30" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -1198,7 +1198,7 @@
                                     <action selector="realPayment:" destination="fFM-w1-SGN" eventType="touchUpInside" id="Q16-pd-wfN"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O4t-DH-dXM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O4t-DH-dXM">
                                 <rect key="frame" x="140" y="73" width="320" height="166"/>
                                 <animations/>
                                 <constraints>
@@ -1206,7 +1206,7 @@
                                     <constraint firstAttribute="width" constant="320" id="oGO-aU-Cf4"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hQU-PM-GES">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hQU-PM-GES">
                                 <rect key="frame" x="290" y="460" width="20" height="20"/>
                                 <animations/>
                                 <constraints>
@@ -1236,6 +1236,7 @@
                                 <segue destination="K6h-5v-Nzh" kind="unwind" unwindAction="unwindToMacthesVC:" id="IeL-Zn-Aqc"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Scan Card" id="xGg-m8-Yjr"/>
                     </navigationItem>
                     <connections>
                         <outlet property="eventName" destination="pRy-na-Vtd" id="RLK-8A-sHT"/>
@@ -1243,7 +1244,7 @@
                         <outlet property="eventPrice" destination="fkf-Ec-SFP" id="DKO-h5-r7F"/>
                         <outlet property="loadingSign" destination="hQU-PM-GES" id="TH0-Ix-lIV"/>
                         <outlet property="payButtonSon" destination="SBp-yL-r38" id="CLU-aV-JJa"/>
-                        <segue destination="PTT-kG-tNm" kind="presentation" identifier="successPaySeque" id="xjc-na-wQ5"/>
+                        <segue destination="PTT-kG-tNm" kind="presentation" identifier="successPaySeque" id="JVF-wz-ENp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csB-k6-XTE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2067,6 +2068,6 @@
         <image name="yeah-button" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xjc-na-wQ5"/>
+        <segue reference="JVF-wz-ENp"/>
     </inferredMetricsTieBreakers>
 </document>
