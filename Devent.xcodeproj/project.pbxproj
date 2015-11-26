@@ -42,6 +42,7 @@
 		4692F4041BD6479E00B62564 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4031BD6479E00B62564 /* LoginViewController.swift */; };
 		4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4051BD6521000B62564 /* SignUpViewController.swift */; };
 		4692F4161BD8FB5D00B62564 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4151BD8FB5D00B62564 /* CustomCell.swift */; };
+		46A2AA261C07071000282B0F /* ShowDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A2AA251C07071000282B0F /* ShowDetailDelegate.swift */; };
 		46B911CE1C01C48F00A36009 /* checkInternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */; };
 		46B911D21C06049400A36009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46B911D11C06049400A36009 /* Main.storyboard */; };
 		46BF30531BD10584003AA0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30521BD10584003AA0AE /* AppDelegate.swift */; };
@@ -112,6 +113,7 @@
 		4692F4031BD6479E00B62564 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4692F4051BD6521000B62564 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4692F4151BD8FB5D00B62564 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		46A2AA251C07071000282B0F /* ShowDetailDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailDelegate.swift; sourceTree = "<group>"; };
 		46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkInternetConnection.swift; sourceTree = "<group>"; };
 		46B911D11C06049400A36009 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		46BF304F1BD10584003AA0AE /* Devent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Devent.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -296,6 +298,7 @@
 		46BF30511BD10584003AA0AE /* Devent */ = {
 			isa = PBXGroup;
 			children = (
+				46A2AA251C07071000282B0F /* ShowDetailDelegate.swift */,
 				46B911D11C06049400A36009 /* Main.storyboard */,
 				46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */,
 				466B35201BEF66ED0058A8B9 /* Payment */,
@@ -557,6 +560,7 @@
 				4690A6041BDD807E00B18403 /* CardsViewController.swift in Sources */,
 				466B35271BEF723E0058A8B9 /* PhotoGalleryViewController.swift in Sources */,
 				4690A6021BDD7E9900B18403 /* User.swift in Sources */,
+				46A2AA261C07071000282B0F /* ShowDetailDelegate.swift in Sources */,
 				169BC4211BF92E3F004A51A5 /* SortingCell.swift in Sources */,
 				160B67F01C01DD2500D05B07 /* EventDetailsTableViewController.swift in Sources */,
 				46E58E0E1BDFA51700FEA214 /* MacthesCustomCell.swift in Sources */,
