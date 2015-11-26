@@ -25,6 +25,8 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
+        self.imagesForSection0.removeAll()
+        
                 if let userPicture1Data = PFUser.currentUser()?.valueForKey("profilePicture") as? PFFile {
                     userPicture1Data.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error NSError) -> Void in
@@ -95,6 +97,7 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let screenWidth = CGRectGetWidth(UIScreen.mainScreen().bounds)
+        print(screenWidth)
         let threePiecesWidth = floor(screenWidth / 3.0 - ((2.0 / 3) * 2))
         let twoPiecesWidth = floor(screenWidth / 2.0 - (2.0 / 2))
         if indexPath.section == 0 {
@@ -105,7 +108,7 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 1.0
+        return 0
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
