@@ -6,6 +6,7 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
     @IBOutlet weak var deneme: UICollectionView!
     var featuredEventsArray: [PFObject]?
     var featuredEventImageArray: [UIImage]?
+    var showDetailDelegate:ShowDetailDelegate? = nil
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
