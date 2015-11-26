@@ -147,5 +147,50 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
         }
         completion(STPBackendChargeResult.Failure, NSError(domain: StripeDomain, code: 50, userInfo: [NSLocalizedDescriptionKey: "You created a token! Its value is \(token.tokenId). Now configure your backend to accept this token and complete a charge."]))
     }
+    
+    @IBAction func scanCard(sender: AnyObject) {
+        let cardIOVC = CardIOPaymentViewController(paymentDelegate: self)
+        cardIOVC.modalPresentationStyle = .FormSheet
+        presentViewController(cardIOVC, animated: true, completion: nil)
+    }
+
+
+func userDidCancelPaymentViewController(paymentViewController: CardIOPaymentViewController!) {
+    paymentViewController?.dismissViewControllerAnimated(true, completion: nil)
+}
+
+func userDidProvideCreditCardInfo(cardInfo: CardIOCreditCardInfo!, inPaymentViewController paymentViewController: CardIOPaymentViewController!) {
+    let info = cardInfo
+    let card: STPCardParams = STPCardParams()
+    card.number = info.cardNumber
+    card.expMonth = info.expiryMonth
+    card.expYear = info.expiryYear
+    card.cvc = info.cvv
+    
+    
+    STPAPIClient.sharedClient().createTokenWithCard(card, completion: { (token, error) -> Void in
+        
+        if error != nil {
+            let alertController = UIAlertController(title: "Error", message:
+                "Please try again!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        self.createBackendChargeWithToken(token!, completion: { (result, error) -> Void in
+            if result == STPBackendChargeResult.Success {
+                //completion(PKPaymentAuthorizationStatus.Success)
+            }
+            else {
+                //completion(PKPaymentAuthorizationStatus.Failure)
+            }
+        })
+    })
+    
+    paymentViewController?.dismissViewControllerAnimated(true, completion: nil)
+}
+
+
 
 }
