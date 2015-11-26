@@ -102,14 +102,14 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
         
         
         return cell
-    }
     
+    }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    print(featuredEventsArray![indexPath.row]["name"])
+        print(featuredEventsArray![indexPath.row]["name"])
         
-   
     }
+
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let hardCodedPadding:CGFloat = 5

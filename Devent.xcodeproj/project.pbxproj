@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		160B67EE1C01DC9B00D05B07 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160B67ED1C01DC9B00D05B07 /* EventsTableViewController.swift */; };
 		160B67F01C01DD2500D05B07 /* EventDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160B67EF1C01DD2500D05B07 /* EventDetailsTableViewController.swift */; };
-		160B67F31C02121400D05B07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160B67F11C02121400D05B07 /* Main.storyboard */; };
 		16100F161BF7590500768784 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16100F151BF7590500768784 /* Event.swift */; };
 		1667DFF01BE408B3007E01BC /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */; };
 		1667DFF51BE6781A007E01BC /* ChooseHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */; };
@@ -44,6 +43,7 @@
 		4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4051BD6521000B62564 /* SignUpViewController.swift */; };
 		4692F4161BD8FB5D00B62564 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4151BD8FB5D00B62564 /* CustomCell.swift */; };
 		46B911CE1C01C48F00A36009 /* checkInternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */; };
+		46B911D21C06049400A36009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46B911D11C06049400A36009 /* Main.storyboard */; };
 		46BF30531BD10584003AA0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30521BD10584003AA0AE /* AppDelegate.swift */; };
 		46BF30551BD10584003AA0AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30541BD10584003AA0AE /* ViewController.swift */; };
 		46BF305A1BD10584003AA0AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BF30591BD10584003AA0AE /* Assets.xcassets */; };
@@ -78,7 +78,6 @@
 /* Begin PBXFileReference section */
 		160B67ED1C01DC9B00D05B07 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		160B67EF1C01DD2500D05B07 /* EventDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsTableViewController.swift; sourceTree = "<group>"; };
-		160B67F21C02121400D05B07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Devent/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16100F151BF7590500768784 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseHeightViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		4692F4051BD6521000B62564 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4692F4151BD8FB5D00B62564 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkInternetConnection.swift; sourceTree = "<group>"; };
+		46B911D11C06049400A36009 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		46BF304F1BD10584003AA0AE /* Devent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Devent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BF30521BD10584003AA0AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46BF30541BD10584003AA0AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -273,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				46BF30801BD105CD003AA0AE /* Podfile */,
-				160B67F11C02121400D05B07 /* Main.storyboard */,
 				46BF30511BD10584003AA0AE /* Devent */,
 				46BF30661BD10584003AA0AE /* DeventTests */,
 				46BF30711BD10584003AA0AE /* DeventUITests */,
@@ -297,6 +296,7 @@
 		46BF30511BD10584003AA0AE /* Devent */ = {
 			isa = PBXGroup;
 			children = (
+				46B911D11C06049400A36009 /* Main.storyboard */,
 				46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */,
 				466B35201BEF66ED0058A8B9 /* Payment */,
 				466B351F1BEF646B0058A8B9 /* Messaging */,
@@ -456,7 +456,7 @@
 				46BF305D1BD10584003AA0AE /* LaunchScreen.storyboard in Resources */,
 				46BF305A1BD10584003AA0AE /* Assets.xcassets in Resources */,
 				46BF30811BD105CD003AA0AE /* Podfile in Resources */,
-				160B67F31C02121400D05B07 /* Main.storyboard in Resources */,
+				46B911D21C06049400A36009 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,14 +606,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		160B67F11C02121400D05B07 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				160B67F21C02121400D05B07 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		46BF305B1BD10584003AA0AE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

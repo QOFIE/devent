@@ -183,6 +183,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
         if indexPath.row > 1 {
             print("in the selection function")
             if let eventToPass = objectAtIndexPath(indexPath) {
