@@ -109,6 +109,8 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print(featuredEventsArray![indexPath.row]["name"])
         
+        showDetailDelegate?.showDetail(featuredEventsArray![indexPath.row])
+        
     }
 
     
