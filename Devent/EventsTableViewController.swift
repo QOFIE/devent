@@ -223,15 +223,30 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if let edvc = segue.destinationViewController as? EventDetailsTableViewController {
-        
+            
             print("obtained the right vc")
             print(selectedEvent?.objectId)
-            if let event = selectedEvent {
+            
+            if(selectedEvent == nil) {
+                let event = sender
                 edvc.event = event
-                print ("set the event")
+                
             }
-            else {print("patates")}
+            else {
+                
+                if let event = selectedEvent {
+                    edvc.event = event
+                    print ("set the event")
+                }
+                else {print("patates")}
+            }
         }
     }
+    
+}
 
+extension EventsTableViewController: ShowDetailDelegate {
+    func showDetail(event: AnyObject){
+        performSegueWithIdentifier("EventDetailsSegue", sender: event)
+    }
 }
