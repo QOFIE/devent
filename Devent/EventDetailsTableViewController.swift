@@ -11,6 +11,8 @@ import UIKit
 class EventDetailsTableViewController: UITableViewController {
     
     // MARK: PROPOERTIES
+    
+    let featuredEventViewAspectRatio: CGFloat = 600 / 328
 
     // Object to pass to detail VC
     var event: AnyObject?
@@ -42,7 +44,6 @@ class EventDetailsTableViewController: UITableViewController {
         relation?.removeObject(PFevent!)
         user!.saveInBackground()
         deleteEventMatchbyEventChoice(PFevent!)
-        
     }
     
     private func updateUI() {
@@ -62,6 +63,32 @@ class EventDetailsTableViewController: UITableViewController {
             if let eventAddress = event[EVENT.address] as? String {
                 eventAddressLabel.text = eventAddress
             }
+            let defaultImage = UIImage(named: "default-event")
+            if let eventImage = event[EVENT.image] as? PFFile {
+                eventImage.getDataInBackgroundWithBlock {
+                    (imageData: NSData?, error: NSError?) -> Void in
+                    if (error == nil) {
+                        if let image = UIImage(data:imageData!) {
+                            let width = self.view.bounds.size.width
+                            let size = CGSizeMake(width, width / self.featuredEventViewAspectRatio)
+                            let resizedImage = squareImage(image)
+                            self.eventImageView.image = resizedImage
+                        }
+                    } else {
+                        print("Event image cannot be retrieved from the network")
+                    }
+                }
+            } else {
+                self.eventImageView.image = defaultImage
+            }
+            
+            if let eventDate = event[EVENT.date] as? NSDate {
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateStyle = .MediumStyle
+                dateFormatter.timeStyle = .ShortStyle
+                let date = dateFormatter.stringFromDate(eventDate)
+                eventDateLabel.text = date
+            }
         }
     }
 
@@ -69,10 +96,11 @@ class EventDetailsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let width = self.view.bounds.size.width
-        let featuredEventViewAspectRatio: CGFloat = 600 / 328
         switch indexPath.row {
         case 0:
-            return width / featuredEventViewAspectRatio
+            return width / self.featuredEventViewAspectRatio
+        case 4:
+            return 74
         default:
             return UITableViewAutomaticDimension
         }

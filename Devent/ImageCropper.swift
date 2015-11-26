@@ -41,7 +41,7 @@ func squareImage (image: UIImage) -> UIImage {
 }
 
 //Resize Image using UIKit (this might lead to quality loss)
-private func resizeImage (image: UIImage, targetSize: CGSize) -> UIImage {
+func resizeImage (image: UIImage, targetSize: CGSize) -> UIImage {
     
     let size = image.size
     let widthRatio  = targetSize.width  / size.width
