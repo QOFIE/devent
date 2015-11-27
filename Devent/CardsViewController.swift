@@ -42,6 +42,9 @@ class CardsViewController: UIViewController {
         cardStackView.backgroundColor = UIColor.clearColor()
         nahButton.setImage(UIImage(named: "nah-button-pressed"), forState: .Highlighted)
         yeahButton.setImage(UIImage(named: "yeah-button-pressed"), forState: .Highlighted)
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+        cardStackView.addGestureRecognizer(tapGestureRecognizer)
+        
         
         fetchUnviewedUsers({
             returnUsers in
@@ -60,6 +63,34 @@ class CardsViewController: UIViewController {
             
             self.nameLabel.text = self.frontCard?.user.name
         })
+        
+        
+    }
+    
+    func imageTapped(img: AnyObject)
+    {
+        let user3 = frontCard?.user.pfUser
+        print("deneme")
+        print(user3?.objectId)
+        
+        performSegueWithIdentifier("deneme5", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let edvc = segue.destinationViewController as? UINavigationController {
+            
+            let abcd = edvc.topViewController as? DiscoverProfilePage
+            
+            print("obtained the right vc")
+            print(frontCard?.user.pfUser)
+            
+            let user3 = frontCard?.user.pfUser
+            
+            abcd!.user2 = user3!
+            print(user3?.objectId)
+            
+        }
         
         
     }

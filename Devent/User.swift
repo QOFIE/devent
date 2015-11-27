@@ -11,7 +11,7 @@ import Foundation
 struct User {
     let id: String
     let name: String
-    private let pfUser: PFUser
+    var pfUser: PFUser
     
     func getPhoto(callback: (UIImage) -> ()) {
         let imageFile = pfUser.objectForKey("profilePicture") as! PFFile
