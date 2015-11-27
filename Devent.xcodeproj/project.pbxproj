@@ -56,7 +56,7 @@
 		46E58E0E1BDFA51700FEA214 /* MacthesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E0D1BDFA51700FEA214 /* MacthesCustomCell.swift */; };
 		46EF164F1BE1247C003E7F09 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EF164E1BE1247C003E7F09 /* MessageViewController.swift */; };
 		46EF16511BE189B5003E7F09 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EF16501BE189B5003E7F09 /* Camera.swift */; };
-		A6C2A73E2B2030B9BFA75FEA /* libPods-Devent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C24C59A03D54D627E59199 /* libPods-Devent.a */; };
+		B0C8B1B14A751EA39EC61A2E /* libPods-Devent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C24C59A03D54D627E59199 /* libPods-Devent.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,7 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6C2A73E2B2030B9BFA75FEA /* libPods-Devent.a in Frameworks */,
+				B0C8B1B14A751EA39EC61A2E /* libPods-Devent.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +420,7 @@
 				TargetAttributes = {
 					46BF304E1BD10584003AA0AE = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 35262P572X;
 					};
 					46BF30621BD10584003AA0AE = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -710,6 +711,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Devent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ES.Devent;
@@ -725,6 +727,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Devent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ES.Devent;
