@@ -52,6 +52,7 @@
 		46BF30681BD10584003AA0AE /* DeventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30671BD10584003AA0AE /* DeventTests.swift */; };
 		46BF30731BD10584003AA0AE /* DeventUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30721BD10584003AA0AE /* DeventUITests.swift */; };
 		46BF30811BD105CD003AA0AE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 46BF30801BD105CD003AA0AE /* Podfile */; };
+		46C4EF961C085E4F009624B9 /* DiscoverProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C4EF951C085E4F009624B9 /* DiscoverProfilePage.swift */; };
 		46E58E0C1BDFA4D900FEA214 /* MacthesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E0B1BDFA4D900FEA214 /* MacthesTableViewController.swift */; };
 		46E58E0E1BDFA51700FEA214 /* MacthesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E0D1BDFA51700FEA214 /* MacthesCustomCell.swift */; };
 		46EF164F1BE1247C003E7F09 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EF164E1BE1247C003E7F09 /* MessageViewController.swift */; };
@@ -130,6 +131,7 @@
 		46BF30741BD10584003AA0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46BF30801BD105CD003AA0AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		46BF30821BD1065C003AA0AE /* Devent-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Devent-Bridging-Header.h"; sourceTree = "<group>"; };
+		46C4EF951C085E4F009624B9 /* DiscoverProfilePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverProfilePage.swift; sourceTree = "<group>"; };
 		46E58E0B1BDFA4D900FEA214 /* MacthesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacthesTableViewController.swift; sourceTree = "<group>"; };
 		46E58E0D1BDFA51700FEA214 /* MacthesCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacthesCustomCell.swift; sourceTree = "<group>"; };
 		46EF164E1BE1247C003E7F09 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				4690A5FD1BDD7E0F00B18403 /* CardView.swift */,
 				4690A5FF1BDD7E5300B18403 /* SwipeView.swift */,
 				4690A6031BDD807E00B18403 /* CardsViewController.swift */,
+				46C4EF951C085E4F009624B9 /* DiscoverProfilePage.swift */,
 			);
 			name = "Discover Tab";
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				46073D231BDA66170039A908 /* MyEventViewController.swift in Sources */,
 				46EF164F1BE1247C003E7F09 /* MessageViewController.swift in Sources */,
 				4607B4481C01097B009F210B /* DenemeCollectionViewCell.swift in Sources */,
+				46C4EF961C085E4F009624B9 /* DiscoverProfilePage.swift in Sources */,
 				4692F4161BD8FB5D00B62564 /* CustomCell.swift in Sources */,
 				46E58E0C1BDFA4D900FEA214 /* MacthesTableViewController.swift in Sources */,
 				1689D30C1BE2ADD5003DAA4B /* UserNameAndAgeTableViewCell.swift in Sources */,
