@@ -1254,7 +1254,7 @@
                         <outlet property="eventPrice" destination="fkf-Ec-SFP" id="DKO-h5-r7F"/>
                         <outlet property="loadingSign" destination="hQU-PM-GES" id="TH0-Ix-lIV"/>
                         <outlet property="payButtonSon" destination="SBp-yL-r38" id="CLU-aV-JJa"/>
-                        <segue destination="PTT-kG-tNm" kind="presentation" identifier="successPaySeque" id="eU2-hZ-FKJ"/>
+                        <segue destination="PTT-kG-tNm" kind="presentation" identifier="successPaySeque" id="E3W-cd-0Zf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csB-k6-XTE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2325,6 +2325,6 @@
         <image name="yeah-button" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eU2-hZ-FKJ"/>
+        <segue reference="E3W-cd-0Zf"/>
     </inferredMetricsTieBreakers>
 </document>

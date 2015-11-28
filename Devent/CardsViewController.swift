@@ -61,7 +61,8 @@ class CardsViewController: UIViewController {
                 self.cardStackView.insertSubview(self.backCard!.swipeView, belowSubview: self.frontCard!.swipeView)
             }
             
-            self.nameLabel.text = self.frontCard?.user.name
+            //self.nameLabel.text = self.frontCard?.user.name
+            self.nameLabel.text = ""
         })
         
         
@@ -120,7 +121,8 @@ class CardsViewController: UIViewController {
     private func createCard(user: User) -> Card {
         let cardView = CardView()
         
-        cardView.name = user.name
+        //cardView.name = user.name
+        cardView.name = ""
         user.getPhoto({
             image in
             cardView.image = image
@@ -141,7 +143,8 @@ class CardsViewController: UIViewController {
     
     private func switchCards() {
         if let card = backCard {
-            self.nameLabel.text = self.backCard?.user.name
+            //self.nameLabel.text = self.backCard?.user.name
+            self.nameLabel.text = ""
             frontCard = card
             UIView.animateWithDuration(0.2, animations: {
                 self.frontCard!.swipeView.frame = self.createCardFrame(self.frontCardTopMargin)
