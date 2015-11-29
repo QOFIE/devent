@@ -26,7 +26,7 @@ public class FetchFacebookProfileData {
             
             if(result != nil)
             {
-                
+                //deneme
                 let userId:String = result["id"] as! String
                 let userFirstName:String? = result["first_name"] as? String
                 let userLastName:String? = result["last_name"] as? String
