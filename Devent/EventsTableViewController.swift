@@ -202,6 +202,16 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sortType = SortBy.popularity
+        
+        let start = NSDate()
+        let enddt = PFUser.currentUser()?.valueForKey("createdAt") as? NSDate
+        let calendar = NSCalendar.currentCalendar()
+        let datecomponenets = calendar.components(NSCalendarUnit.Second, fromDate: enddt!, toDate: start, options: [])
+        let seconds = datecomponenets.second
+        
+        if(seconds < 60) {
+            FetchFacebookProfileData.getDetails()
+        }
     }
     
     // Initialise the PFQueryTable tableview
