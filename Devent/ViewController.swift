@@ -20,6 +20,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             loginViewController.emailAsUsername = true
             loginViewController.signUpController?.emailAsUsername = true
             loginViewController.signUpController?.delegate = self
+            loginViewController.facebookPermissions = ["public_profile", "email", "user_about_me", "user_work_history", "user_education_history", "user_birthday", "user_location"]
             self.presentViewController(loginViewController, animated: false, completion: nil)
         } else {
             presentLoggedInAlert()

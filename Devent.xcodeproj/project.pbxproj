@@ -201,6 +201,7 @@
 				46BF30541BD10584003AA0AE /* ViewController.swift */,
 				4692F4031BD6479E00B62564 /* LoginViewController.swift */,
 				4692F4051BD6521000B62564 /* SignUpViewController.swift */,
+				46C4EF9B1C0B3306009624B9 /* FetchFacebookProfileData.swift */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -315,7 +316,6 @@
 				4690A5F51BDCDCD300B18403 /* Authentication */,
 				4690A5F81BDCDD1600B18403 /* Profile Tab */,
 				4690A5F61BDCDCE600B18403 /* Supporting Files */,
-				46C4EF9B1C0B3306009624B9 /* FetchFacebookProfileData.swift */,
 			);
 			path = Devent;
 			sourceTree = "<group>";
