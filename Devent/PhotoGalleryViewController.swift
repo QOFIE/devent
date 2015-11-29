@@ -27,58 +27,63 @@ class PhotoGalleryViewController: UIViewController, RAReorderableLayoutDelegate,
         
         self.imagesForSection0.removeAll()
         
-                if let userPicture1Data = PFUser.currentUser()?.valueForKey("profilePicture") as? PFFile {
-                    userPicture1Data.getDataInBackgroundWithBlock({
-                        (imageData: NSData?, error NSError) -> Void in
-                        if (imageData != nil) {
-                            //let userImage1 = UIImage(data:imageData!)!
-                            self.imagesForSection0.append(UIImage(data:imageData!)!)
-                        }
-                    })
+        if let userPicture1Data = PFUser.currentUser()?.valueForKey("profilePicture") as? PFFile {
+            userPicture1Data.getDataInBackgroundWithBlock({
+                (imageData: NSData?, error NSError) -> Void in
+                if (imageData != nil) {
+                    //let userImage1 = UIImage(data:imageData!)!
+                    self.imagesForSection0.insert(UIImage(data:imageData!)!, atIndex: 0)
+                    self.collectionView.reloadData()
                 }
-                
-                if let userPicture2Data = PFUser.currentUser()?.valueForKey("P2") as? PFFile {
-                    userPicture2Data.getDataInBackgroundWithBlock({
-                        (imageData: NSData?, error NSError) -> Void in
-                        if (imageData != nil) {
-                            //let userImage2 = UIImage(data:imageData!)!
-                            self.imagesForSection0.append(UIImage(data:imageData!)!)
-                        }
-                    })
+            })
+        }
+        
+        if let userPicture2Data = PFUser.currentUser()?.valueForKey("P2") as? PFFile {
+            userPicture2Data.getDataInBackgroundWithBlock({
+                (imageData: NSData?, error NSError) -> Void in
+                if (imageData != nil) {
+                    //let userImage2 = UIImage(data:imageData!)!
+                    self.imagesForSection0.insert(UIImage(data:imageData!)!, atIndex: 1)
+                    self.collectionView.reloadData()
                 }
-                
-                if let userPicture3Data = PFUser.currentUser()?.valueForKey("P3") as? PFFile {
-                    userPicture3Data.getDataInBackgroundWithBlock({
-                        (imageData: NSData?, error NSError) -> Void in
-                        if (imageData != nil) {
-                            //let userImage3 = UIImage(data:imageData!)!
-                            self.imagesForSection0.append(UIImage(data:imageData!)!)
-                            }
-                    })
+            })
+        }
+        
+        if let userPicture3Data = PFUser.currentUser()?.valueForKey("P3") as? PFFile {
+            userPicture3Data.getDataInBackgroundWithBlock({
+                (imageData: NSData?, error NSError) -> Void in
+                if (imageData != nil) {
+                    //let userImage3 = UIImage(data:imageData!)!
+                    self.imagesForSection0.insert(UIImage(data:imageData!)!, atIndex: 2)
+                    self.collectionView.reloadData()
                 }
-                
-                if let userPicture4Data = PFUser.currentUser()?.valueForKey("P4") as? PFFile {
-                    userPicture4Data.getDataInBackgroundWithBlock({
-                        (imageData: NSData?, error NSError) -> Void in
-                        if (imageData != nil) {
-                            //let userImage4 = UIImage(data:imageData!)!
-                            self.imagesForSection0.append(UIImage(data:imageData!)!)
-                        }
-                    })
+            })
+        }
+        
+        if let userPicture4Data = PFUser.currentUser()?.valueForKey("P4") as? PFFile {
+            userPicture4Data.getDataInBackgroundWithBlock({
+                (imageData: NSData?, error NSError) -> Void in
+                if (imageData != nil) {
+                    //let userImage4 = UIImage(data:imageData!)!
+                    self.imagesForSection0.insert(UIImage(data:imageData!)!, atIndex: 3)
+                    self.collectionView.reloadData()
                 }
-                
-                if let userPicture5Data = PFUser.currentUser()?.valueForKey("P5") as? PFFile {
-                    userPicture5Data.getDataInBackgroundWithBlock({
-                        (imageData: NSData?, error NSError) -> Void in
-                        if (imageData != nil) {
-                            //let userImage5 = UIImage(data:imageData!)!
-                            self.imagesForSection0.append(UIImage(data:imageData!)!)
-                        }
-                    })
+            })
+        }
+        
+        if let userPicture5Data = PFUser.currentUser()?.valueForKey("P5") as? PFFile {
+            userPicture5Data.getDataInBackgroundWithBlock({
+                (imageData: NSData?, error NSError) -> Void in
+                if (imageData != nil) {
+                    //let userImage5 = UIImage(data:imageData!)!
+                    self.imagesForSection0.insert(UIImage(data:imageData!)!, atIndex: 4)
+                    self.collectionView.reloadData()
                 }
-                
-       print(imagesForSection0.count)
-       self.collectionView.reloadData()
+            })
+        }
+        
+        print(imagesForSection0.count)
+        self.collectionView.reloadData()
        
     }
 
