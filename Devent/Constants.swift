@@ -43,12 +43,34 @@ struct EVENT {
     static let image = "image"
 }
 
+// For event categories
+struct EventType {
+    static let movie = "Movie"
+    static let music = "Music"
+    static let sports = "Sports"
+    static let stageArts = "Stage Arts"
+    static let artsAndCraft = "Arts & Craft"
+    static let entertainment = "Entertainment"
+    static let other = "Other"
+}
+
 // For event tableView cell identifiers
 struct EventTableViewCellIdentifier {
     static let featured = "FeaturedEventsCell"
     static let sorting = "SortingCell"
     static let event = "EventCell"
 }
+
+// Universal event categories in the app. Add or delete categories here. 
+let eventCategories = [
+    EventType.artsAndCraft,
+    EventType.entertainment,
+    EventType.movie,
+    EventType.music,
+    EventType.sports,
+    EventType.stageArts,
+    EventType.other
+]
 
 // For event sorting options
 struct SortBy {

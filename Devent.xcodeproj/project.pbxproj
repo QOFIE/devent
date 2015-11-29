@@ -10,6 +10,8 @@
 		160B67EE1C01DC9B00D05B07 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160B67ED1C01DC9B00D05B07 /* EventsTableViewController.swift */; };
 		160B67F01C01DD2500D05B07 /* EventDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160B67EF1C01DD2500D05B07 /* EventDetailsTableViewController.swift */; };
 		16100F161BF7590500768784 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16100F151BF7590500768784 /* Event.swift */; };
+		164BEFBC1C09F15B0028E2A8 /* EventCategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164BEFBB1C09F15B0028E2A8 /* EventCategoriesTableViewController.swift */; };
+		164BEFBE1C09FAEA0028E2A8 /* EventCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164BEFBD1C09FAEA0028E2A8 /* EventCategoryTableViewCell.swift */; };
 		1667DFF01BE408B3007E01BC /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */; };
 		1667DFF51BE6781A007E01BC /* ChooseHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */; };
 		1689D3061BE299AF003DAA4B /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3051BE299AF003DAA4B /* ImageCropper.swift */; };
@@ -80,6 +82,8 @@
 		160B67ED1C01DC9B00D05B07 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		160B67EF1C01DD2500D05B07 /* EventDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsTableViewController.swift; sourceTree = "<group>"; };
 		16100F151BF7590500768784 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		164BEFBB1C09F15B0028E2A8 /* EventCategoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategoriesTableViewController.swift; sourceTree = "<group>"; };
+		164BEFBD1C09FAEA0028E2A8 /* EventCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseHeightViewController.swift; sourceTree = "<group>"; };
 		1689D3051BE299AF003DAA4B /* ImageCropper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 				46073D221BDA66170039A908 /* MyEventViewController.swift */,
 				4692F4151BD8FB5D00B62564 /* CustomCell.swift */,
 				16100F151BF7590500768784 /* Event.swift */,
+				164BEFBB1C09F15B0028E2A8 /* EventCategoriesTableViewController.swift */,
+				164BEFBD1C09FAEA0028E2A8 /* EventCategoryTableViewCell.swift */,
 			);
 			name = "Event Tab";
 			sourceTree = "<group>";
@@ -298,8 +304,8 @@
 		46BF30511BD10584003AA0AE /* Devent */ = {
 			isa = PBXGroup;
 			children = (
-				46A2AA251C07071000282B0F /* ShowDetailDelegate.swift */,
 				46B911D11C06049400A36009 /* Main.storyboard */,
+				46A2AA251C07071000282B0F /* ShowDetailDelegate.swift */,
 				46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */,
 				466B35201BEF66ED0058A8B9 /* Payment */,
 				466B351F1BEF646B0058A8B9 /* Messaging */,
@@ -540,9 +546,11 @@
 				1689D30A1BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift in Sources */,
 				4690A6001BDD7E5300B18403 /* SwipeView.swift in Sources */,
 				1689D30E1BE2ADE4003DAA4B /* AboutTableViewCell.swift in Sources */,
+				164BEFBE1C09FAEA0028E2A8 /* EventCategoryTableViewCell.swift in Sources */,
 				1689D3061BE299AF003DAA4B /* ImageCropper.swift in Sources */,
 				160B67EE1C01DC9B00D05B07 /* EventsTableViewController.swift in Sources */,
 				1667DFF51BE6781A007E01BC /* ChooseHeightViewController.swift in Sources */,
+				164BEFBC1C09F15B0028E2A8 /* EventCategoriesTableViewController.swift in Sources */,
 				16C8A26B1BE3DC1D0035EEF8 /* Constants.swift in Sources */,
 				1689D3101BE2ADF2003DAA4B /* UserInfoTableViewCell.swift in Sources */,
 				466B351A1BEF63A60058A8B9 /* deleteEventMatchbyEventChoice.swift in Sources */,

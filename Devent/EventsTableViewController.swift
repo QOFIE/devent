@@ -18,6 +18,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     var selectedEvent: AnyObject?
     var localStore = [PFObject]()
     var shouldUpdateFromServer:Bool = true
+    var eventCategories: [String]?
     
     // MARK: ACTIONS
     
@@ -26,6 +27,11 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     func baseQuery() -> PFQuery {
         let query = PFQuery(className: "Events")
         query.whereKey(EVENT.featured, equalTo: false)
+        if self.eventCategories != nil {
+            for category in eventCategories! {
+                query.whereKey(EVENT.type, equalTo: category)
+            }
+        }
         if let sortBy = sortType {
             return query.orderByAscending(sortBy)
         } else {
@@ -38,7 +44,6 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     }
     
     func refreshLocalDataStoreFromServer() {
-        
         self.baseQuery().findObjectsInBackgroundWithBlock({
             object, error in
             
@@ -88,12 +93,31 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         return sorting
     }
     
+    @IBAction func unwindToEventsTableVC (segue: UIStoryboardSegue) {
+        // do nothing
+    }
+    
     /*
     override func objectsDidLoad(error: NSError?) {
     // Do any setup when table query objects load
     }
     */
     
+    // Check if this is the first launch of the events page or not for default settings
+    private func isFirstLaunch() -> Bool {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let notFirst = defaults.boolForKey("FirstLaunchOfEvents")
+        if notFirst {
+            print("Not first launch.")
+            return true
+        }
+        else {
+            print("First launch, setting NSUserDefault.")
+            defaults.setBool(true, forKey: "FirstLaunchOfEvents")
+            defaults.synchronize()
+            return false
+        }
+    }
     
     // MARK: TABLEVIEW METHODS
     
@@ -185,14 +209,11 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
         if indexPath.row > 1 {
-            print("in the selection function")
             if let eventToPass = objectAtIndexPath(indexPath) {
                 selectedEvent = eventToPass
             }
             performSegueWithIdentifier("EventDetailsSegue", sender: self.navigationController)
-            print("end of the selection function")
         }
     }
     
@@ -202,6 +223,17 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sortType = SortBy.popularity
+        if isFirstLaunch() {
+            // Events page launching for the first time. Do the first time settings
+            // Set the default event categories to "all" in the first launch
+            let defaults = NSUserDefaults.standardUserDefaults()
+            if let categories = eventCategories {
+                for category in categories {
+                    defaults.setObject(true, forKey: category)
+                }
+                defaults.synchronize()
+            }
+        }
     }
     
     // Initialise the PFQueryTable tableview
