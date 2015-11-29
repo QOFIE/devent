@@ -14,7 +14,7 @@ struct User {
     var pfUser: PFUser
     
     func getPhoto(callback: (UIImage) -> ()) {
-        let imageFile = pfUser.objectForKey("profilePicture") as! PFFile
+        if let imageFile = pfUser.objectForKey("profilePicture") as? PFFile {
         
         imageFile.getDataInBackgroundWithBlock({
             data, error in
@@ -22,11 +22,21 @@ struct User {
                 callback(UIImage(data: data)!)
             }
         })
+        }
+        else {
+            callback(UIImage(named: "dummy")!)
+        }
     }
 }
 
 func pfUserToUser(user: PFUser) -> User {
-    return User(id: user.objectId!, name: user.objectForKey("firstName") as! String, pfUser: user)
+    let name = user.objectForKey("firstName") as? String
+    let userName: String = ""
+    if (name != nil) {
+        let userName = name
+    }
+    
+    return User(id: user.objectId!, name: userName, pfUser: user)
 }
 
 func currentUser() -> User? {
