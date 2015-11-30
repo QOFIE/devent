@@ -17,9 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         Parse.setApplicationId("PfsCpWJ98VU24gkNi0kLG7Mzp2rswH0RAxzWTVXb", clientKey: "ngNO5sZZaOFlziDKG0UyVjx6LAW9kaTN7OZhzTb8")
             PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions);
-        
             Stripe.setDefaultPublishableKey("pk_test_tXBn3ZaMxvMcbkr8jzwhL1Sk")
         
+        
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
         
                 return true
     }
@@ -30,6 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         FBSDKAppEvents.activateApp()
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        // Store the deviceToken in the current Installation and save it to Parse
+        let installation = PFInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        //installation.setObject(PFUser.currentUser()!.objectId!, forKey: "userID")
+        installation.saveInBackground()
     }
     
 }

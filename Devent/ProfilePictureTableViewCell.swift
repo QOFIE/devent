@@ -31,6 +31,10 @@ class ProfilePictureTableViewCell: UITableViewCell {
                 }
             }
         }
+        else {
+            let defaultImage = UIImage(named: "dummy")
+            self.profilePictureImageView.image = squareImage(defaultImage!)
+        }
     }
     
     @IBOutlet weak var profilePictureImageView: UIImageView!

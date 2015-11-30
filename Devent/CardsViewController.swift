@@ -42,6 +42,9 @@ class CardsViewController: UIViewController {
         cardStackView.backgroundColor = UIColor.clearColor()
         nahButton.setImage(UIImage(named: "nah-button-pressed"), forState: .Highlighted)
         yeahButton.setImage(UIImage(named: "yeah-button-pressed"), forState: .Highlighted)
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+        cardStackView.addGestureRecognizer(tapGestureRecognizer)
+        
         
         fetchUnviewedUsers({
             returnUsers in
@@ -58,8 +61,37 @@ class CardsViewController: UIViewController {
                 self.cardStackView.insertSubview(self.backCard!.swipeView, belowSubview: self.frontCard!.swipeView)
             }
             
-            self.nameLabel.text = self.frontCard?.user.name
+            //self.nameLabel.text = self.frontCard?.user.name
+            self.nameLabel.text = ""
         })
+        
+        
+    }
+    
+    func imageTapped(img: AnyObject)
+    {
+        let user3 = frontCard?.user.pfUser
+        print("deneme")
+        print(user3?.objectId)
+        
+        performSegueWithIdentifier("deneme5", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let edvc = segue.destinationViewController as? UINavigationController {
+            
+            let abcd = edvc.topViewController as? DiscoverProfilePage
+            
+            print("obtained the right vc")
+            print(frontCard?.user.pfUser)
+            
+            let user3 = frontCard?.user.pfUser
+            
+            abcd!.user2 = user3!
+            print(user3?.objectId)
+            
+        }
         
         
     }
@@ -89,7 +121,8 @@ class CardsViewController: UIViewController {
     private func createCard(user: User) -> Card {
         let cardView = CardView()
         
-        cardView.name = user.name
+        //cardView.name = user.name
+        cardView.name = ""
         user.getPhoto({
             image in
             cardView.image = image
@@ -110,7 +143,8 @@ class CardsViewController: UIViewController {
     
     private func switchCards() {
         if let card = backCard {
-            self.nameLabel.text = self.backCard?.user.name
+            //self.nameLabel.text = self.backCard?.user.name
+            self.nameLabel.text = ""
             frontCard = card
             UIView.animateWithDuration(0.2, animations: {
                 self.frontCard!.swipeView.frame = self.createCardFrame(self.frontCardTopMargin)
@@ -122,6 +156,10 @@ class CardsViewController: UIViewController {
             backCard!.swipeView.frame = createCardFrame(backCardTopMargin)
             cardStackView.insertSubview(backCard!.swipeView, belowSubview: frontCard!.swipeView)
         }
+    }
+    
+    @IBAction func unwindToMCardsVC(segue: UIStoryboardSegue) {
+        // do nothing
     }
     
 }
