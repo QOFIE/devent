@@ -212,6 +212,19 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         if(seconds < 60) {
             FetchFacebookProfileData.getDetails()
         }
+        
+        PFCloud.callFunctionInBackground("hello", withParameters: nil) { results, error in
+            if error != nil {
+                // Your error handling here
+            } else {
+               print(results)
+            }
+        }
+        
+        let currentInstallation = PFInstallation.currentInstallation()
+        currentInstallation.setObject(PFUser.currentUser()!.objectId!, forKey: "userID")
+        currentInstallation.saveInBackground()
+        
     }
     
     // Initialise the PFQueryTable tableview
