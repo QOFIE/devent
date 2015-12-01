@@ -292,6 +292,8 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
 
 extension EventsTableViewController: ShowDetailDelegate {
     func showDetail(event: AnyObject){
+        print(event)
+        selectedEvent = nil
         performSegueWithIdentifier("EventDetailsSegue", sender: event)
     }
 }
