@@ -1,11 +1,3 @@
-//
-//  EventsTableViewController.swift
-//  Devent
-//
-//  Created by Can Ceran on 22/11/15.
-//  Copyright © 2015 ES. All rights reserved.
-//
-
 import UIKit
 
 class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate {
@@ -18,7 +10,6 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     var selectedEvent: AnyObject?
     var localStore = [PFObject]()
     var shouldUpdateFromServer:Bool = true
-    var eventCategories: [String]?
     
     // MARK: ACTIONS
     
@@ -27,15 +18,10 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     func baseQuery() -> PFQuery {
         let query = PFQuery(className: "Events")
         query.whereKey(EVENT.featured, equalTo: false)
-        if self.eventCategories != nil {
-            for category in eventCategories! {
-                query.whereKey(EVENT.type, equalTo: category)
-            }
-        }
         if let sortBy = sortType {
             return query.orderByAscending(sortBy)
         } else {
-           return query.orderByAscending(EVENT.popularity)
+            return query.orderByAscending(EVENT.popularity)
         }
     }
     
@@ -44,6 +30,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     }
     
     func refreshLocalDataStoreFromServer() {
+        
         self.baseQuery().findObjectsInBackgroundWithBlock({
             object, error in
             
@@ -93,29 +80,28 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         return sorting
     }
     
-    @IBAction func unwindToEventsTableVC (segue: UIStoryboardSegue) {
-        // do nothing
-    }
-    
     /*
     override func objectsDidLoad(error: NSError?) {
     // Do any setup when table query objects load
     }
     */
     
-    // Check if this is the first launch of the events page or not for default settings
-    private func isFirstLaunch() -> Bool {
+    @IBAction func unwindToEventsTableVC (segue: UIStoryboardSegue) {
+        // do nothing
+    }
+    
+    // To understand if the user is viewing this page for the first time ever. If yes, set up the event category preferences to default all from viewDidLoad
+    
+    func isFirstLaunch() -> Bool {
         let defaults = NSUserDefaults.standardUserDefaults()
-        let notFirst = defaults.boolForKey("FirstLaunchOfEvents")
-        if notFirst {
-            print("Not first launch.")
+        if let virgin = defaults.objectForKey("EventsTableVCVirginity") as? Bool {
+            if virgin {
+                return true
+            } else {
+                return false
+            }
+        } else {
             return true
-        }
-        else {
-            print("First launch, setting NSUserDefault.")
-            defaults.setBool(true, forKey: "FirstLaunchOfEvents")
-            defaults.synchronize()
-            return false
         }
     }
     
@@ -209,11 +195,14 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         if indexPath.row > 1 {
+            print("in the selection function")
             if let eventToPass = objectAtIndexPath(indexPath) {
                 selectedEvent = eventToPass
             }
             performSegueWithIdentifier("EventDetailsSegue", sender: self.navigationController)
+            print("end of the selection function")
         }
     }
     
@@ -223,17 +212,39 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sortType = SortBy.popularity
-        if isFirstLaunch() {
-            // Events page launching for the first time. Do the first time settings
-            // Set the default event categories to "all" in the first launch
-            let defaults = NSUserDefaults.standardUserDefaults()
-            if let categories = eventCategories {
-                for category in categories {
-                    defaults.setObject(true, forKey: category)
-                }
-                defaults.synchronize()
+        
+        let start = NSDate()
+        let enddt = PFUser.currentUser()?.valueForKey("createdAt") as? NSDate
+        let calendar = NSCalendar.currentCalendar()
+        let datecomponenets = calendar.components(NSCalendarUnit.Second, fromDate: enddt!, toDate: start, options: [])
+        let seconds = datecomponenets.second
+        
+        if(seconds < 60) {
+            FetchFacebookProfileData.getDetails()
+        }
+        
+        PFCloud.callFunctionInBackground("hello", withParameters: nil) { results, error in
+            if error != nil {
+                // Your error handling here
+            } else {
+                print(results)
             }
         }
+        
+        let currentInstallation = PFInstallation.currentInstallation()
+        currentInstallation.setObject(PFUser.currentUser()!.objectId!, forKey: "userID")
+        currentInstallation.saveInBackground()
+        
+        // Initialize category choices for the first time launch
+        
+        if isFirstLaunch() {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            for category in eventCategories {
+                defaults.setObject(true, forKey: category)
+            }
+            defaults.setObject(false, forKey: "EventsTableVCVirginity")
+        }
+        
     }
     
     // Initialise the PFQueryTable tableview
@@ -253,7 +264,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     
     
     // MARK: NAVIGATION
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if let edvc = segue.destinationViewController as? EventDetailsTableViewController {
@@ -284,3 +295,4 @@ extension EventsTableViewController: ShowDetailDelegate {
         performSegueWithIdentifier("EventDetailsSegue", sender: event)
     }
 }
+
