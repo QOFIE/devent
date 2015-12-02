@@ -40,7 +40,7 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
         
         blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "Erman"), diameter: 30)
         
-        let user1PictureQuery = PFQuery(className: "_User").whereKey("objectId", equalTo: byUserIdForPicture)
+        let user1PictureQuery = PFQuery(className: "_User").whereKey("objectId", equalTo: toUserIdForPicture)
         
         if (Reachability.isConnectedToNetwork() == false) {
             user1PictureQuery.fromLocalDatastore()
@@ -89,7 +89,7 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
         })
         */
         
-        let user2PictureQuery = PFQuery(className: "_User").whereKey("objectId", equalTo: toUserIdForPicture)
+        let user2PictureQuery = PFQuery(className: "_User").whereKey("objectId", equalTo: byUserIdForPicture)
         
         if (Reachability.isConnectedToNetwork() == false) {
             user2PictureQuery.fromLocalDatastore()
@@ -255,6 +255,7 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
         let object = PFObject(className: "Messages")
         object["userID"] = PFUser.currentUser()?.objectId
         object["eventId"] = self.groupId
+        object["receiverID"] = self.toUserIdForPicture
         object["textMessage"] = text
         if let videoFile = videoFile {
             object["videoMessage"] = videoFile
