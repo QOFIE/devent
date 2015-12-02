@@ -53,6 +53,7 @@ class ProfileLocationViewController: UIViewController, MKMapViewDelegate, CLLoca
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
         self.map.setRegion(region, animated: true)
         finalAnnotation.coordinate = center
+        self.setUsersClosestCity()
         self.map.addAnnotation(finalAnnotation)
         self.locationManager.stopUpdatingLocation()
     }

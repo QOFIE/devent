@@ -271,6 +271,34 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         
     }
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let location = locations.last
+        if(PFUser.currentUser()?.objectForKey("locationCity") as? String == nil) {
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(location!) {
+                (placemarks, error) -> Void in
+                if let placemarks = placemarks as [CLPlacemark]! where placemarks.count > 0 {
+                    let placemark = placemarks[0]
+                    if (placemark.addressDictionary?["State"] != nil) {
+                        let state = placemark.addressDictionary?["State"] as! String
+                        if (PFUser.currentUser() != nil) {
+                            
+                            PFUser.currentUser()!.setObject(state, forKey: "locationCity")
+                            PFUser.currentUser()!.setObject((location?.coordinate.latitude.description)!, forKey: "latitude")
+                            PFUser.currentUser()!.setObject((location?.coordinate.longitude.description)!, forKey: "longtitude")
+                            PFUser.currentUser()!.saveInBackground()
+                        }
+                    }
+                }
+            }
+            
+            
+        }
+        
+        
+    }
+    
     
     // MARK: NAVIGATION
     
