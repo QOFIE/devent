@@ -17,7 +17,9 @@ class CardsViewController: UIViewController {
     }
     
     let frontCardTopMargin: CGFloat = 0
+    let frontCardLeftMargin: CGFloat = 10
     let backCardTopMargin: CGFloat = 10
+    let backCardLeftMargin: CGFloat = 0
     
     
     @IBOutlet weak var cardStackView: UIView!
@@ -57,7 +59,7 @@ class CardsViewController: UIViewController {
             
             if let card = self.popCard() {
                 self.backCard = card
-                self.backCard!.swipeView.frame = self.createCardFrame(self.backCardTopMargin)
+                self.backCard!.swipeView.frame = self.createCardFrame(self.backCardTopMargin, leftMargin: self.backCardLeftMargin)
                 self.cardStackView.insertSubview(self.backCard!.swipeView, belowSubview: self.frontCard!.swipeView)
             }
             
@@ -70,33 +72,19 @@ class CardsViewController: UIViewController {
     
     func imageTapped(img: AnyObject)
     {
-        let user3 = frontCard?.user.pfUser
-        print("deneme")
-        print(user3?.objectId)
-        
+        //let user3 = frontCard?.user.pfUser
         performSegueWithIdentifier("deneme5", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if let edvc = segue.destinationViewController as? UINavigationController {
-            
             let abcd = edvc.topViewController as? DiscoverProfilePage
-            
-            print("obtained the right vc")
-            print(frontCard?.user.pfUser)
-            
             let user3 = frontCard?.user.pfUser
-            
             abcd!.user2 = user3!
-            print(user3?.objectId)
-            
         }
-        
-        
     }
-    
-    
+
     @IBAction func nahButtonPressed(sender: UIButton) {
         if let card = frontCard {
             card.swipeView.swipeDirection(.Left)
@@ -109,13 +97,9 @@ class CardsViewController: UIViewController {
             }
         
     }
-    
-    
-    
-    
-    
-    private func createCardFrame(topMargin: CGFloat) -> CGRect {
-        return CGRect(x: 0, y: topMargin, width: cardStackView.frame.width, height: cardStackView.frame.height)
+
+    private func createCardFrame(topMargin: CGFloat, leftMargin: CGFloat) -> CGRect {
+        return CGRect(x: leftMargin, y: topMargin, width: cardStackView.frame.width, height: cardStackView.frame.height)
     }
     
     private func createCard(user: User) -> Card {
@@ -128,7 +112,7 @@ class CardsViewController: UIViewController {
             cardView.image = image
         })
         
-        let swipeView = SwipeView(frame: createCardFrame(frontCardTopMargin))
+        let swipeView = SwipeView(frame: createCardFrame(frontCardTopMargin, leftMargin: frontCardLeftMargin))
         swipeView.delegate = self
         swipeView.innerView = cardView
         return Card(cardView: cardView, swipeView: swipeView, user: user)
@@ -147,13 +131,13 @@ class CardsViewController: UIViewController {
             self.nameLabel.text = ""
             frontCard = card
             UIView.animateWithDuration(0.2, animations: {
-                self.frontCard!.swipeView.frame = self.createCardFrame(self.frontCardTopMargin)
+                self.frontCard!.swipeView.frame = self.createCardFrame(self.frontCardTopMargin, leftMargin: self.frontCardLeftMargin)
             })
         }
         
         if let card = self.popCard() {
             backCard = card
-            backCard!.swipeView.frame = createCardFrame(backCardTopMargin)
+            backCard!.swipeView.frame = createCardFrame(backCardTopMargin, leftMargin: backCardLeftMargin)
             cardStackView.insertSubview(backCard!.swipeView, belowSubview: frontCard!.swipeView)
         }
     }

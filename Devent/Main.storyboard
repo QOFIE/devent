@@ -98,7 +98,7 @@
                                     <action selector="nahButtonPressed:" destination="mfI-E3-hfL" eventType="touchUpInside" id="XVl-vx-FhD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imo-pb-R69">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imo-pb-R69">
                                 <rect key="frame" x="252" y="357" width="97" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -1732,7 +1732,7 @@
                                             <rect key="frame" x="47.5" y="13.5" width="39.5" height="19.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -2293,7 +2293,7 @@
     </scenes>
     <resources>
         <image name="nah-button" width="75" height="75"/>
-        <image name="welcome_bg" width="4000" height="2667"/>
+        <image name="welcome_bg" width="500" height="725"/>
         <image name="yeah-button" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -115,7 +115,7 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
 
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let hardCodedPadding:CGFloat = 5
+        let hardCodedPadding:CGFloat = 0
         let itemWidth = (collectionView.bounds.width * 1) 
         let itemHeight = collectionView.bounds.height - (2 * hardCodedPadding)
         return CGSize(width: itemWidth, height: itemHeight)
