@@ -9,23 +9,43 @@
 import Foundation
 
 public class calculateUserDistance {
-    class func isConnectedToNetwork(user: PFUser) -> Float {
+    class func realDistance(user: PFObject) -> Double {
         
-    let latOfCurrentUser = PFUser.currentUser()?.objectForKey("latitude") as? String
-    var latOfCurrentUserFloat = NSNumberFormatter().numberFromString(latOfCurrentUser!)!.floatValue
-    let lonOfCurrentUser = PFUser.currentUser()?.objectForKey("longtitude") as? String
-    var lonOfCurrentUserFloat = NSNumberFormatter().numberFromString(lonOfCurrentUser!)!.floatValue
+        var latOfCurrentUserFloat: CLLocationDegrees = 0.0
+        var lonOfCurrentUserFloat: CLLocationDegrees = 0.0
+        var latOfOtherUserFloat: CLLocationDegrees = 0.0
+        var lonOfOtherUserFloat: CLLocationDegrees = 0.0
         
-    let latOfOtherUser = user.objectForKey("latitude") as? String
-    var latOfOtherUserFloat = NSNumberFormatter().numberFromString(latOfOtherUser!)!.floatValue
-    let lonOfOtherUser = user.objectForKey("longtitude") as? String
-    var lonOfOtherUserFloat = NSNumberFormatter().numberFromString(lonOfOtherUser!)!.floatValue
+        let latOfCurrentUser = PFUser.currentUser()?.objectForKey("latitude") as? String
+        if (latOfCurrentUser != nil) {
+            latOfCurrentUserFloat = NSNumberFormatter().numberFromString(latOfCurrentUser!)!.doubleValue
+            
+        }
         
-    print(latOfCurrentUserFloat)
-    print(lonOfCurrentUserFloat)
-    print(latOfOtherUserFloat)
-    print(latOfOtherUserFloat)
+        let lonOfCurrentUser = PFUser.currentUser()?.objectForKey("longtitude") as? String
+        if (lonOfCurrentUser != nil) {
+            lonOfCurrentUserFloat = NSNumberFormatter().numberFromString(lonOfCurrentUser!)!.doubleValue
+            
+        }
         
-    return 3.14
-}
+        let latOfOtherUser = user.objectForKey("latitude") as? String
+        if (latOfOtherUser != nil) {
+            latOfOtherUserFloat = NSNumberFormatter().numberFromString(latOfOtherUser!)!.doubleValue
+            
+        }
+        
+        let lonOfOtherUser = user.objectForKey("longtitude") as? String
+        if (lonOfOtherUser != nil) {
+            lonOfOtherUserFloat = NSNumberFormatter().numberFromString(lonOfOtherUser!)!.doubleValue
+            
+        }
+        
+        let currentUserlocation: CLLocation = CLLocation(latitude: latOfCurrentUserFloat, longitude: lonOfCurrentUserFloat)
+        let OtherUserlocation: CLLocation = CLLocation(latitude: latOfOtherUserFloat, longitude: lonOfOtherUserFloat)
+        
+        var distance = currentUserlocation.distanceFromLocation(OtherUserlocation)
+        print(distance)
+        print(distance/1000.0)
+        return distance/1000.0
+    }
 }
