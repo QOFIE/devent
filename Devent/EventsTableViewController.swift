@@ -10,6 +10,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     var selectedEvent: AnyObject?
     var localStore = [PFObject]()
     var shouldUpdateFromServer:Bool = true
+    var locManager = CLLocationManager()
     
     // MARK: ACTIONS
     
@@ -237,6 +238,10 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         currentInstallation.setObject(PFUser.currentUser()!.objectId!, forKey: "userID")
         currentInstallation.saveInBackground()
         
+        locManager.delegate = self
+        locManager.desiredAccuracy = kCLLocationAccuracyBest
+        locManager.requestWhenInUseAuthorization()
+        locManager.startUpdatingLocation()
         
         
         // Initialize category choices for the first time launch
