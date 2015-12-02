@@ -24,12 +24,25 @@ class EventCategoriesTableViewController: UITableViewController {
     @IBAction func doneButton(sender: UIBarButtonItem) {
         // Save the category choices to NSUserDefaults if there is a change
         if settingsChanged {
+            // Save it to NSUserDefaults
             let defaults = NSUserDefaults.standardUserDefaults()
             for (category, selection) in self.categorySettings {
                 defaults.setObject(selection, forKey: category)
                 print("\(category) is saved as \(defaults.boolForKey(category)) in defaults.")
             }
             defaults.synchronize()
+            // Save it to Parse
+            let user = PFUser.currentUser()
+            var categoryChoicesArray: [String] = []
+            for (category, selection) in categorySettings {
+                if selection {
+                    categoryChoicesArray.append(category)
+                }
+            }
+            user?.setObject(categoryChoicesArray, forKey: USER.categoryChoices)
+            user?.saveInBackground()
+            print("Category Choices Array is \(user?.objectForKey(USER.categoryChoices)!)")
+            
         }
         self.performSegueWithIdentifier("CancelUnwindSegue", sender: self)
     }

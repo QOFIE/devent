@@ -11,6 +11,16 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     var localStore = [PFObject]()
     var shouldUpdateFromServer:Bool = true
     var locManager = CLLocationManager()
+    var categories: [String] {
+        get {
+            let user = PFUser.currentUser()
+            if let selectedCategories = user?.objectForKey(USER.categoryChoices) as? [String] {
+                return selectedCategories
+            } else {
+                return eventCategories
+            }
+        }
+    }
     
     // MARK: ACTIONS
     
@@ -19,11 +29,13 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     func baseQuery() -> PFQuery {
         let query = PFQuery(className: "Events")
         query.whereKey(EVENT.featured, equalTo: false)
+        query.whereKey(EVENT.type, containedIn: categories)
         if let sortBy = sortType {
             return query.orderByAscending(sortBy)
         } else {
             return query.orderByAscending(EVENT.popularity)
         }
+        
     }
     
     override func queryForTable() -> PFQuery {
@@ -57,7 +69,6 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
                 }
             })
         })
-        
     }
     
     override func objectsDidLoad(error: NSError?) {
@@ -209,6 +220,10 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     
     
     // MARK: VC LIFECYCLE
+    
+    override func viewWillAppear(animated: Bool) {
+        self.loadObjects()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

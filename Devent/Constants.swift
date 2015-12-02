@@ -26,6 +26,7 @@ struct USER {
     static let genderInterestedIn = "genderInterestedIn"
     static let minAge = "minAge"
     static let maxAge = "maxAge"
+    static let categoryChoices = "categoryChoices"
 }
 
 // For event attributes
