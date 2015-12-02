@@ -58,6 +58,7 @@
 		46C4EF9C1C0B3306009624B9 /* FetchFacebookProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C4EF9B1C0B3306009624B9 /* FetchFacebookProfileData.swift */; };
 		46E58E0C1BDFA4D900FEA214 /* MacthesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E0B1BDFA4D900FEA214 /* MacthesTableViewController.swift */; };
 		46E58E0E1BDFA51700FEA214 /* MacthesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E58E0D1BDFA51700FEA214 /* MacthesCustomCell.swift */; };
+		46E9FAD31C0F878A002934FE /* calculateUserDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E9FAD21C0F878A002934FE /* calculateUserDistance.swift */; };
 		46EF164F1BE1247C003E7F09 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EF164E1BE1247C003E7F09 /* MessageViewController.swift */; };
 		46EF16511BE189B5003E7F09 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EF16501BE189B5003E7F09 /* Camera.swift */; };
 		B0C8B1B14A751EA39EC61A2E /* libPods-Devent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C24C59A03D54D627E59199 /* libPods-Devent.a */; };
@@ -140,6 +141,7 @@
 		46C4EF9B1C0B3306009624B9 /* FetchFacebookProfileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFacebookProfileData.swift; sourceTree = "<group>"; };
 		46E58E0B1BDFA4D900FEA214 /* MacthesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacthesTableViewController.swift; sourceTree = "<group>"; };
 		46E58E0D1BDFA51700FEA214 /* MacthesCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacthesCustomCell.swift; sourceTree = "<group>"; };
+		46E9FAD21C0F878A002934FE /* calculateUserDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = calculateUserDistance.swift; sourceTree = "<group>"; };
 		46EF164E1BE1247C003E7F09 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		46EF16501BE189B5003E7F09 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		47C24C59A03D54D627E59199 /* libPods-Devent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Devent.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,6 +315,7 @@
 				46B911D11C06049400A36009 /* Main.storyboard */,
 				46A2AA251C07071000282B0F /* ShowDetailDelegate.swift */,
 				46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */,
+				46E9FAD21C0F878A002934FE /* calculateUserDistance.swift */,
 				466B35201BEF66ED0058A8B9 /* Payment */,
 				466B351F1BEF646B0058A8B9 /* Messaging */,
 				16A60D1A1BEDEFD00075DFBA /* Model */,
@@ -559,6 +562,7 @@
 				164BEFBC1C09F15B0028E2A8 /* EventCategoriesTableViewController.swift in Sources */,
 				16C8A26B1BE3DC1D0035EEF8 /* Constants.swift in Sources */,
 				1689D3101BE2ADF2003DAA4B /* UserInfoTableViewCell.swift in Sources */,
+				46E9FAD31C0F878A002934FE /* calculateUserDistance.swift in Sources */,
 				466B351A1BEF63A60058A8B9 /* deleteEventMatchbyEventChoice.swift in Sources */,
 				16A60D1C1BEDEFEA0075DFBA /* CurrentUser.swift in Sources */,
 				46BF30551BD10584003AA0AE /* ViewController.swift in Sources */,
