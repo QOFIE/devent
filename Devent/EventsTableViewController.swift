@@ -1,6 +1,6 @@
 import UIKit
 
-class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate {
+class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
     // MARK: PROPOERTIES
     
