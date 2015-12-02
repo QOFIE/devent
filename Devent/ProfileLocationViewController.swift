@@ -71,7 +71,7 @@ class ProfileLocationViewController: UIViewController, MKMapViewDelegate, CLLoca
                 let state = placemark.addressDictionary?["State"] as! String
                 self.user!.setObject(state, forKey: "locationCity")
                 self.user!.setObject(self.finalAnnotation.coordinate.latitude.description, forKey: "latitude")
-                self.user!.setObject(self.finalAnnotation.coordinate.latitude.description, forKey: "longtitude")
+                self.user!.setObject(self.finalAnnotation.coordinate.longitude.description, forKey: "longtitude")
                 self.user!.saveInBackground()
                 }
             }
