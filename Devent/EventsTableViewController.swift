@@ -213,6 +213,8 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         super.viewDidLoad()
         self.sortType = SortBy.popularity
         
+        //initilialize the user
+        
         let start = NSDate()
         let enddt = PFUser.currentUser()?.valueForKey("createdAt") as? NSDate
         let calendar = NSCalendar.currentCalendar()
@@ -234,6 +236,8 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         let currentInstallation = PFInstallation.currentInstallation()
         currentInstallation.setObject(PFUser.currentUser()!.objectId!, forKey: "userID")
         currentInstallation.saveInBackground()
+        
+        
         
         // Initialize category choices for the first time launch
         

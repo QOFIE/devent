@@ -65,6 +65,7 @@ class ProfileLocationViewController: UIViewController, MKMapViewDelegate, CLLoca
             (placemarks, error) -> Void in
             if let placemarks = placemarks as [CLPlacemark]! where placemarks.count > 0 {
                 let placemark = placemarks[0]
+                print(placemark)
                 if (placemark.addressDictionary?["State"] != nil) {
                 let state = placemark.addressDictionary?["State"] as! String
                 self.user!.setObject(state, forKey: "locationCity")
