@@ -347,7 +347,7 @@ class MessageViewController: JSQMessagesViewController, UIActionSheetDelegate, U
                 return nil
             }
         }
-        return NSAttributedString(string: message.senderDisplayName)
+        return NSAttributedString(string: "")
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
