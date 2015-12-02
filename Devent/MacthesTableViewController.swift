@@ -215,8 +215,15 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
             let destinationVC = segue.destinationViewController as! UINavigationController
             let messageVC = destinationVC.topViewController as! MessageViewController
             messageVC.groupId = eventId
-            messageVC.byUserIdForPicture = byUserId
-            messageVC.toUserIdForPicture = toUserId
+            
+            if (PFUser.currentUser()?.objectId == byUserId) {
+                messageVC.byUserIdForPicture = byUserId
+                messageVC.toUserIdForPicture = toUserId
+            }
+            else {
+                messageVC.byUserIdForPicture = toUserId
+                messageVC.toUserIdForPicture = byUserId
+            }
             
         }
             
