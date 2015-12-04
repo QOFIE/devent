@@ -1318,7 +1318,7 @@
                             <outlet property="delegate" destination="PTT-kG-tNm" id="gMj-0E-Rqe"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Matches" id="Vvg-ei-ceB"/>
+                    <tabBarItem key="tabBarItem" title="Matches" image="heart" selectedImage="heart-selected" id="Vvg-ei-ceB"/>
                     <navigationItem key="navigationItem" id="uGE-xr-dq9"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -1544,7 +1544,7 @@
         <scene sceneID="6KF-42-ivQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TiT-ji-Cvr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" id="pQK-FB-24d"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="event" selectedImage="event-selected" id="pQK-FB-24d"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uhz-Fe-ncc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1774,7 +1774,7 @@
                                 <segue destination="Dwi-UD-W3C" kind="presentation" id="jC2-fU-TIU"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="My Events" id="8gQ-jC-yzp">
+                        <barButtonItem key="rightBarButtonItem" image="menu" id="8gQ-jC-yzp">
                             <connections>
                                 <segue destination="FRj-jw-xiq" kind="show" identifier="MyEventsSegue" id="1Ll-KD-xnq"/>
                             </connections>
@@ -2383,7 +2383,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="discover" width="30" height="18"/>
+        <image name="discover" width="30" height="30"/>
+        <image name="event" width="29" height="30"/>
+        <image name="event-selected" width="30" height="29"/>
+        <image name="heart" width="31" height="28"/>
+        <image name="heart-selected" width="31" height="28"/>
+        <image name="menu" width="22" height="14"/>
         <image name="nah-button" width="75" height="75"/>
         <image name="profile" width="31" height="31"/>
         <image name="profile-selected" width="30" height="31"/>
@@ -2392,6 +2397,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cNA-CR-vvs"/>
-        <segue reference="qfe-pc-Ath"/>
+        <segue reference="tO7-Ck-TcO"/>
     </inferredMetricsTieBreakers>
 </document>
