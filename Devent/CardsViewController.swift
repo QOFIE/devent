@@ -39,7 +39,7 @@ class CardsViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.viewDidLoad()
+       // self.viewDidLoad()
     }
     
     override func viewDidLoad() {
