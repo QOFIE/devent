@@ -16,6 +16,8 @@ class EventDetailsTableViewController: UITableViewController {
 
     // Object to pass to detail VC
     var event: AnyObject?
+    let user = PFUser.currentUser()
+    var eventIdArray: [String] = []
     
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTypeLabel: UILabel!
@@ -29,21 +31,56 @@ class EventDetailsTableViewController: UITableViewController {
     // MARK: ACTIONS
     
     @IBAction func yesButton(sender: UIButton) {
-        let user = PFUser.currentUser()
+        var k = event?.objectForKey("popularity") as? Int
+        k = k!+1
+        event?.setObject(k, forKey: "popularity")
+        event?.saveInBackground()
+        
+        if(user?.valueForKey("eventIdArray") != nil ){
+        eventIdArray = (user?.valueForKey("eventIdArray"))! as! [String]
+        }
+    let eventId = event?.valueForKey("objectId") as! String
+        if(eventIdArray.contains(eventId)) {
+    } else {
+        eventIdArray.append(eventId)
+        }
+    
+        user?.setObject(eventIdArray, forKey: "eventIdArray")
+        
         let relation = user?.relationForKey("userEvent2")
         let PFevent = event as? PFObject
         relation?.addObject(PFevent!)
         user!.saveInBackground()
         createEventMatchbyEventChoice(PFevent!)
-
+    
     }
     @IBAction func noButton(sender: UIButton) {
-        let user = PFUser.currentUser()
-        let relation = user?.relationForKey("userEvent2")
-        let PFevent = event as? PFObject
-        relation?.removeObject(PFevent!)
-        user!.saveInBackground()
-        deleteEventMatchbyEventChoice(PFevent!)
+            var k = event?.objectForKey("popularity") as? Int
+            if (k > 0 ) {
+            k = k!-1
+            }
+            event?.setObject(k, forKey: "popularity")
+            event?.saveInBackground()
+        
+        
+            let relation = user?.relationForKey("userEvent2")
+            let PFevent = event as? PFObject
+            relation?.removeObject(PFevent!)
+            
+            deleteEventMatchbyEventChoice(PFevent!)
+            if(user?.valueForKey("eventIdArray") != nil ){
+            eventIdArray = (user?.valueForKey("eventIdArray"))! as! [String]
+            }
+    let eventId = event?.valueForKey("objectId") as! String
+            if(eventIdArray.contains(eventId)) {
+            let eventToDelete = eventIdArray.indexOf(eventId)
+            eventIdArray.removeAtIndex(eventToDelete!)
+        } else {
+            }
+    
+            user?.setObject(eventIdArray, forKey: "eventIdArray")
+            user!.saveInBackground()
+    
     }
     
     private func updateUI() {

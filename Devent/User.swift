@@ -67,9 +67,28 @@ func fetchUnviewedUsers(callback: ([User] -> ())) {
                     for i in objects! {
                         
                         let k = i as! PFUser
-                        print("ahaha")
-                        print(calculateUserDistance.realDistance(i))
-                        if(calculateUserDistance.realDistance(i) < 50.0) {
+                        
+                        var otherUserEvents: [String] = []
+                        if (k.valueForKey("eventIdArray") != nil) {
+                        otherUserEvents = k.valueForKey("eventIdArray") as! [String]
+                        }
+                        var currentUserEvents:[String] = []
+                        if (PFUser.currentUser()?.valueForKey("eventIdArray") != nil) {
+                        currentUserEvents = PFUser.currentUser()?.valueForKey("eventIdArray") as! [String]
+                        }
+                        var matchingEvents = [String]()
+                        for otherNumber in currentUserEvents {
+                            for number in otherUserEvents{
+                                if number == otherNumber {
+                                    matchingEvents.append(number)
+                                    
+                                    break
+                                }
+                            }
+                        }
+                        //calculateUserDistance.realDistance(i) < 50.0
+                       
+                        if(matchingEvents.count > 0) {
                             userArray.append(k)
                         }
                         
