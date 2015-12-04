@@ -14,6 +14,7 @@
 		164BEFBE1C09FAEA0028E2A8 /* EventCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164BEFBD1C09FAEA0028E2A8 /* EventCategoryTableViewCell.swift */; };
 		1667DFF01BE408B3007E01BC /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */; };
 		1667DFF51BE6781A007E01BC /* ChooseHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */; };
+		167E6E1E1C103DF500A24D06 /* MyEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E6E1D1C103DF500A24D06 /* MyEventsTableViewController.swift */; };
 		1689D3061BE299AF003DAA4B /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3051BE299AF003DAA4B /* ImageCropper.swift */; };
 		1689D3081BE2A196003DAA4B /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3071BE2A196003DAA4B /* ProfileTableViewController.swift */; };
 		1689D30A1BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1689D3091BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift */; };
@@ -27,8 +28,6 @@
 		16A60D191BEBCBFA0075DFBA /* AgeRangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A60D181BEBCBFA0075DFBA /* AgeRangeTableViewCell.swift */; };
 		16A60D1C1BEDEFEA0075DFBA /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A60D1B1BEDEFEA0075DFBA /* CurrentUser.swift */; };
 		16C8A26B1BE3DC1D0035EEF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C8A26A1BE3DC1D0035EEF8 /* Constants.swift */; };
-		46073D231BDA66170039A908 /* MyEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46073D221BDA66170039A908 /* MyEventViewController.swift */; };
-		46073D251BDA68190039A908 /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46073D241BDA68190039A908 /* MyCustomCell.swift */; };
 		4607B4481C01097B009F210B /* DenemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4607B4471C01097B009F210B /* DenemeCollectionViewCell.swift */; };
 		466B351A1BEF63A60058A8B9 /* deleteEventMatchbyEventChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B35191BEF63A60058A8B9 /* deleteEventMatchbyEventChoice.swift */; };
 		466B351C1BEF63AA0058A8B9 /* createEventMatchbyEventChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B351B1BEF63AA0058A8B9 /* createEventMatchbyEventChoice.swift */; };
@@ -43,7 +42,6 @@
 		4690A6041BDD807E00B18403 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4690A6031BDD807E00B18403 /* CardsViewController.swift */; };
 		4692F4041BD6479E00B62564 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4031BD6479E00B62564 /* LoginViewController.swift */; };
 		4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4051BD6521000B62564 /* SignUpViewController.swift */; };
-		4692F4161BD8FB5D00B62564 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4151BD8FB5D00B62564 /* CustomCell.swift */; };
 		46A2AA261C07071000282B0F /* ShowDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A2AA251C07071000282B0F /* ShowDetailDelegate.swift */; };
 		46B911CE1C01C48F00A36009 /* checkInternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */; };
 		46B911D21C06049400A36009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46B911D11C06049400A36009 /* Main.storyboard */; };
@@ -89,6 +87,7 @@
 		164BEFBD1C09FAEA0028E2A8 /* EventCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		1667DFEF1BE408B3007E01BC /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		1667DFF41BE6781A007E01BC /* ChooseHeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseHeightViewController.swift; sourceTree = "<group>"; };
+		167E6E1D1C103DF500A24D06 /* MyEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsTableViewController.swift; sourceTree = "<group>"; };
 		1689D3051BE299AF003DAA4B /* ImageCropper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
 		1689D3071BE2A196003DAA4B /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		1689D3091BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureTableViewCell.swift; sourceTree = "<group>"; };
@@ -103,8 +102,6 @@
 		16A60D1B1BEDEFEA0075DFBA /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		16C8A26A1BE3DC1D0035EEF8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		28101BB0201438D8E80B03C9 /* Pods-Devent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Devent.release.xcconfig"; path = "Pods/Target Support Files/Pods-Devent/Pods-Devent.release.xcconfig"; sourceTree = "<group>"; };
-		46073D221BDA66170039A908 /* MyEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventViewController.swift; sourceTree = "<group>"; };
-		46073D241BDA68190039A908 /* MyCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
 		4607B4471C01097B009F210B /* DenemeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DenemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		466B35191BEF63A60058A8B9 /* deleteEventMatchbyEventChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = deleteEventMatchbyEventChoice.swift; sourceTree = "<group>"; };
 		466B351B1BEF63AA0058A8B9 /* createEventMatchbyEventChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createEventMatchbyEventChoice.swift; sourceTree = "<group>"; };
@@ -119,7 +116,6 @@
 		4690A6031BDD807E00B18403 /* CardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		4692F4031BD6479E00B62564 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4692F4051BD6521000B62564 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		4692F4151BD8FB5D00B62564 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		46A2AA251C07071000282B0F /* ShowDetailDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailDelegate.swift; sourceTree = "<group>"; };
 		46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkInternetConnection.swift; sourceTree = "<group>"; };
 		46B911D11C06049400A36009 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -252,9 +248,7 @@
 				4607B4471C01097B009F210B /* DenemeCollectionViewCell.swift */,
 				169BC4201BF92E3F004A51A5 /* SortingCell.swift */,
 				169BC4221BF92E4C004A51A5 /* EventCell.swift */,
-				46073D241BDA68190039A908 /* MyCustomCell.swift */,
-				46073D221BDA66170039A908 /* MyEventViewController.swift */,
-				4692F4151BD8FB5D00B62564 /* CustomCell.swift */,
+				167E6E1D1C103DF500A24D06 /* MyEventsTableViewController.swift */,
 				16100F151BF7590500768784 /* Event.swift */,
 				164BEFBB1C09F15B0028E2A8 /* EventCategoriesTableViewController.swift */,
 				164BEFBD1C09FAEA0028E2A8 /* EventCategoryTableViewCell.swift */,
@@ -435,7 +429,7 @@
 				TargetAttributes = {
 					46BF304E1BD10584003AA0AE = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = JLBBF7LMT7;
+						DevelopmentTeam = 35262P572X;
 					};
 					46BF30621BD10584003AA0AE = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -550,7 +544,6 @@
 			files = (
 				466B35281BEF723E0058A8B9 /* RAReorderableLayout.swift in Sources */,
 				466B351E1BEF63B70058A8B9 /* createEventMatchbyUserMatch.swift in Sources */,
-				46073D251BDA68190039A908 /* MyCustomCell.swift in Sources */,
 				4692F4041BD6479E00B62564 /* LoginViewController.swift in Sources */,
 				1689D30A1BE2ADB2003DAA4B /* ProfilePictureTableViewCell.swift in Sources */,
 				4690A6001BDD7E5300B18403 /* SwipeView.swift in Sources */,
@@ -586,16 +579,15 @@
 				46E58E0E1BDFA51700FEA214 /* MacthesCustomCell.swift in Sources */,
 				16100F161BF7590500768784 /* Event.swift in Sources */,
 				169BC4231BF92E4C004A51A5 /* EventCell.swift in Sources */,
-				46073D231BDA66170039A908 /* MyEventViewController.swift in Sources */,
 				46EF164F1BE1247C003E7F09 /* MessageViewController.swift in Sources */,
 				4607B4481C01097B009F210B /* DenemeCollectionViewCell.swift in Sources */,
 				46C4EF961C085E4F009624B9 /* DiscoverProfilePage.swift in Sources */,
-				4692F4161BD8FB5D00B62564 /* CustomCell.swift in Sources */,
 				46E58E0C1BDFA4D900FEA214 /* MacthesTableViewController.swift in Sources */,
 				1689D30C1BE2ADD5003DAA4B /* UserNameAndAgeTableViewCell.swift in Sources */,
 				1689D3081BE2A196003DAA4B /* ProfileTableViewController.swift in Sources */,
 				46BF30531BD10584003AA0AE /* AppDelegate.swift in Sources */,
 				46B911CE1C01C48F00A36009 /* checkInternetConnection.swift in Sources */,
+				167E6E1E1C103DF500A24D06 /* MyEventsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

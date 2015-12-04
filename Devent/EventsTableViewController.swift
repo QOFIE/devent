@@ -320,10 +320,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if let edvc = segue.destinationViewController as? EventDetailsTableViewController {
-            
-            print("obtained the right vc")
-            print(selectedEvent?.objectId)
-            
+
             if(selectedEvent == nil) {
                 let event = sender
                 edvc.event = event
