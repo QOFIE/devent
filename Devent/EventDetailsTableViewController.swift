@@ -31,6 +31,7 @@ class EventDetailsTableViewController: UITableViewController {
     // MARK: ACTIONS
     
     @IBAction func yesButton(sender: UIButton) {
+        var k = event?.objectForKey("popularity") as? Int
         k = k!+1
         event?.setObject(k, forKey: "popularity")
         event?.saveInBackground()
