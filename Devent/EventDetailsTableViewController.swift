@@ -55,6 +55,15 @@ class EventDetailsTableViewController: UITableViewController {
     
     }
     @IBAction func noButton(sender: UIButton) {
+            var k = event?.objectForKey("popularity") as? Int
+            if (k > 0 ) {
+            k = k!-1
+            }
+            event?.setObject(k, forKey: "popularity")
+            event?.saveInBackground()
+        
+        
+            let relation = user?.relationForKey("userEvent2")
             let PFevent = event as? PFObject
             relation?.removeObject(PFevent!)
             
