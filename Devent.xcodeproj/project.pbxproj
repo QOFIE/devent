@@ -43,6 +43,7 @@
 		4692F4041BD6479E00B62564 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4031BD6479E00B62564 /* LoginViewController.swift */; };
 		4692F4061BD6521000B62564 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692F4051BD6521000B62564 /* SignUpViewController.swift */; };
 		46A2AA261C07071000282B0F /* ShowDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A2AA251C07071000282B0F /* ShowDetailDelegate.swift */; };
+		46A617D91C12EB6B0026040B /* DBAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A617D81C12EB6B0026040B /* DBAlertController.swift */; };
 		46B911CE1C01C48F00A36009 /* checkInternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */; };
 		46B911D21C06049400A36009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46B911D11C06049400A36009 /* Main.storyboard */; };
 		46BF30531BD10584003AA0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF30521BD10584003AA0AE /* AppDelegate.swift */; };
@@ -117,6 +118,7 @@
 		4692F4031BD6479E00B62564 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4692F4051BD6521000B62564 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		46A2AA251C07071000282B0F /* ShowDetailDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailDelegate.swift; sourceTree = "<group>"; };
+		46A617D81C12EB6B0026040B /* DBAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBAlertController.swift; sourceTree = "<group>"; };
 		46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkInternetConnection.swift; sourceTree = "<group>"; };
 		46B911D11C06049400A36009 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		46BF304F1BD10584003AA0AE /* Devent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Devent.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				46B911D11C06049400A36009 /* Main.storyboard */,
+				46A617D81C12EB6B0026040B /* DBAlertController.swift */,
 				46A2AA251C07071000282B0F /* ShowDetailDelegate.swift */,
 				46B911CD1C01C48F00A36009 /* checkInternetConnection.swift */,
 				46E9FAD21C0F878A002934FE /* calculateUserDistance.swift */,
@@ -558,6 +561,7 @@
 				46E9FAD31C0F878A002934FE /* calculateUserDistance.swift in Sources */,
 				466B351A1BEF63A60058A8B9 /* deleteEventMatchbyEventChoice.swift in Sources */,
 				16A60D1C1BEDEFEA0075DFBA /* CurrentUser.swift in Sources */,
+				46A617D91C12EB6B0026040B /* DBAlertController.swift in Sources */,
 				46BF30551BD10584003AA0AE /* ViewController.swift in Sources */,
 				16A60D171BEBC7F40075DFBA /* RangeSlider.swift in Sources */,
 				466B35241BEF6D350058A8B9 /* ProfileLocationViewController.swift in Sources */,
