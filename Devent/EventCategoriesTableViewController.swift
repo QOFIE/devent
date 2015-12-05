@@ -86,10 +86,11 @@ class EventCategoriesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cellImage = UIImage(named: "events")
         let category = eventCategories[indexPath.row]
         let cell =  tableView.dequeueReusableCellWithIdentifier("EventCategoryTableViewCell", forIndexPath: indexPath) as! EventCategoryTableViewCell
-        cell.eventCategoryImageView.image = cellImage
+        if let image = UIImage(named: category) {
+            cell.eventCategoryImageView.image = image
+        }
         cell.eventCategoryLabel.text = category
         if let selection = categorySettings[category] {
             //print ("\(category) selected \(selection)")
