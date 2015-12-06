@@ -31,18 +31,18 @@ class EventDetailsTableViewController: UITableViewController {
     // MARK: ACTIONS
     
     @IBAction func yesButton(sender: UIButton) {
+
+        if(user?.valueForKey("eventIdArray") != nil ){
+        eventIdArray = (user?.valueForKey("eventIdArray"))! as! [String]
+        }
+        let eventId = event?.valueForKey("objectId") as! String
+        if(eventIdArray.contains(eventId)) {
+        } else {
+        eventIdArray.append(eventId)
         var k = event?.objectForKey("popularity") as? Int
         k = k!+1
         event?.setObject(k, forKey: "popularity")
         event?.saveInBackground()
-        
-        if(user?.valueForKey("eventIdArray") != nil ){
-        eventIdArray = (user?.valueForKey("eventIdArray"))! as! [String]
-        }
-    let eventId = event?.valueForKey("objectId") as! String
-        if(eventIdArray.contains(eventId)) {
-    } else {
-        eventIdArray.append(eventId)
         }
     
         user?.setObject(eventIdArray, forKey: "eventIdArray")
@@ -52,7 +52,7 @@ class EventDetailsTableViewController: UITableViewController {
         relation?.addObject(PFevent!)
         user!.saveInBackground()
         createEventMatchbyEventChoice(PFevent!)
-    
+
     }
     @IBAction func noButton(sender: UIButton) {
             var k = event?.objectForKey("popularity") as? Int
