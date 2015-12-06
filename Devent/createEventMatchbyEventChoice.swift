@@ -37,7 +37,7 @@ func createEventMatchbyEventChoice(event: PFObject) {
                 var myOtherUserArray = [String]()
                 
                 do {
-                    let abcd = try otherUserQuery.findObjects()
+                    let abcd = try otherUserQuery!.findObjects()
                     
                     for object in abcd {
                         let name = object.objectId as String?
@@ -48,6 +48,14 @@ func createEventMatchbyEventChoice(event: PFObject) {
                 }
                 
                 if myOtherUserArray.contains(event.objectId!) {
+                    
+                    let alertController = DBAlertController(title: "Yeayyy", message: "You have a match", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    let imageView = UIImageView(frame: CGRectMake(220, 10, 40, 40))
+                    imageView.image = UIImage(named: "celebrate")
+                    alertController.view.addSubview(imageView)
+                    alertController.show()
+                    
                     
                     let jointEvent = PFObject(className: "MatchedEvent")
                     jointEvent.setObject(PFUser.currentUser()!.objectId!, forKey: "byUser")

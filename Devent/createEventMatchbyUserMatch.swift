@@ -56,6 +56,13 @@ func createEventMatchbyUserMatch(user: PFUser) {
 
     if(matchingEvents.count > 0) {
         
+        let alertController = DBAlertController(title: "Yeayyy", message: "You have a match", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        let imageView = UIImageView(frame: CGRectMake(220, 10, 40, 40))
+        imageView.image = UIImage(named: "celebrate")
+        alertController.view.addSubview(imageView)
+        alertController.show()
+        
         
         for event in matchingEvents {
             
