@@ -21,7 +21,7 @@ struct USER {
     static let openTo = "openTo"
     static let height = "height"
     static let tags = "tags"
-    static let evetns = "events"
+    static let events = "events"
     static let gender = "gender"
     static let genderInterestedIn = "genderInterestedIn"
     static let minAge = "minAge"
@@ -54,6 +54,7 @@ struct EventType {
     static let entertainment = "Entertainment"
     static let other = "Other"
 }
+
 
 // For event tableView cell identifiers
 struct EventTableViewCellIdentifier {

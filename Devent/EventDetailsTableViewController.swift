@@ -138,6 +138,8 @@ class EventDetailsTableViewController: UITableViewController {
             return width / self.featuredEventViewAspectRatio
         case 4:
             return 74
+        case 5:
+            return 60
         default:
             return UITableViewAutomaticDimension
         }
