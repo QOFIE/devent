@@ -106,7 +106,6 @@ class MyEventsTableViewController: PFQueryTableViewController {
             else {
                 if let event = selectedEvent {
                     edvc.event = event
-                    print ("set the event")
                 }
             }
         }
