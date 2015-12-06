@@ -1396,7 +1396,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JgN-N2-r1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3476" y="3130"/>
+            <point key="canvasLocation" x="3471" y="3140"/>
         </scene>
         <!--Photo Library-->
         <scene sceneID="0j0-hJ-qgV">
@@ -1962,6 +1962,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventDateAndPriceCell" id="hYj-Va-hbz">
                                         <rect key="frame" x="0.0" y="428" width="600" height="36"/>
@@ -2051,30 +2052,34 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="36"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xks-Ar-AZW">
-                                                    <rect key="frame" x="276" y="8" width="48" height="27.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xks-Ar-AZW">
+                                                    <rect key="frame" x="276" y="8" width="48" height="20"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="48" id="TEV-4d-BCq"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mus-cT-j9Z">
-                                                    <rect key="frame" x="332" y="8" width="30" height="27.5"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mus-cT-j9Z">
+                                                    <rect key="frame" x="332" y="8" width="44" height="44"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <state key="normal" title="NO">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Mus-cT-j9Z" secondAttribute="height" multiplier="60:60" id="52S-rX-eob"/>
+                                                    </constraints>
+                                                    <state key="normal" image="no-red">
                                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="noButton:" destination="dfJ-X2-2Lu" eventType="touchUpInside" id="V7w-Nw-Xb9"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdg-9P-igz">
-                                                    <rect key="frame" x="237" y="8" width="31" height="27.5"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdg-9P-igz">
+                                                    <rect key="frame" x="248" y="8" width="44" height="44"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <state key="normal" title="YES">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="qdg-9P-igz" secondAttribute="height" multiplier="1:1" id="ssx-Eu-i0F"/>
+                                                    </constraints>
+                                                    <state key="normal" image="yes-green">
                                                         <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
@@ -2419,10 +2424,12 @@
         <image name="heart-selected" width="31" height="28"/>
         <image name="menu" width="22" height="14"/>
         <image name="nah-button" width="75" height="75"/>
+        <image name="no-red" width="60" height="61"/>
         <image name="profile" width="31" height="31"/>
         <image name="profile-selected" width="30" height="31"/>
         <image name="welcome_bg" width="500" height="725"/>
         <image name="yeah-button" width="75" height="75"/>
+        <image name="yes-green" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cNA-CR-vvs"/>
