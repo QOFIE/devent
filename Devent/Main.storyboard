@@ -1130,7 +1130,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hQU-PM-GES">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hQU-PM-GES">
                                 <rect key="frame" x="290" y="443" width="20" height="20"/>
                                 <animations/>
                                 <constraints>
@@ -1138,7 +1138,7 @@
                                     <constraint firstAttribute="height" constant="20" id="udg-OZ-4Wr"/>
                                 </constraints>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBp-yL-r38">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBp-yL-r38">
                                 <rect key="frame" x="265" y="483" width="71" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -1164,7 +1164,7 @@
                     <navigationItem key="navigationItem" id="jYq-aB-sdo">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="9g5-K1-EfD">
                             <connections>
-                                <segue destination="K6h-5v-Nzh" kind="unwind" unwindAction="unwindToMacthesVC:" id="IeL-Zn-Aqc"/>
+                                <segue destination="K6h-5v-Nzh" kind="unwind" identifier="successPaySeque" unwindAction="unwindToMacthesVC:" id="IeL-Zn-Aqc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Scan Card" id="xGg-m8-Yjr">
@@ -1176,7 +1176,7 @@
                     <connections>
                         <outlet property="loadingSign" destination="hQU-PM-GES" id="TH0-Ix-lIV"/>
                         <outlet property="payButtonSon" destination="SBp-yL-r38" id="CLU-aV-JJa"/>
-                        <segue destination="9v2-IW-f6b" kind="presentation" identifier="successPaySeque" id="E3W-cd-0Zf"/>
+                        <segue destination="K6h-5v-Nzh" kind="unwind" unwindAction="unwindToMacthesVC:" id="Ba5-17-fdg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csB-k6-XTE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2407,6 +2407,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tO7-Ck-TcO"/>
-        <segue reference="E3W-cd-0Zf"/>
     </inferredMetricsTieBreakers>
 </document>
