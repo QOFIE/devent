@@ -129,8 +129,6 @@ func saveLike(user: User) {
                 
             }
             
-            
-            
             let match = PFObject(className: "Action")
             match.setObject(PFUser.currentUser()!.objectId!, forKey: "byUser")
             match.setObject(user.id, forKey: "toUser")
