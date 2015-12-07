@@ -58,9 +58,8 @@ func createEventMatchbyUserMatch(user: PFUser) {
         
         let otherUserName = user.objectForKey("firstName")
         
-        let alertController = DBAlertController(title: "Match!", message: "You have matching events with \(otherUserName)", preferredStyle: .Alert)
+        let alertController = DBAlertController(title: "Match!", message: "You have new matching events with \(otherUserName!), go check now! ", preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        alertController.addAction(UIAlertAction(title:"OK", style: .Default, handler:  { action in alertController.performSegueWithIdentifier("mySegueIdentifier", sender: alertController) }))
         //let imageView = UIImageView(frame: CGRectMake(220, 10, 40, 40))
         //imageView.image = UIImage(named: "celebrate")
         //alertController.view.addSubview(imageView)
