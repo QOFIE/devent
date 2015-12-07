@@ -11,11 +11,7 @@ import PassKit
 
 class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelegate, CardIOPaymentViewControllerDelegate {
 
-    @IBOutlet weak var eventName: UILabel!
-    @IBOutlet weak var eventPrice: UILabel!
     @IBOutlet weak var payButtonSon: UIButton!
-    @IBOutlet weak var eventPictureForPayment: UIImageView!
-    
     @IBOutlet weak var loadingSign: UIActivityIndicatorView!
     
     var groupId: String = ""
@@ -28,35 +24,20 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadingSign.hidden = true
+        payButtonSon.enabled = false
         
-        self.paymentTextField.frame = CGRectMake(screenSize.width*0.1, screenSize.height*0.7, screenSize.width*0.8, screenSize.height*0.1)
+        self.paymentTextField.frame = CGRectMake(screenSize.width*0.1, screenSize.height*0.4, screenSize.width*0.8, screenSize.height*0.15)
         paymentTextField.delegate = self
         view.addSubview(paymentTextField)
         
         let query = PFQuery(className: "Events").whereKey("objectId", equalTo: groupId)
-        
-        if(Reachability.isConnectedToNetwork() == false) {
-        query.fromLocalDatastore()}
-
         query.findObjectsInBackgroundWithBlock({object, error in
-            PFObject.unpinAllInBackground(object)
+            
             for action in object! {
-            action.pinInBackground()
-            self.eventName.text = action["name"] as? String
             let amount = action["price"] as? Int
             self.price = amount!
-            self.eventPrice.text = ("$\(amount!)")
-   
-            let initialThumbnail = UIImage(named: "question")
-            self.eventPictureForPayment.image = initialThumbnail
-            if let thumbnail = action["image"] as? PFFile{
-                thumbnail.getDataInBackgroundWithBlock({
-                    (imageData: NSData?, error: NSError?) -> Void in
-                    if (error == nil) {
-                        self.eventPictureForPayment.image = UIImage(data:imageData!)}
-                    })}
-           }
-        })
+            }
+                    })
     }
 
     func paymentCardTextFieldDidChange(textField: STPPaymentCardTextField) {
