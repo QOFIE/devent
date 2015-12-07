@@ -106,10 +106,10 @@ class EventDetailsTableViewController: UITableViewController {
                     (imageData: NSData?, error: NSError?) -> Void in
                     if (error == nil) {
                         if let image = UIImage(data:imageData!) {
-                            let width = self.view.bounds.size.width
-                            let size = CGSizeMake(width, width / self.featuredEventViewAspectRatio)
-                            let resizedImage = squareImage(image)
-                            self.eventImageView.image = resizedImage
+                            //let width = self.view.bounds.size.width
+                            //let size = CGSizeMake(width, width / self.featuredEventViewAspectRatio)
+                            //let resizedImage = squareImage(image)
+                            self.eventImageView.image = image
                         }
                     } else {
                         print("Event image cannot be retrieved from the network")

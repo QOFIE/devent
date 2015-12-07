@@ -85,7 +85,6 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         var sorting = SortBy.popularity
         if self.sortType != nil {
             sorting = self.sortType!
-            //print("The table needs to be sorted by \(sorting)")
             loadObjects()
             self.tableView.reloadData()
         }
@@ -124,16 +123,13 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         var cell: PFTableViewCell?
         
         if indexPath.row == 0 {
-            print("Index 0")
             if let featuredEventsCell = tableView.dequeueReusableCellWithIdentifier(EventTableViewCellIdentifier.featured) as? FeaturedEventsCell {
-                
                 featuredEventsCell.showDetailDelegate = self
                 return featuredEventsCell
             }
         }
             
         else if indexPath.row == 1 {
-            print("Index 1")
             if let sortingCell = tableView.dequeueReusableCellWithIdentifier(EventTableViewCellIdentifier.sorting) as? SortingCell {
                 sortingCell.delegate = self
                 return sortingCell
@@ -145,15 +141,12 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
                 // Extract values from the PFObject to display in the table cell
                 if let eventName = object?[EVENT.name] as? String {
                     eventCell.eventTitleLabel.text = eventName
-                    //print("Event name is: \(eventName)")
                 }
                 if let eventDate = object?[EVENT.date] as? String {
-                    //print("Event date is: \(eventDate)")
                     eventCell.eventDateLabel.text = eventDate
                 }
                 if let eventAddress = object?[EVENT.address] as? String {
                     eventCell.eventLocationLabel.text = eventAddress
-                    //print("Event is at: \(eventAddress)")
                 }
                 let defaultImage = UIImage(named: "default-event")
                 if let eventImage = object?[EVENT.image] as? PFFile {
@@ -209,12 +202,10 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if indexPath.row > 1 {
-            print("in the selection function")
             if let eventToPass = objectAtIndexPath(indexPath) {
                 selectedEvent = eventToPass
             }
             performSegueWithIdentifier("EventDetailsSegue", sender: self.navigationController)
-            print("end of the selection function")
         }
     }
     
@@ -298,7 +289,6 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
                     if (placemark.addressDictionary?["State"] != nil) {
                         let state = placemark.addressDictionary?["State"] as! String
                         if (PFUser.currentUser() != nil) {
-                            
                             PFUser.currentUser()!.setObject(state, forKey: "locationCity")
                             PFUser.currentUser()!.setObject((location?.coordinate.latitude.description)!, forKey: "latitude")
                             PFUser.currentUser()!.setObject((location?.coordinate.longitude.description)!, forKey: "longtitude")

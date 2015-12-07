@@ -47,7 +47,6 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
             
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved \(events!.count) featured events!")
                 // Do something with the found objects
                 if events != nil {
                     
@@ -107,8 +106,6 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print(featuredEventsArray![indexPath.row]["name"])
-        
         showDetailDelegate?.showDetail(featuredEventsArray![indexPath.row])
         
     }
