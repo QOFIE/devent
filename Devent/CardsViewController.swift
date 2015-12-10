@@ -36,15 +36,6 @@ class CardsViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-       // self.viewDidLoad()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
         cardStackView.backgroundColor = UIColor.clearColor()
         nahButton.setImage(UIImage(named: "nah-button-pressed"), forState: .Highlighted)
         yeahButton.setImage(UIImage(named: "yeah-button-pressed"), forState: .Highlighted)
@@ -70,6 +61,17 @@ class CardsViewController: UIViewController {
             //self.nameLabel.text = self.frontCard?.user.name
             self.nameLabel.text = ""
         })
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+       // self.viewDidLoad()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+   
         
         
     }
