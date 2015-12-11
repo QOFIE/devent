@@ -36,6 +36,31 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
         let defaultImage = UIImage(named: "default-event")
         cell.featuredEventImage.image = defaultImage
         
+        if featuredEventsArray != nil && featuredEventsArray!.count > 0 {
+            
+            print("oldu mu")
+        
+            if let eventImage = self.featuredEventsArray![indexPath.row][EVENT.image] as? PFFile {
+                eventImage.getDataInBackgroundWithBlock {
+                    (imageData: NSData?, error: NSError?) -> Void in
+                    if (error == nil) {
+                        cell.featuredEventImage.image = UIImage(data:imageData!)
+                        
+                        
+                    } else {
+                        print("Event image cannot be retrieved from the network")
+                    }
+                }
+            } else {
+                cell.featuredEventImage.image = defaultImage
+            }
+
+        
+        }
+        
+        else {
+        
+        
         let query = PFQuery(className: "Events").whereKey(EVENT.featured, equalTo: true)
         
         if (Reachability.isConnectedToNetwork() == false) {
@@ -63,8 +88,6 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
                         }
                     })
                     
-                
-                    let defaultImage = UIImage(named: "default-event")
                     if let eventImage = self.featuredEventsArray![indexPath.row][EVENT.image] as? PFFile {
                         eventImage.getDataInBackgroundWithBlock {
                             (imageData: NSData?, error: NSError?) -> Void in
@@ -86,7 +109,7 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
                 print("Error: \(error!) \(error!.userInfo)")
             }
         }
-
+        }
 
         let delay = 8.0 * Double(NSEC_PER_SEC)
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
