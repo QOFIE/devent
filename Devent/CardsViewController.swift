@@ -22,6 +22,7 @@ class CardsViewController: UIViewController {
     let backCardLeftMargin: CGFloat = 0
     
     
+    @IBOutlet weak var nameAgeLabel: UILabel!
     @IBOutlet weak var cardStackView: UIView!
     @IBOutlet weak var nahButton: UIButton!
     @IBOutlet weak var yeahButton: UIButton!
@@ -30,6 +31,7 @@ class CardsViewController: UIViewController {
     
     var backCard: Card?
     var frontCard: Card?
+    var nameAge: String?
     
     var users: [User]?
     
@@ -62,6 +64,9 @@ class CardsViewController: UIViewController {
                 self.backCard!.swipeView.frame = self.createCardFrame(self.backCardTopMargin, leftMargin: self.backCardLeftMargin)
                 self.cardStackView.insertSubview(self.backCard!.swipeView, belowSubview: self.frontCard!.swipeView)
             }
+            
+            self.nameAge = self.frontCard!.user.name + ", " + self.frontCard!.user.age
+            self.nameAgeLabel.text = self.nameAge
             
             //self.nameLabel.text = self.frontCard?.user.name
             self.nameLabel.text = ""
@@ -140,6 +145,10 @@ class CardsViewController: UIViewController {
         if let card = backCard {
             //self.nameLabel.text = self.backCard?.user.name
             self.nameLabel.text = ""
+            
+            self.nameAge = self.backCard!.user.name + ", " + self.backCard!.user.age
+            self.nameAgeLabel.text = self.nameAge
+            
             frontCard = card
             UIView.animateWithDuration(0.2, animations: {
                 self.frontCard!.swipeView.frame = self.createCardFrame(self.frontCardTopMargin, leftMargin: self.frontCardLeftMargin)
