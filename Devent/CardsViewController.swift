@@ -36,6 +36,11 @@ class CardsViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        frontCard?.cardView.removeFromSuperview()
+        backCard?.cardView.removeFromSuperview()
+        backCard?.swipeView.removeFromSuperview()
+    
+        
         cardStackView.backgroundColor = UIColor.clearColor()
         nahButton.setImage(UIImage(named: "nah-button-pressed"), forState: .Highlighted)
         yeahButton.setImage(UIImage(named: "yeah-button-pressed"), forState: .Highlighted)

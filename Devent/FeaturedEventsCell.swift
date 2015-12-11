@@ -37,8 +37,6 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
         cell.featuredEventImage.image = defaultImage
         
         if featuredEventsArray != nil && featuredEventsArray!.count > 0 {
-            
-            print("oldu mu")
         
             if let eventImage = self.featuredEventsArray![indexPath.row][EVENT.image] as? PFFile {
                 eventImage.getDataInBackgroundWithBlock {
