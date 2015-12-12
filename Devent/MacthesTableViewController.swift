@@ -147,7 +147,7 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
 
         else if PFUser.currentUser()?.objectId == firstPaidUserID as? String && secondPaidUserID as? String == nil {
             cell.paymentStatusLabel.text = "Waiting for \(otherUserName) to pay."
-            cell.payButtonOutlet.setTitle("", forState: .Normal)
+            cell.payButtonOutlet.setTitle("...", forState: .Normal)
             cell.paymentStatusLabel.textColor = UIColor.orangeColor()
             
         } else {
