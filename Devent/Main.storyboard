@@ -1203,7 +1203,7 @@
         <scene sceneID="2yU-bx-15P">
             <objects>
                 <tableViewController id="PTT-kG-tNm" customClass="MacthesTableViewController" customModule="Devent" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="ABK-M3-R4y">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="ABK-M3-R4y">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -1284,7 +1284,7 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" verticalHuggingPriority="300" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOp-LL-ZbU">
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" verticalHuggingPriority="300" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="iOp-LL-ZbU">
                                             <rect key="frame" x="562" y="8" width="30" height="63.5"/>
                                             <animations/>
                                             <constraints>

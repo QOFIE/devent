@@ -147,7 +147,7 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
 
         else if PFUser.currentUser()?.objectId == firstPaidUserID as? String && secondPaidUserID as? String == nil {
             cell.paymentStatusLabel.text = "Waiting for \(otherUserName) to pay."
-            cell.payButtonOutlet.setTitle("Pending \(otherUserName)", forState: .Normal)
+            cell.payButtonOutlet.setTitle("", forState: .Normal)
             cell.paymentStatusLabel.textColor = UIColor.orangeColor()
             
         } else {
@@ -227,7 +227,8 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     
     
     @IBAction func unwindToMacthesVC(segue: UIStoryboardSegue) {
-        // do nothing
+        // refresh
+        loadObjects()
     }
     
     override func viewDidLoad() {
