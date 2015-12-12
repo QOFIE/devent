@@ -98,8 +98,8 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
             cell = MacthesCustomCell(style: UITableViewCellStyle.Default, reuseIdentifier: "matchCell")
         }
         
-        cell.layer.borderWidth = 0.3
-        cell.layer.borderColor = UIColor.grayColor().CGColor
+//        cell.layer.borderWidth = 0.3
+//        cell.layer.borderColor = UIColor.grayColor().CGColor
         
         // Extract values from the PFObject to display in the table cell
     
@@ -216,6 +216,12 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     
     @IBAction func unwindToMacthesVC(segue: UIStoryboardSegue) {
         // do nothing
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
 }

@@ -13,6 +13,4 @@ class MacthesCustomCell: PFTableViewCell {
     @IBOutlet weak var matchedEventName: UILabel!
     @IBOutlet weak var matchedEventProfilePicture: UIImageView!
     @IBOutlet weak var payButtonOutlet: UIButton!
-
-
 }
