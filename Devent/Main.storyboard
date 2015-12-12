@@ -1217,22 +1217,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1p-sT-ffi">
-                                            <rect key="frame" x="80" y="8" width="482" height="19.5"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="312-e6-Wp0"/>
-                                                <constraint firstAttribute="width" constant="212" id="u0f-9D-QHS"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="312-e6-Wp0"/>
-                                                    <exclude reference="u0f-9D-QHS"/>
-                                                </mask>
-                                            </variation>
-                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="275" verticalHuggingPriority="275" translatesAutoresizingMaskIntoConstraints="NO" id="UIF-p8-m18">
                                             <rect key="frame" x="8" y="8" width="64" height="64"/>
                                             <animations/>
@@ -1250,15 +1234,31 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EventName" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdD-70-7br">
-                                            <rect key="frame" x="80" y="35.5" width="482" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1p-sT-ffi">
+                                            <rect key="frame" x="80" y="8" width="482" height="19.5"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="312-e6-Wp0"/>
+                                                <constraint firstAttribute="width" constant="212" id="u0f-9D-QHS"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="312-e6-Wp0"/>
+                                                    <exclude reference="u0f-9D-QHS"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EventName" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdD-70-7br">
+                                            <rect key="frame" x="80" y="29" width="482" height="17"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="27" id="Mge-RA-USq"/>
                                                 <constraint firstAttribute="width" constant="212" id="hOC-rA-Gc2"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                            <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -1267,8 +1267,25 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" verticalHuggingPriority="300" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOp-LL-ZbU">
-                                            <rect key="frame" x="562" y="8" width="30" height="30"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Status:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWF-vk-rOF">
+                                            <rect key="frame" x="80" y="48" width="482" height="17"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="212" id="OJx-4I-TXx"/>
+                                                <constraint firstAttribute="height" constant="27" id="np7-qy-tJU"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="np7-qy-tJU"/>
+                                                    <exclude reference="OJx-4I-TXx"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" verticalHuggingPriority="300" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOp-LL-ZbU">
+                                            <rect key="frame" x="562" y="8" width="30" height="63.5"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="33" id="2kJ-nl-oZ3"/>
@@ -1291,28 +1308,34 @@
                                     </subviews>
                                     <animations/>
                                     <constraints>
+                                        <constraint firstItem="NWF-vk-rOF" firstAttribute="top" secondItem="fdD-70-7br" secondAttribute="bottom" constant="2" id="0E9-bP-MUF"/>
                                         <constraint firstItem="fdD-70-7br" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" id="2sl-o8-Wpe"/>
                                         <constraint firstItem="fdD-70-7br" firstAttribute="top" secondItem="q1p-sT-ffi" secondAttribute="bottom" constant="8" id="9IM-qs-gHJ"/>
                                         <constraint firstItem="q1p-sT-ffi" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" symbolic="YES" id="A2d-xy-5Dj"/>
                                         <constraint firstItem="iOp-LL-ZbU" firstAttribute="top" secondItem="AhU-uw-Uu2" secondAttribute="topMargin" id="Cg7-TX-kOO"/>
                                         <constraint firstItem="q1p-sT-ffi" firstAttribute="top" secondItem="AhU-uw-Uu2" secondAttribute="topMargin" id="JGW-ys-nrb"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="NWF-vk-rOF" secondAttribute="bottom" constant="2" id="JKG-ph-yaM"/>
+                                        <constraint firstItem="NWF-vk-rOF" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" symbolic="YES" id="KF2-tQ-cXO"/>
                                         <constraint firstItem="UIF-p8-m18" firstAttribute="leading" secondItem="AhU-uw-Uu2" secondAttribute="leadingMargin" id="M8r-rc-ucw"/>
                                         <constraint firstItem="iOp-LL-ZbU" firstAttribute="leading" secondItem="fdD-70-7br" secondAttribute="trailing" id="RPT-Vu-9pi"/>
+                                        <constraint firstItem="iOp-LL-ZbU" firstAttribute="leading" secondItem="NWF-vk-rOF" secondAttribute="trailing" id="RQn-Yv-bKE"/>
                                         <constraint firstItem="q1p-sT-ffi" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" id="Smv-Jd-vTh"/>
                                         <constraint firstItem="UIF-p8-m18" firstAttribute="top" secondItem="AhU-uw-Uu2" secondAttribute="topMargin" id="Uv9-Ku-nMF"/>
-                                        <constraint firstItem="fdD-70-7br" firstAttribute="top" secondItem="q1p-sT-ffi" secondAttribute="bottom" constant="8" symbolic="YES" id="VZh-i8-b4Q"/>
+                                        <constraint firstItem="fdD-70-7br" firstAttribute="top" secondItem="q1p-sT-ffi" secondAttribute="bottom" constant="2" id="VZh-i8-b4Q"/>
                                         <constraint firstItem="iOp-LL-ZbU" firstAttribute="trailing" secondItem="AhU-uw-Uu2" secondAttribute="trailingMargin" id="aki-jW-fSg"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="NWF-vk-rOF" secondAttribute="bottom" id="cwj-pw-tYo"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="iOp-LL-ZbU" secondAttribute="bottom" id="kOQ-4v-JKK"/>
                                         <constraint firstItem="iOp-LL-ZbU" firstAttribute="leading" secondItem="q1p-sT-ffi" secondAttribute="trailing" id="suK-Gp-Jdv"/>
                                         <constraint firstItem="fdD-70-7br" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" symbolic="YES" id="um8-Nc-ER7"/>
                                         <constraint firstItem="iOp-LL-ZbU" firstAttribute="centerY" secondItem="AhU-uw-Uu2" secondAttribute="centerY" id="xVh-Aw-5UI"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="UIF-p8-m18" secondAttribute="bottom" id="zQ7-Xo-d34"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="UIF-p8-m18" secondAttribute="bottom" id="zQ7-Xo-d34"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="Smv-Jd-vTh"/>
                                             <exclude reference="2sl-o8-Wpe"/>
                                             <exclude reference="9IM-qs-gHJ"/>
+                                            <exclude reference="cwj-pw-tYo"/>
                                             <exclude reference="xVh-Aw-5UI"/>
                                         </mask>
                                     </variation>
@@ -1323,6 +1346,7 @@
                                     <outlet property="matchedEventProfilePicture" destination="UIF-p8-m18" id="74x-h5-3pN"/>
                                     <outlet property="matchedUserName" destination="q1p-sT-ffi" id="d8T-bt-OuS"/>
                                     <outlet property="payButtonOutlet" destination="iOp-LL-ZbU" id="dK6-3X-Lqe"/>
+                                    <outlet property="paymentStatusLabel" destination="NWF-vk-rOF" id="tIL-6R-SdU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
