@@ -22,6 +22,7 @@ class CardsViewController: UIViewController {
     let backCardLeftMargin: CGFloat = 0
     
     
+    @IBOutlet weak var nameAgeLabel: UILabel!
     @IBOutlet weak var cardStackView: UIView!
     @IBOutlet weak var nahButton: UIButton!
     @IBOutlet weak var yeahButton: UIButton!
@@ -30,20 +31,17 @@ class CardsViewController: UIViewController {
     
     var backCard: Card?
     var frontCard: Card?
+    var nameAge: String?
     
     var users: [User]?
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-    }
+        frontCard?.cardView.removeFromSuperview()
+        backCard?.cardView.removeFromSuperview()
+        backCard?.swipeView.removeFromSuperview()
     
-    override func viewDidAppear(animated: Bool) {
-       // self.viewDidLoad()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         cardStackView.backgroundColor = UIColor.clearColor()
         nahButton.setImage(UIImage(named: "nah-button-pressed"), forState: .Highlighted)
@@ -67,9 +65,23 @@ class CardsViewController: UIViewController {
                 self.cardStackView.insertSubview(self.backCard!.swipeView, belowSubview: self.frontCard!.swipeView)
             }
             
+            self.nameAge = self.frontCard!.user.name + ", " + self.frontCard!.user.age
+            self.nameAgeLabel.text = self.nameAge
+            
             //self.nameLabel.text = self.frontCard?.user.name
             self.nameLabel.text = ""
         })
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+       // self.viewDidLoad()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+   
         
         
     }
@@ -133,6 +145,10 @@ class CardsViewController: UIViewController {
         if let card = backCard {
             //self.nameLabel.text = self.backCard?.user.name
             self.nameLabel.text = ""
+            
+            self.nameAge = self.backCard!.user.name + ", " + self.backCard!.user.age
+            self.nameAgeLabel.text = self.nameAge
+            
             frontCard = card
             UIView.animateWithDuration(0.2, animations: {
                 self.frontCard!.swipeView.frame = self.createCardFrame(self.frontCardTopMargin, leftMargin: self.frontCardLeftMargin)

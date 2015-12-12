@@ -327,6 +327,15 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         }
     }
     
+    func fillCollectionView() {
+        
+        
+    
+    
+    }
+    
+    
+    
 }
 
 extension EventsTableViewController: ShowDetailDelegate {

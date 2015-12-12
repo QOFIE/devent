@@ -11,6 +11,7 @@ import Foundation
 struct User {
     let id: String
     let name: String
+    let age: String
     var pfUser: PFUser
     
     func getPhoto(callback: (UIImage) -> ()) {
@@ -31,12 +32,18 @@ struct User {
 
 func pfUserToUser(user: PFUser) -> User {
     let name = user.objectForKey("firstName") as? String
-    let userName: String = ""
+    let age = user.objectForKey("userAge") as? String
+    var userName: String = ""
+    var userAge: String = ""
     if (name != nil) {
-        let userName = name
+        userName = name!
     }
     
-    return User(id: user.objectId!, name: userName, pfUser: user)
+    if (age != nil) {
+    userAge = age!
+    }
+    
+    return User(id: user.objectId!, name: userName, age: userAge, pfUser: user)
 }
 
 func currentUser() -> User? {
@@ -128,8 +135,6 @@ func saveLike(user: User) {
                 object!.saveInBackgroundWithBlock(nil)
                 
             }
-            
-            
             
             let match = PFObject(className: "Action")
             match.setObject(PFUser.currentUser()!.objectId!, forKey: "byUser")

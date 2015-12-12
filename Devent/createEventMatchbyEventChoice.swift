@@ -17,6 +17,8 @@ func createEventMatchbyEventChoice(event: PFObject) {
     mainquery.findObjectsInBackgroundWithBlock({
         object, error in
         
+        var alertShown = false
+        
         for action in object! {
             
             if action.objectId != nil {
@@ -37,7 +39,7 @@ func createEventMatchbyEventChoice(event: PFObject) {
                 var myOtherUserArray = [String]()
                 
                 do {
-                    let abcd = try otherUserQuery.findObjects()
+                    let abcd = try otherUserQuery!.findObjects()
                     
                     for object in abcd {
                         let name = object.objectId as String?
@@ -49,13 +51,16 @@ func createEventMatchbyEventChoice(event: PFObject) {
                 
                 if myOtherUserArray.contains(event.objectId!) {
                     
-                    let alertController = DBAlertController(title: "Yeayyy", message: "You have a match", preferredStyle: .Alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                    let imageView = UIImageView(frame: CGRectMake(220, 10, 40, 40))
-                    imageView.image = UIImage(named: "celebrate")
-                    alertController.view.addSubview(imageView)
-                    alertController.show()
+                    if(alertShown == false) {
                     
+                    let alertController = DBAlertController(title: "Match!", message: "You have matching users for \(event["name"]!), go check now! ", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    //let imageView = UIImageView(frame: CGRectMake(220, 10, 40, 40))
+                    //imageView.image = UIImage(named: "celebrate")
+                    //alertController.view.addSubview(imageView)
+                    alertController.show()
+                    alertShown = true;
+                    }
                     
                     let jointEvent = PFObject(className: "MatchedEvent")
                     jointEvent.setObject(PFUser.currentUser()!.objectId!, forKey: "byUser")
