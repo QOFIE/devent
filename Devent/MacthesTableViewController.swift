@@ -10,32 +10,13 @@ import UIKit
 
 class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegate {
     
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-    
-    
     var eventId = ""
     var eventNameId = ""
     var byUserId = ""
     var toUserId = ""
     var localStore = [PFObject]()
     var shouldUpdateFromServer:Bool = true
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        searchBar.delegate = self
-        
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-     
-    }
-    
-    
+  
     // Initialise the PFQueryTable tableview
     override init(style: UITableViewStyle, className: String!) {
         super.init(style: style, className: className)
@@ -57,21 +38,13 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     func baseQuery() -> PFQuery {
         let query = PFQuery(className: "MatchedEvent").whereKey("byUser", equalTo: PFUser.currentUser()!.objectId!)
         let query2 = PFQuery(className: "MatchedEvent").whereKey("toUser", equalTo: PFUser.currentUser()!.objectId!)
-        
-        if searchBar.text == "" {
-            let query3 = PFQuery.orQueryWithSubqueries([query, query2])
-            query3.orderByAscending("matchedEventName")
-            return query3 }
-            
-        else {
-            let query3 = PFQuery.orQueryWithSubqueries([query, query2]).whereKey("matchedEventName", containsString: searchBar.text)
-            query3.orderByAscending("matchedEventName")
-            return query3 }
+        let query3 = PFQuery.orQueryWithSubqueries([query, query2])
+        query3.orderByAscending("matchedEventName")
+        return query3
     }
     
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery{
-        
         return baseQuery().fromLocalDatastore()
         
     }
@@ -240,9 +213,6 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        self.loadObjects()
-    }
     
     @IBAction func unwindToMacthesVC(segue: UIStoryboardSegue) {
         // do nothing
