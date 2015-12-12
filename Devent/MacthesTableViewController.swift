@@ -241,7 +241,6 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        
         self.loadObjects()
     }
     
