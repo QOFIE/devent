@@ -10,32 +10,13 @@ import UIKit
 
 class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegate {
     
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-    
-    
     var eventId = ""
     var eventNameId = ""
     var byUserId = ""
     var toUserId = ""
     var localStore = [PFObject]()
     var shouldUpdateFromServer:Bool = true
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        searchBar.delegate = self
-        
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-     
-    }
-    
-    
+  
     // Initialise the PFQueryTable tableview
     override init(style: UITableViewStyle, className: String!) {
         super.init(style: style, className: className)
@@ -57,21 +38,13 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     func baseQuery() -> PFQuery {
         let query = PFQuery(className: "MatchedEvent").whereKey("byUser", equalTo: PFUser.currentUser()!.objectId!)
         let query2 = PFQuery(className: "MatchedEvent").whereKey("toUser", equalTo: PFUser.currentUser()!.objectId!)
-        
-        if searchBar.text == "" {
-            let query3 = PFQuery.orQueryWithSubqueries([query, query2])
-            query3.orderByAscending("matchedEventName")
-            return query3 }
-            
-        else {
-            let query3 = PFQuery.orQueryWithSubqueries([query, query2]).whereKey("matchedEventName", containsString: searchBar.text)
-            query3.orderByAscending("matchedEventName")
-            return query3 }
+        let query3 = PFQuery.orQueryWithSubqueries([query, query2])
+        query3.orderByAscending("matchedEventName")
+        return query3
     }
     
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery{
-        
         return baseQuery().fromLocalDatastore()
         
     }
@@ -124,16 +97,15 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         if cell == nil {
             cell = MacthesCustomCell(style: UITableViewCellStyle.Default, reuseIdentifier: "matchCell")
         }
-        
-        cell.layer.borderWidth = 0.3
-        cell.layer.borderColor = UIColor.grayColor().CGColor
+        var currentUserName: String = ""
+        var otherUserName: String = ""
         
         // Extract values from the PFObject to display in the table cell
-    
         let username = object?["toUser"] as? String
-            
             if (username == PFUser.currentUser()?.objectId) {
-                cell.matchedUserName.text = object?["byUserName"] as? String
+                otherUserName = object?["byUserName"] as! String
+                currentUserName = object?["toUserName"] as! String
+                cell.matchedUserName.text = otherUserName
                 if let thumbnail = object?["byUserPicture"] as? PFFile{
                     thumbnail.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error: NSError?) -> Void in
@@ -143,7 +115,9 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
                     })
                 }
             } else {
-                cell.matchedUserName.text = object?["toUserName"] as? String
+                otherUserName = object?["toUserName"] as! String
+                currentUserName = object?["byUserName"] as! String
+                cell.matchedUserName.text = otherUserName
                 if let thumbnail = object?["toUserPicture"] as? PFFile{
                     thumbnail.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error: NSError?) -> Void in
@@ -158,17 +132,28 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
 
         cell.matchedEventName.text = object?["matchedEventName"] as? String
         
-        if PFUser.currentUser()?.objectId != object?["PaidUserId1"] as? String && PFUser.currentUser()?.objectId != object?["PaidUserId2"] as? String{
-            
+        let firstPaidUserID = object?["PaidUserId1"]
+        let secondPaidUserID = object?["PaidUserId2"]
+        
+        if PFUser.currentUser()?.objectId != firstPaidUserID as? String && PFUser.currentUser()?.objectId != secondPaidUserID as? String {
+            cell.paymentStatusLabel.text = "No one has paid yet :("
+            cell.paymentStatusLabel.textColor = UIColor.redColor()
             cell.payButtonOutlet.setTitle("Pay", forState: .Normal)
-            
-        } else if PFUser.currentUser()?.objectId == object?["PaidUserId1"] as? String && object?["PaidUserId2"] as? String == nil {
-            
-            cell.payButtonOutlet.setTitle("Paid", forState: .Normal)
+            if firstPaidUserID != nil {
+                cell.paymentStatusLabel.text = "\(otherUserName) has paid. Your move to make it a date!"
+                cell.paymentStatusLabel.textColor = UIColor.orangeColor()
+            }
+        }
+
+        else if PFUser.currentUser()?.objectId == firstPaidUserID as? String && secondPaidUserID as? String == nil {
+            cell.paymentStatusLabel.text = "Waiting for \(otherUserName) to pay."
+            cell.payButtonOutlet.setTitle("...", forState: .Normal)
+            cell.paymentStatusLabel.textColor = UIColor.orangeColor()
             
         } else {
-            
+            cell.paymentStatusLabel.text = "You both paid! Say hi!"
             cell.payButtonOutlet.setTitle("Message", forState: .Normal)
+            cell.paymentStatusLabel.textColor = UIColor.greenColor()
             
         }
         
@@ -240,13 +225,16 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        self.loadObjects()
-    }
     
     @IBAction func unwindToMacthesVC(segue: UIStoryboardSegue) {
-        // do nothing
+        // refresh
+        loadObjects()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
 }
