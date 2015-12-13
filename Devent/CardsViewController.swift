@@ -41,6 +41,7 @@ class CardsViewController: UIViewController {
         frontCard?.cardView.removeFromSuperview()
         backCard?.cardView.removeFromSuperview()
         backCard?.swipeView.removeFromSuperview()
+
     
         
         cardStackView.backgroundColor = UIColor.clearColor()
@@ -64,9 +65,10 @@ class CardsViewController: UIViewController {
                 self.backCard!.swipeView.frame = self.createCardFrame(self.backCardTopMargin, leftMargin: self.backCardLeftMargin)
                 self.cardStackView.insertSubview(self.backCard!.swipeView, belowSubview: self.frontCard!.swipeView)
             }
-            
+            if (self.frontCard != nil) {
             self.nameAge = self.frontCard!.user.name + ", " + self.frontCard!.user.age
             self.nameAgeLabel.text = self.nameAge
+            }
             
             //self.nameLabel.text = self.frontCard?.user.name
             self.nameLabel.text = ""
@@ -149,6 +151,8 @@ class CardsViewController: UIViewController {
             self.nameAge = self.backCard!.user.name + ", " + self.backCard!.user.age
             self.nameAgeLabel.text = self.nameAge
             
+            
+            
             frontCard = card
             UIView.animateWithDuration(0.2, animations: {
                 self.frontCard!.swipeView.frame = self.createCardFrame(self.frontCardTopMargin, leftMargin: self.frontCardLeftMargin)
@@ -159,6 +163,9 @@ class CardsViewController: UIViewController {
             backCard = card
             backCard!.swipeView.frame = createCardFrame(backCardTopMargin, leftMargin: backCardLeftMargin)
             cardStackView.insertSubview(backCard!.swipeView, belowSubview: frontCard!.swipeView)
+            
+            print("lalalala")
+            print(backCard)
         }
     }
     
@@ -178,6 +185,7 @@ extension CardsViewController: SwipeViewDelegate {
             frontCard.swipeView.removeFromSuperview()
             saveSkip(frontCard.user)
             switchCards()
+            
         }
     }
     
@@ -187,6 +195,7 @@ extension CardsViewController: SwipeViewDelegate {
             frontCard.swipeView.removeFromSuperview()
             saveLike(frontCard.user)
             switchCards()
+
         }
     }
     
