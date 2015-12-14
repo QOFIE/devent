@@ -76,7 +76,7 @@ class DiscoverProfilePage: UITableViewController {
             name += "\(firstName)"
         }
         if let lastName = user2.objectForKey(USER.lastName) as? String {
-            name += " \(lastName)"
+            name += ""
         }
         return name
     }

@@ -32,11 +32,15 @@ class CardsViewController: UIViewController {
     var backCard: Card?
     var frontCard: Card?
     var nameAge: String?
+    var i: Int = 0
     
     var users: [User]?
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.nameAgeLabel.hidden = true
+        i = 0
         
         frontCard?.cardView.removeFromSuperview()
         backCard?.cardView.removeFromSuperview()
@@ -67,10 +71,9 @@ class CardsViewController: UIViewController {
             }
             if (self.frontCard != nil) {
             self.nameAge = self.frontCard!.user.name + ", " + self.frontCard!.user.age
+            self.nameAgeLabel.hidden = false
             self.nameAgeLabel.text = self.nameAge
             }
-            
-            //self.nameLabel.text = self.frontCard?.user.name
             self.nameLabel.text = ""
         })
         
@@ -90,7 +93,6 @@ class CardsViewController: UIViewController {
     
     func imageTapped(img: AnyObject)
     {
-        //let user3 = frontCard?.user.pfUser
         performSegueWithIdentifier("deneme5", sender: self)
     }
     
@@ -145,14 +147,10 @@ class CardsViewController: UIViewController {
     
     private func switchCards() {
         if let card = backCard {
-            //self.nameLabel.text = self.backCard?.user.name
             self.nameLabel.text = ""
-            
             self.nameAge = self.backCard!.user.name + ", " + self.backCard!.user.age
             self.nameAgeLabel.text = self.nameAge
-            
-            
-            
+
             frontCard = card
             UIView.animateWithDuration(0.2, animations: {
                 self.frontCard!.swipeView.frame = self.createCardFrame(self.frontCardTopMargin, leftMargin: self.frontCardLeftMargin)
@@ -164,8 +162,14 @@ class CardsViewController: UIViewController {
             backCard!.swipeView.frame = createCardFrame(backCardTopMargin, leftMargin: backCardLeftMargin)
             cardStackView.insertSubview(backCard!.swipeView, belowSubview: frontCard!.swipeView)
             
-            print("lalalala")
-            print(backCard)
+        }
+        else {
+            i++
+            if (i == 2) {
+                self.nameAgeLabel.hidden = true
+
+            }
+
         }
     }
     
@@ -180,7 +184,6 @@ class CardsViewController: UIViewController {
 extension CardsViewController: SwipeViewDelegate {
     
     func swipedLeft() {
-        print("left")
         if let frontCard = frontCard {
             frontCard.swipeView.removeFromSuperview()
             saveSkip(frontCard.user)
@@ -190,7 +193,6 @@ extension CardsViewController: SwipeViewDelegate {
     }
     
     func swipedRight() {
-        print("right")
         if let frontCard = frontCard {
             frontCard.swipeView.removeFromSuperview()
             saveLike(frontCard.user)
