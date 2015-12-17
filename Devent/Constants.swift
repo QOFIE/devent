@@ -29,6 +29,14 @@ struct USER {
     static let categoryChoices = "categoryChoices"
 }
 
+// For gender preferences
+
+struct Gender {
+    static let man = "Man"
+    static let woman = "Woman"
+    static let both = "Man & Woman"
+}
+
 // For event attributes
 struct EVENT {
     static let name = "name"
