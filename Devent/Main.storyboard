@@ -1279,8 +1279,8 @@
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="np7-qy-tJU"/>
                                                     <exclude reference="OJx-4I-TXx"/>
+                                                    <exclude reference="np7-qy-tJU"/>
                                                 </mask>
                                             </variation>
                                         </label>

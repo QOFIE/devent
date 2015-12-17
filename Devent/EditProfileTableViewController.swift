@@ -11,13 +11,15 @@ import UIKit
 // TO DO:
 // 1) Add Events
 // 2) Add Tags
-// 3) Connect age range
+
 
 class EditProfileTableViewController: UITableViewController, UITextViewDelegate {
     
     // MARK: GENERAL PROPERTIES //
     
     let user = PFUser.currentUser()
+    var gender: String?
+    var genderInterestedIn: String?
     
     // MARK: GENERAL ACTIONS //
     
@@ -78,6 +80,15 @@ class EditProfileTableViewController: UITableViewController, UITextViewDelegate 
             user?.setObject(aboutMeTextView.text, forKey: USER.about)
         }
         
+        // Save the gender
+        if let genderInput = self.gender {
+            user?.setObject(genderInput, forKey: "gender")
+        }
+        
+        // Save the gender interested in 
+        if let genderInterestedInInput = self.genderInterestedIn {
+            user?.setObject(genderInterestedInInput, forKey: "genderInterestedIn")
+        }
         
         user?.saveInBackground()
         
@@ -87,8 +98,8 @@ class EditProfileTableViewController: UITableViewController, UITextViewDelegate 
     
     @IBAction func genderButton(sender: UIButton) {
         let actionSheet = UIAlertController(title: "I am a", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        addGenderAction("Man", actionSheet: actionSheet, sender: sender)
-        addGenderAction("Woman", actionSheet: actionSheet, sender: sender)
+        addGenderAction(Gender.man, actionSheet: actionSheet, sender: sender)
+        addGenderAction(Gender.woman, actionSheet: actionSheet, sender: sender)
         actionSheet.addAction(UIAlertAction(
             title: "Cancel",
             style: UIAlertActionStyle.Cancel) {
@@ -101,9 +112,9 @@ class EditProfileTableViewController: UITableViewController, UITextViewDelegate 
     
     @IBAction func genderInterestedInButton(sender: UIButton) {
         let actionSheet = UIAlertController(title: "Interested in", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        addGenderAction("Man", actionSheet: actionSheet, sender: sender)
-        addGenderAction("Woman", actionSheet: actionSheet, sender: sender)
-        addGenderAction("Man & Woman", actionSheet: actionSheet, sender: sender)
+        addGenderAction(Gender.man, actionSheet: actionSheet, sender: sender)
+        addGenderAction(Gender.woman, actionSheet: actionSheet, sender: sender)
+        addGenderAction(Gender.both, actionSheet: actionSheet, sender: sender)
         actionSheet.addAction(UIAlertAction(
             title: "Cancel",
             style: UIAlertActionStyle.Cancel) {
@@ -120,6 +131,11 @@ class EditProfileTableViewController: UITableViewController, UITextViewDelegate 
             style: UIAlertActionStyle.Default) {
                 (action: UIAlertAction) -> Void in
                 sender.setTitle(gender, forState: UIControlState.Normal)
+                if actionSheet.title == "I am a" {
+                    self.gender = gender
+                } else if actionSheet.title == "Interested in" {
+                    self.genderInterestedIn = gender
+                }
             }
         )
     }
