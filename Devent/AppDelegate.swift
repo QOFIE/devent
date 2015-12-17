@@ -33,6 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         FBSDKAppEvents.activateApp()
+        
+        if (PFInstallation.currentInstallation().badge != 0) {
+            PFInstallation.currentInstallation().badge = 0
+            PFInstallation.currentInstallation().saveInBackground()
+        }
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {

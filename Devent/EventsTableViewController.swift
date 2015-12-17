@@ -50,6 +50,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
             PFObject.unpinAllInBackground(self.objects as? [PFObject], block: { (succeeded: Bool, error: NSError?) -> Void in
                 if error == nil {
                     
+                    if(object != nil) {
                     for action in object! {
                         self.localStore.append(action) }
                     
@@ -63,6 +64,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
                         }
                     })
                     
+                }
                 }
                 else {
                     print("Failed to unpin objects")
