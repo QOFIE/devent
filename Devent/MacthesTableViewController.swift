@@ -132,6 +132,25 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
 
         cell.matchedEventName.text = object?["matchedEventName"] as? String
         
+        let date = NSDate()
+        let createdDate = object?.createdAt
+        let differenceDate = (24*60*60) - date.timeIntervalSinceDate(createdDate!)
+        let differencePercentage = 1 - (differenceDate / (24*60*60))
+        print(differencePercentage)
+        let differenceHour = Int(differenceDate) / 3600
+        let differenceMinute = (Int(differenceDate) % 3600) / 60
+        
+        if (differenceDate <= 0.0) {
+        cell.timeLeftLabel.hidden = true
+        cell.progressBar.hidden = true
+        
+        }
+        else {
+        cell.timeLeftLabel.text = " \(differenceHour)h" + ", \(differenceMinute)m left "
+        cell.progressBar.setProgress(Float(differencePercentage), animated: false)
+        }
+        
+        
         let firstPaidUserID = object?["PaidUserId1"]
         let secondPaidUserID = object?["PaidUserId2"]
         
@@ -236,5 +255,6 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
     }
+
     
 }

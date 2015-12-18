@@ -96,7 +96,17 @@ func fetchUnviewedUsers(callback: ([User] -> ())) {
                         //calculateUserDistance.realDistance(i) < 50.0
                        
                         if(matchingEvents.count > 0) {
-                            userArray.append(k)
+                            let genderInterestedIn = PFUser.currentUser()?.objectForKey("genderInterestedIn") as? String
+                            let gender = PFUser.currentUser()?.objectForKey("gender") as? String
+                            let otherGenderInterestedIn = k.objectForKey("genderInterestedIn") as? String
+                            let otherGender = k.objectForKey("gender") as? String
+                            
+                            if (genderInterestedIn != nil && gender != nil && otherGenderInterestedIn != nil && otherGender != nil) {
+                                
+                                if(genderInterestedIn!.rangeOfString(otherGender!) != nil && otherGenderInterestedIn!.rangeOfString(gender!) != nil) {
+                                    userArray.append(k)
+                                }
+                            }
                         }
                         
                     }

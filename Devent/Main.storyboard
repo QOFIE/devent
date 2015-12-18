@@ -1238,7 +1238,7 @@
                                             <rect key="frame" x="8" y="66" width="64" height="2"/>
                                             <animations/>
                                         </progressView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ke-CL-RtT">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="4Ke-CL-RtT">
                                             <rect key="frame" x="8" y="51" width="64" height="13.5"/>
                                             <animations/>
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1369,6 +1369,8 @@
                                     <outlet property="matchedUserName" destination="q1p-sT-ffi" id="d8T-bt-OuS"/>
                                     <outlet property="payButtonOutlet" destination="iOp-LL-ZbU" id="dK6-3X-Lqe"/>
                                     <outlet property="paymentStatusLabel" destination="NWF-vk-rOF" id="tIL-6R-SdU"/>
+                                    <outlet property="progressBar" destination="t1o-3i-qia" id="3J5-zf-8Sb"/>
+                                    <outlet property="timeLeftLabel" destination="4Ke-CL-RtT" id="HrM-ln-oze"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
