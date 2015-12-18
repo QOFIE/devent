@@ -1234,6 +1234,18 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="t1o-3i-qia">
+                                            <rect key="frame" x="8" y="66" width="64" height="2"/>
+                                            <animations/>
+                                        </progressView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ke-CL-RtT">
+                                            <rect key="frame" x="8" y="51" width="64" height="13.5"/>
+                                            <animations/>
+                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1p-sT-ffi">
                                             <rect key="frame" x="80" y="8" width="482" height="19.5"/>
                                             <animations/>
@@ -1309,10 +1321,15 @@
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="NWF-vk-rOF" firstAttribute="top" secondItem="fdD-70-7br" secondAttribute="bottom" constant="2" id="0E9-bP-MUF"/>
+                                        <constraint firstItem="t1o-3i-qia" firstAttribute="top" secondItem="4Ke-CL-RtT" secondAttribute="bottom" constant="1" id="0gF-tj-Qje"/>
+                                        <constraint firstItem="t1o-3i-qia" firstAttribute="width" secondItem="UIF-p8-m18" secondAttribute="width" id="15Z-XM-xCr"/>
                                         <constraint firstItem="fdD-70-7br" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" id="2sl-o8-Wpe"/>
+                                        <constraint firstItem="4Ke-CL-RtT" firstAttribute="centerX" secondItem="UIF-p8-m18" secondAttribute="centerX" id="3Fh-iB-XAw"/>
                                         <constraint firstItem="fdD-70-7br" firstAttribute="top" secondItem="q1p-sT-ffi" secondAttribute="bottom" constant="8" id="9IM-qs-gHJ"/>
                                         <constraint firstItem="q1p-sT-ffi" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" symbolic="YES" id="A2d-xy-5Dj"/>
+                                        <constraint firstItem="t1o-3i-qia" firstAttribute="centerY" secondItem="UIF-p8-m18" secondAttribute="centerY" id="BXZ-pk-Pl2"/>
                                         <constraint firstItem="iOp-LL-ZbU" firstAttribute="top" secondItem="AhU-uw-Uu2" secondAttribute="topMargin" id="Cg7-TX-kOO"/>
+                                        <constraint firstItem="t1o-3i-qia" firstAttribute="baseline" secondItem="UIF-p8-m18" secondAttribute="baseline" constant="-4" id="HjD-jZ-GFy"/>
                                         <constraint firstItem="q1p-sT-ffi" firstAttribute="top" secondItem="AhU-uw-Uu2" secondAttribute="topMargin" id="JGW-ys-nrb"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="NWF-vk-rOF" secondAttribute="bottom" constant="2" id="JKG-ph-yaM"/>
                                         <constraint firstItem="NWF-vk-rOF" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" symbolic="YES" id="KF2-tQ-cXO"/>
@@ -1325,13 +1342,18 @@
                                         <constraint firstItem="iOp-LL-ZbU" firstAttribute="trailing" secondItem="AhU-uw-Uu2" secondAttribute="trailingMargin" id="aki-jW-fSg"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="NWF-vk-rOF" secondAttribute="bottom" id="cwj-pw-tYo"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="iOp-LL-ZbU" secondAttribute="bottom" id="kOQ-4v-JKK"/>
+                                        <constraint firstItem="4Ke-CL-RtT" firstAttribute="trailing" secondItem="UIF-p8-m18" secondAttribute="trailing" id="lBO-WW-iIx"/>
+                                        <constraint firstItem="4Ke-CL-RtT" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="leading" id="pKn-ZX-3K3"/>
                                         <constraint firstItem="iOp-LL-ZbU" firstAttribute="leading" secondItem="q1p-sT-ffi" secondAttribute="trailing" id="suK-Gp-Jdv"/>
                                         <constraint firstItem="fdD-70-7br" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" symbolic="YES" id="um8-Nc-ER7"/>
                                         <constraint firstItem="iOp-LL-ZbU" firstAttribute="centerY" secondItem="AhU-uw-Uu2" secondAttribute="centerY" id="xVh-Aw-5UI"/>
+                                        <constraint firstItem="t1o-3i-qia" firstAttribute="centerX" secondItem="UIF-p8-m18" secondAttribute="centerX" id="yoL-Sp-PfX"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="UIF-p8-m18" secondAttribute="bottom" id="zQ7-Xo-d34"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
+                                            <exclude reference="3Fh-iB-XAw"/>
+                                            <exclude reference="BXZ-pk-Pl2"/>
                                             <exclude reference="Smv-Jd-vTh"/>
                                             <exclude reference="2sl-o8-Wpe"/>
                                             <exclude reference="9IM-qs-gHJ"/>
