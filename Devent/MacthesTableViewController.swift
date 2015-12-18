@@ -97,6 +97,11 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         if cell == nil {
             cell = MacthesCustomCell(style: UITableViewCellStyle.Default, reuseIdentifier: "matchCell")
         }
+        
+        cell.timeLeftLabel.hidden = true
+        cell.progressBar.hidden = true
+        
+        
         var currentUserName: String = ""
         var otherUserName: String = ""
         
