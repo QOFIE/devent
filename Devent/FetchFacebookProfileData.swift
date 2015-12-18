@@ -100,7 +100,17 @@ public class FetchFacebookProfileData {
                 // Save gender
                 if(userGender != nil)
                 {
-                    myUser.setObject(userGender!, forKey: "gender")
+                    if (userGender == "male"){
+                        myUser.setObject("Man", forKey: "gender")
+                        myUser.setObject("Woman", forKey: "genderInterestedIn")
+                    }
+                    else if (userGender == "female") {
+                        myUser.setObject("Woman", forKey: "gender")
+                        myUser.setObject("Man", forKey: "genderInterestedIn")
+                    }
+                    else {
+                        myUser.setObject("Man & Woman", forKey: "genderInterestedIn")
+                    }
                     
                 }
                 
