@@ -81,14 +81,23 @@ class CardsViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
        // self.viewDidLoad()
+        
+        let genderInterestedIn = PFUser.currentUser()?.objectForKey("genderInterestedIn") as? String
+        let gender = PFUser.currentUser()?.objectForKey("gender") as? String
+        
+        
+        if (genderInterestedIn == nil ||  gender == nil) {
+            
+            let alertController = DBAlertController(title: "Missing Information", message: "Please choose  gender and gender interested in from Edit Profile Page to view other user profiles!", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Go to Profile Page", style: .Destructive, handler: { action in self.performSegueWithIdentifier("noGenderInterestedSeque", sender: self) }))
+            alertController.show()
+        }
+  
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-   
-        
-        
+  
     }
     
     func imageTapped(img: AnyObject)
