@@ -99,7 +99,6 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         }
         
         cell.timeLeftLabel.hidden = true
-        cell.progressBar.hidden = true
         
         
         var currentUserName: String = ""
@@ -115,7 +114,7 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
                     thumbnail.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error: NSError?) -> Void in
                         if (error == nil) {
-                            cell.matchedEventProfilePicture.image = UIImage(data:imageData!)
+                            cell.matchedEventProfilePicture.setBackgroundImage(UIImage(data:imageData!), forState: .Normal)
                         }
                     })
                 }
@@ -127,15 +126,15 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
                     thumbnail.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error: NSError?) -> Void in
                         if (error == nil) {
-                            cell.matchedEventProfilePicture.image = UIImage(data:imageData!)
+                            cell.matchedEventProfilePicture.setBackgroundImage(UIImage(data:imageData!), forState: .Normal)
                         }
                     })
                 }
         
             }
-        
-
-        cell.matchedEventName.text = object?["matchedEventName"] as? String
+        if let eventName = object?["matchedEventName"] as? String {
+            cell.matchedEventName.setTitle(eventName, forState: .Normal)
+        }
         
         let date = NSDate()
         let createdDate = object?.updatedAt
@@ -148,16 +147,11 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         if (differenceDate <= 0.0) {
      
         
-        }
-        else {
+        } else {
         cell.timeLeftLabel.hidden = false
-        cell.progressBar.hidden = false
         cell.timeLeftLabel.text = " \(differenceHour)h" + ", \(differenceMinute)m left."
-        cell.progressBar.setProgress(Float(differencePercentage), animated: false)
         }
         }
-        
-        
         
         let firstPaidUserID = object?["PaidUserId1"]
         let secondPaidUserID = object?["PaidUserId2"]
