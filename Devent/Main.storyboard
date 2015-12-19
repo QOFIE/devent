@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -1234,12 +1234,8 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="t1o-3i-qia">
-                                            <rect key="frame" x="8" y="66" width="64" height="2"/>
-                                            <animations/>
-                                        </progressView>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="4Ke-CL-RtT">
-                                            <rect key="frame" x="8" y="51" width="64" height="13.5"/>
+                                            <rect key="frame" x="8" y="54.5" width="64" height="13.5"/>
                                             <animations/>
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
@@ -1321,15 +1317,12 @@
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="NWF-vk-rOF" firstAttribute="top" secondItem="fdD-70-7br" secondAttribute="bottom" constant="2" id="0E9-bP-MUF"/>
-                                        <constraint firstItem="t1o-3i-qia" firstAttribute="top" secondItem="4Ke-CL-RtT" secondAttribute="bottom" constant="1" id="0gF-tj-Qje"/>
-                                        <constraint firstItem="t1o-3i-qia" firstAttribute="width" secondItem="UIF-p8-m18" secondAttribute="width" id="15Z-XM-xCr"/>
                                         <constraint firstItem="fdD-70-7br" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" id="2sl-o8-Wpe"/>
                                         <constraint firstItem="4Ke-CL-RtT" firstAttribute="centerX" secondItem="UIF-p8-m18" secondAttribute="centerX" id="3Fh-iB-XAw"/>
                                         <constraint firstItem="fdD-70-7br" firstAttribute="top" secondItem="q1p-sT-ffi" secondAttribute="bottom" constant="8" id="9IM-qs-gHJ"/>
                                         <constraint firstItem="q1p-sT-ffi" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" symbolic="YES" id="A2d-xy-5Dj"/>
-                                        <constraint firstItem="t1o-3i-qia" firstAttribute="centerY" secondItem="UIF-p8-m18" secondAttribute="centerY" id="BXZ-pk-Pl2"/>
                                         <constraint firstItem="iOp-LL-ZbU" firstAttribute="top" secondItem="AhU-uw-Uu2" secondAttribute="topMargin" id="Cg7-TX-kOO"/>
-                                        <constraint firstItem="t1o-3i-qia" firstAttribute="baseline" secondItem="UIF-p8-m18" secondAttribute="baseline" constant="-4" id="HjD-jZ-GFy"/>
+                                        <constraint firstItem="4Ke-CL-RtT" firstAttribute="bottom" secondItem="UIF-p8-m18" secondAttribute="bottom" constant="-4" id="Dll-CJ-YhE"/>
                                         <constraint firstItem="q1p-sT-ffi" firstAttribute="top" secondItem="AhU-uw-Uu2" secondAttribute="topMargin" id="JGW-ys-nrb"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="NWF-vk-rOF" secondAttribute="bottom" constant="2" id="JKG-ph-yaM"/>
                                         <constraint firstItem="NWF-vk-rOF" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" symbolic="YES" id="KF2-tQ-cXO"/>
@@ -1347,13 +1340,11 @@
                                         <constraint firstItem="iOp-LL-ZbU" firstAttribute="leading" secondItem="q1p-sT-ffi" secondAttribute="trailing" id="suK-Gp-Jdv"/>
                                         <constraint firstItem="fdD-70-7br" firstAttribute="leading" secondItem="UIF-p8-m18" secondAttribute="trailing" constant="8" symbolic="YES" id="um8-Nc-ER7"/>
                                         <constraint firstItem="iOp-LL-ZbU" firstAttribute="centerY" secondItem="AhU-uw-Uu2" secondAttribute="centerY" id="xVh-Aw-5UI"/>
-                                        <constraint firstItem="t1o-3i-qia" firstAttribute="centerX" secondItem="UIF-p8-m18" secondAttribute="centerX" id="yoL-Sp-PfX"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="UIF-p8-m18" secondAttribute="bottom" id="zQ7-Xo-d34"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="3Fh-iB-XAw"/>
-                                            <exclude reference="BXZ-pk-Pl2"/>
                                             <exclude reference="Smv-Jd-vTh"/>
                                             <exclude reference="2sl-o8-Wpe"/>
                                             <exclude reference="9IM-qs-gHJ"/>
@@ -1369,7 +1360,6 @@
                                     <outlet property="matchedUserName" destination="q1p-sT-ffi" id="d8T-bt-OuS"/>
                                     <outlet property="payButtonOutlet" destination="iOp-LL-ZbU" id="dK6-3X-Lqe"/>
                                     <outlet property="paymentStatusLabel" destination="NWF-vk-rOF" id="tIL-6R-SdU"/>
-                                    <outlet property="progressBar" destination="t1o-3i-qia" id="3J5-zf-8Sb"/>
                                     <outlet property="timeLeftLabel" destination="4Ke-CL-RtT" id="HrM-ln-oze"/>
                                 </connections>
                             </tableViewCell>

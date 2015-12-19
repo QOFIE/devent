@@ -96,7 +96,14 @@ class EditProfileTableViewController: UITableViewController, UITextViewDelegate 
     
     // MARK: DISCOVERY SETTINGS //
     
+    
     @IBAction func genderButton(sender: UIButton) {
+        if let existingGender = self.gender {
+            sender.titleLabel?.text = existingGender
+        } else if let genderInParse = user?.objectForKey("gender") as? String {
+            sender.titleLabel?.text = genderInParse
+        }
+        
         let actionSheet = UIAlertController(title: "I am a", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         addGenderAction(Gender.man, actionSheet: actionSheet, sender: sender)
         addGenderAction(Gender.woman, actionSheet: actionSheet, sender: sender)
@@ -111,6 +118,12 @@ class EditProfileTableViewController: UITableViewController, UITextViewDelegate 
     }
     
     @IBAction func genderInterestedInButton(sender: UIButton) {
+        if let existingGender = self.genderInterestedIn {
+            sender.titleLabel?.text = existingGender
+        } else if let genderInParse = user?.objectForKey("genderInterestedIn") as? String {
+            sender.titleLabel?.text = genderInParse
+        }
+        
         let actionSheet = UIAlertController(title: "Interested in", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         addGenderAction(Gender.man, actionSheet: actionSheet, sender: sender)
         addGenderAction(Gender.woman, actionSheet: actionSheet, sender: sender)
