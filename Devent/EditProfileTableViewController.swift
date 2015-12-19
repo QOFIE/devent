@@ -153,6 +153,9 @@ class EditProfileTableViewController: UITableViewController, UITextViewDelegate 
         )
     }
     
+    @IBOutlet weak var genderButtonOutlet: UIButton!
+    @IBOutlet weak var genderInterestedInButtonOutlet: UIButton!
+    
     // MARK: PHOTO SETTINGS //
     
     var profilePicture: UIImage!
@@ -336,6 +339,13 @@ class EditProfileTableViewController: UITableViewController, UITextViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         aboutMeTextView.delegate = self
+        if let genderInParse = user?.objectForKey("gender") as? String {
+            genderButtonOutlet.setTitle(genderInParse, forState: .Normal)
+        }
+        if let genderInterestedInInParse = user?.objectForKey("genderInterestedIn") as? String {
+            genderInterestedInButtonOutlet.setTitle(genderInterestedInInParse, forState: .Normal)
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

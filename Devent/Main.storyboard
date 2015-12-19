@@ -904,6 +904,8 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="aboutMeTextView" destination="0pq-v1-Si6" id="GlC-Ls-Xig"/>
+                        <outlet property="genderButtonOutlet" destination="NPY-rd-C0B" id="snw-bs-b82"/>
+                        <outlet property="genderInterestedInButtonOutlet" destination="yzZ-fM-bdi" id="X1B-vP-g0f"/>
                         <outlet property="heightLabel" destination="Yzf-zA-3ts" id="rXl-hs-m7z"/>
                         <outlet property="profilePictureImageView" destination="36b-55-a3H" id="IeD-0A-Edd"/>
                         <outletCollection property="openToButtons" destination="qs5-N5-HgX" collectionClass="NSMutableArray" id="O3u-gU-c2U"/>
@@ -914,7 +916,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEx-Hc-108" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3471" y="2416"/>
+            <point key="canvasLocation" x="3471" y="2411"/>
         </scene>
         <!--Choose Height-->
         <scene sceneID="k7p-aJ-UZi">
@@ -1378,7 +1380,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0r-yv-uGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2714" y="1694"/>
+            <point key="canvasLocation" x="2684" y="1694"/>
         </scene>
         <!--Profile Location View Controller-->
         <scene sceneID="Zmf-wH-hQU">
