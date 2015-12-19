@@ -45,8 +45,15 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery{
-        return baseQuery().fromLocalDatastore()
+        //return baseQuery().fromLocalDatastore()
         
+        if (Reachability.isConnectedToNetwork() == false)
+        {
+        return baseQuery().fromLocalDatastore()
+        }
+        else {
+        return baseQuery()
+        }
     }
     
     func refreshLocalDataStoreFromServer() {
@@ -182,6 +189,9 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
             cell.payButtonOutlet.setTitle("Message", forState: .Normal)
             cell.paymentStatusLabel.textColor = UIColor.greenColor()
             
+            object?.setObject("Done", forKey: "deneme")
+            object?.saveInBackground()
+            
         }
         
         return cell
@@ -218,7 +228,7 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         }
     }
 
-
+    
    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -262,6 +272,37 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            
+            if (Reachability.isConnectedToNetwork() == false) {
+            
+                let alertController = UIAlertController(title: "No Internet Connection", message:
+                    "Please connect to internet to send a message!", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+                
+            }
+            else {
+            let event = objectAtIndexPath(indexPath)
+            event?.deleteInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
+                if (succeeded) {
+                    
+                    self.loadObjects()
+                    self.tableView.reloadData()
+                    
+                } else {
+                    //error in deleting them
+                }
+                
+                
+            }
+            }
+        }
+        
     }
 
     

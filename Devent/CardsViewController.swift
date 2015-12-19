@@ -46,14 +46,11 @@ class CardsViewController: UIViewController {
         backCard?.cardView.removeFromSuperview()
         backCard?.swipeView.removeFromSuperview()
 
-    
-        
         cardStackView.backgroundColor = UIColor.clearColor()
         nahButton.setImage(UIImage(named: "nah-button-pressed"), forState: .Highlighted)
         yeahButton.setImage(UIImage(named: "yeah-button-pressed"), forState: .Highlighted)
         let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
         cardStackView.addGestureRecognizer(tapGestureRecognizer)
-        
         
         fetchUnviewedUsers({
             returnUsers in
@@ -84,7 +81,6 @@ class CardsViewController: UIViewController {
         
         let genderInterestedIn = PFUser.currentUser()?.objectForKey("genderInterestedIn") as? String
         let gender = PFUser.currentUser()?.objectForKey("gender") as? String
-        
         
         if (genderInterestedIn == nil ||  gender == nil) {
             
