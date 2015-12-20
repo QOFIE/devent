@@ -16,6 +16,7 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     var toUserId = ""
     var localStore = [PFObject]()
     var shouldUpdateFromServer:Bool = true
+    var userTouched: PFUser?
   
     // Initialise the PFQueryTable tableview
     override init(style: UITableViewStyle, className: String!) {
@@ -121,7 +122,8 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
                     thumbnail.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error: NSError?) -> Void in
                         if (error == nil) {
-                            cell.matchedEventProfilePicture.image = UIImage(data:imageData!)
+                            let image = squareImage(UIImage(data:imageData!)!)
+                            cell.matchedEventProfilePicture.setBackgroundImage(image, forState: .Normal)
                         }
                     })
                 }
@@ -133,15 +135,16 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
                     thumbnail.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error: NSError?) -> Void in
                         if (error == nil) {
-                            cell.matchedEventProfilePicture.image = UIImage(data:imageData!)
+                            let image = squareImage(UIImage(data:imageData!)!)
+                            cell.matchedEventProfilePicture.setBackgroundImage(image, forState: .Normal)
                         }
                     })
                 }
         
             }
-        
-
-        cell.matchedEventName.text = object?["matchedEventName"] as? String
+        if let eventName = object?["matchedEventName"] as? String {
+            cell.matchedEventName.setTitle(eventName, forState: .Normal)
+        }
         
         let date = NSDate()
         let createdDate = object?.updatedAt
@@ -154,14 +157,11 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         if (differenceDate <= 0.0) {
      
         
-        }
-        else {
+        } else {
         cell.timeLeftLabel.hidden = false
         cell.timeLeftLabel.text = " \(differenceHour)h" + ", \(differenceMinute)m left."
         }
         }
-        
-        
         
         let firstPaidUserID = object?["PaidUserId1"]
         let secondPaidUserID = object?["PaidUserId2"]
@@ -194,12 +194,19 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         return cell
     }
     
+        
     override func objectAtIndexPath(indexPath: NSIndexPath?) -> PFObject? {
         var obj : PFObject? = nil
         if(indexPath!.row < self.objects?.count) {
             obj = self.objects?[indexPath!.row] as? PFObject
         }
         return obj
+    }
+    
+    func objectTouched(sender: AnyObject) -> PFObject? {
+        let hitPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
+        let hitIndex = self.tableView.indexPathForRowAtPoint(hitPoint)
+        return objectAtIndexPath(hitIndex)
     }
     
     @IBAction func payOrMessage(sender: AnyObject) {
@@ -210,8 +217,6 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         eventNameId = (event?["matchedEvents"])! as! String
         byUserId = (event?["byUser"])! as! String
         toUserId = (event?["toUser"])! as! String
-        
-        print(sender.titleLabel!!.text)
         
         if sender.titleLabel?!.text == "Message" {
             performSegueWithIdentifier("MessageSeque", sender: self)
@@ -254,9 +259,13 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
             
         }
             
-        else {
+        else if segue.identifier == "showMatchedProfileSegue" {
+            let destinationVC = segue.destinationViewController as! UINavigationController
+            let pvc = destinationVC.topViewController as! DiscoverProfilePage
+            if self.userTouched != nil {
+                pvc.user2 = self.userTouched!
+            }
         }
-        
     }
     
     

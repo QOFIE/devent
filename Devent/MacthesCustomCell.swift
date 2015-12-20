@@ -10,8 +10,8 @@ import UIKit
 
 class MacthesCustomCell: PFTableViewCell {
     @IBOutlet weak var matchedUserName: UILabel!
-    @IBOutlet weak var matchedEventName: UILabel!
-    @IBOutlet weak var matchedEventProfilePicture: UIImageView!
+    @IBOutlet weak var matchedEventName: UIButton!
+    @IBOutlet weak var matchedEventProfilePicture: UIButton!
     @IBOutlet weak var payButtonOutlet: UIButton!
     @IBOutlet weak var paymentStatusLabel: UILabel!
     @IBOutlet weak var timeLeftLabel: UILabel!
