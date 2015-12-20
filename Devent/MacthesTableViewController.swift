@@ -17,6 +17,7 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     var localStore = [PFObject]()
     var shouldUpdateFromServer:Bool = true
     var userTouched: PFUser?
+    var eventTouched: PFObject?
   
     // Initialise the PFQueryTable tableview
     override init(style: UITableViewStyle, className: String!) {
@@ -260,10 +261,19 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         }
             
         else if segue.identifier == "showMatchedProfileSegue" {
-            let destinationVC = segue.destinationViewController as! UINavigationController
-            let pvc = destinationVC.topViewController as! DiscoverProfilePage
-            if self.userTouched != nil {
-                pvc.user2 = self.userTouched!
+            if let pvc = segue.destinationViewController as? DiscoverProfilePage {
+                if self.userTouched != nil {
+                    pvc.user2 = self.userTouched!
+                }
+            }
+        }
+        
+        else if segue.identifier == "showMatchedEventDetailsSegue" {
+            if let edvc = segue.destinationViewController as? EventDetailsTableViewController {
+                if let eventToPass = self.eventTouched {
+                    print("Event passed is \(eventToPass)")
+                    edvc.event = eventToPass
+                }
             }
         }
     }
