@@ -1219,17 +1219,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emw-c2-UZP">
-                                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emw-c2-UZP">
+                                            <rect key="frame" x="8" y="8.5" width="64" height="64"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="64" id="bvD-mG-WJh"/>
                                                 <constraint firstAttribute="width" secondItem="emw-c2-UZP" secondAttribute="height" multiplier="1:1" id="rFG-6w-jb6"/>
                                                 <constraint firstAttribute="height" constant="64" id="zH9-ga-jIa"/>
                                             </constraints>
+                                            <connections>
+                                                <action selector="profilePictureButton:" destination="PTT-kG-tNm" eventType="touchUpInside" id="93U-v3-yMo"/>
+                                            </connections>
                                         </button>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="4Ke-CL-RtT">
-                                            <rect key="frame" x="8" y="54" width="64" height="13.5"/>
+                                            <rect key="frame" x="8" y="55" width="64" height="13.5"/>
                                             <animations/>
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
@@ -1237,7 +1240,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1p-sT-ffi">
-                                            <rect key="frame" x="80" y="8" width="482" height="19.5"/>
+                                            <rect key="frame" x="80" y="8.5" width="482" height="19.5"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="312-e6-Wp0"/>
@@ -1253,7 +1256,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Status:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWF-vk-rOF">
-                                            <rect key="frame" x="80" y="52.5" width="482" height="17"/>
+                                            <rect key="frame" x="80" y="53.5" width="482" height="17"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="212" id="OJx-4I-TXx"/>
@@ -1270,7 +1273,7 @@
                                             </variation>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" verticalHuggingPriority="300" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="iOp-LL-ZbU">
-                                            <rect key="frame" x="562" y="8" width="30" height="63.5"/>
+                                            <rect key="frame" x="562" y="8.5" width="30" height="64"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="33" id="2kJ-nl-oZ3"/>
@@ -1291,12 +1294,15 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3j-Ag-O1e">
-                                            <rect key="frame" x="80" y="30" width="482" height="20.5"/>
+                                            <rect key="frame" x="80" y="30.5" width="482" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <state key="normal" title="Event Name">
                                                 <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="eventTitleButton:" destination="PTT-kG-tNm" eventType="touchUpInside" id="wuj-Dr-z3m"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <animations/>
@@ -1351,6 +1357,7 @@
                     <connections>
                         <segue destination="5cm-Uz-MDt" kind="show" identifier="MessageSeque" id="dzy-Dd-6or"/>
                         <segue destination="8Zu-Ka-P0e" kind="show" identifier="paySeque" id="gcn-as-mt4"/>
+                        <segue destination="p9h-ry-wIq" kind="show" identifier="showMatchedProfileSegue" id="RnF-h3-e4F"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0r-yv-uGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2185,7 +2192,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfilePictureCell" rowHeight="145" id="xEm-op-CnC" customClass="ProfilePictureTableViewCell" customModule="Devent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="145"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="145"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xEm-op-CnC" id="qNS-hA-Tmv">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="145"/>
@@ -2249,7 +2256,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameAgeLocationCell" id="v4v-gQ-lai" customClass="UserNameAndAgeTableViewCell" customModule="Devent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="237" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="217" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v4v-gQ-lai" id="EzT-Hz-Y4D">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
@@ -2294,7 +2301,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutCell" id="ySX-Vk-7D4" customClass="AboutTableViewCell" customModule="Devent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="357" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="337" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ySX-Vk-7D4" id="WRj-0L-y5f">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
@@ -2322,7 +2329,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserInfoCell" id="kab-OA-B8s" customClass="UserInfoTableViewCell" customModule="Devent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="477" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="457" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kab-OA-B8s" id="nLa-IL-AYE">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
@@ -2472,5 +2479,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tO7-Ck-TcO"/>
+        <segue reference="RnF-h3-e4F"/>
     </inferredMetricsTieBreakers>
 </document>

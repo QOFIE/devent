@@ -16,6 +16,7 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     var toUserId = ""
     var localStore = [PFObject]()
     var shouldUpdateFromServer:Bool = true
+    var userTouched: PFUser?
   
     // Initialise the PFQueryTable tableview
     override init(style: UITableViewStyle, className: String!) {
@@ -114,7 +115,8 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
                     thumbnail.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error: NSError?) -> Void in
                         if (error == nil) {
-                            cell.matchedEventProfilePicture.setBackgroundImage(UIImage(data:imageData!), forState: .Normal)
+                            let image = squareImage(UIImage(data:imageData!)!)
+                            cell.matchedEventProfilePicture.setBackgroundImage(image, forState: .Normal)
                         }
                     })
                 }
@@ -126,7 +128,8 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
                     thumbnail.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error: NSError?) -> Void in
                         if (error == nil) {
-                            cell.matchedEventProfilePicture.setBackgroundImage(UIImage(data:imageData!), forState: .Normal)
+                            let image = squareImage(UIImage(data:imageData!)!)
+                            cell.matchedEventProfilePicture.setBackgroundImage(image, forState: .Normal)
                         }
                     })
                 }
@@ -181,12 +184,19 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         return cell
     }
     
+        
     override func objectAtIndexPath(indexPath: NSIndexPath?) -> PFObject? {
         var obj : PFObject? = nil
         if(indexPath!.row < self.objects?.count) {
             obj = self.objects?[indexPath!.row] as? PFObject
         }
         return obj
+    }
+    
+    func objectTouched(sender: AnyObject) -> PFObject? {
+        let hitPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
+        let hitIndex = self.tableView.indexPathForRowAtPoint(hitPoint)
+        return objectAtIndexPath(hitIndex)
     }
     
     @IBAction func payOrMessage(sender: AnyObject) {
@@ -197,8 +207,6 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         eventNameId = (event?["matchedEvents"])! as! String
         byUserId = (event?["byUser"])! as! String
         toUserId = (event?["toUser"])! as! String
-        
-        print(sender.titleLabel!!.text)
         
         if sender.titleLabel?!.text == "Message" {
             performSegueWithIdentifier("MessageSeque", sender: self)
@@ -212,7 +220,22 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         }
     }
 
+    @IBAction func profilePictureButton(sender: UIButton) {
+        let event = objectTouched(sender)
+        let toUserTouched = event?.objectForKey("toUser") as! String
+        let byUserTouched = event?.objectForKey("byUser") as! String
+        let userId = PFUser.currentUser()?.objectId!
+        let otherUserId = (userId == toUserTouched) ? byUserTouched : toUserTouched
+        do {
+           userTouched = try PFQuery.getUserObjectWithId(otherUserId)
+        } catch {}
+        print("User touched is \(userTouched?.objectId)")
+        performSegueWithIdentifier("showMatchedProfileSegue", sender: self)
+        
+    }
 
+    @IBAction func eventTitleButton(sender: UIButton) {
+    }
    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -241,9 +264,13 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
             
         }
             
-        else {
+        else if segue.identifier == "showMatchedProfileSegue" {
+            let destinationVC = segue.destinationViewController as! UINavigationController
+            let pvc = destinationVC.topViewController as! DiscoverProfilePage
+            if self.userTouched != nil {
+                pvc.user2 = self.userTouched!
+            }
         }
-        
     }
     
     
