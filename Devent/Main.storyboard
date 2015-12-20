@@ -2194,7 +2194,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfilePictureCell" rowHeight="145" id="xEm-op-CnC" customClass="ProfilePictureTableViewCell" customModule="Devent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="600" height="145"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="145"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xEm-op-CnC" id="qNS-hA-Tmv">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="145"/>
@@ -2258,7 +2258,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameAgeLocationCell" id="v4v-gQ-lai" customClass="UserNameAndAgeTableViewCell" customModule="Devent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="217" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="237" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v4v-gQ-lai" id="EzT-Hz-Y4D">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
@@ -2303,7 +2303,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutCell" id="ySX-Vk-7D4" customClass="AboutTableViewCell" customModule="Devent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="337" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="357" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ySX-Vk-7D4" id="WRj-0L-y5f">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
@@ -2331,7 +2331,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserInfoCell" id="kab-OA-B8s" customClass="UserInfoTableViewCell" customModule="Devent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="457" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="477" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kab-OA-B8s" id="nLa-IL-AYE">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
@@ -2480,7 +2480,7 @@
         <image name="yes-green" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RnF-h3-e4F"/>
+        <segue reference="0pK-HY-4U5"/>
         <segue reference="tO7-Ck-TcO"/>
     </inferredMetricsTieBreakers>
 </document>

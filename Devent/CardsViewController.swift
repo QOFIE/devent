@@ -35,6 +35,7 @@ class CardsViewController: UIViewController {
 
     
     var users: [User]?
+    var i: Int = 0
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,11 +63,12 @@ class CardsViewController: UIViewController {
                 self.backCard = card
                 self.backCard!.swipeView.frame = self.createCardFrame(self.backCardTopMargin, leftMargin: self.backCardLeftMargin)
                 self.cardStackView.insertSubview(self.backCard!.swipeView, belowSubview: self.frontCard!.swipeView)
+                self.nameAgeLabel.hidden = false
             }
             
             if (self.frontCard != nil) {
             self.nameAge = self.frontCard!.user.name + ", " + self.frontCard!.user.age
-            self.nameAgeLabel.hidden = false
+            
             self.nameAgeLabel.text = self.nameAge
             }
             self.nameLabel.text = ""
@@ -160,17 +162,18 @@ class CardsViewController: UIViewController {
                 self.frontCard!.swipeView.frame = self.createCardFrame(self.frontCardTopMargin, leftMargin: self.frontCardLeftMargin)
             })
         }
-        else {
-        print("2")
-        self.nameAgeLabel.hidden = true
-        }
         
         if let card = self.popCard() {
             print("3")
             backCard = card
             backCard!.swipeView.frame = createCardFrame(backCardTopMargin, leftMargin: backCardLeftMargin)
             cardStackView.insertSubview(backCard!.swipeView, belowSubview: frontCard!.swipeView)
-            
+        }
+        else {
+        i++
+            if (i == 2){
+            self.nameAgeLabel.hidden = true
+            }
         }
         
     }
