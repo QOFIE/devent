@@ -2480,7 +2480,7 @@
         <image name="yes-green" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tO7-Ck-TcO"/>
         <segue reference="RnF-h3-e4F"/>
+        <segue reference="tO7-Ck-TcO"/>
     </inferredMetricsTieBreakers>
 </document>
