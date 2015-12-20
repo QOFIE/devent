@@ -40,6 +40,8 @@ class CardsViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        //
+        
         frontCard?.cardView.removeFromSuperview()
         backCard?.cardView.removeFromSuperview()
         backCard?.swipeView.removeFromSuperview()
