@@ -17,6 +17,7 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     var localStore = [PFObject]()
     var shouldUpdateFromServer:Bool = true
     var userTouched: PFUser?
+    var eventTouched: PFObject?
   
     // Initialise the PFQueryTable tableview
     override init(style: UITableViewStyle, className: String!) {
@@ -229,12 +230,20 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         do {
            userTouched = try PFQuery.getUserObjectWithId(otherUserId)
         } catch {}
-        print("User touched is \(userTouched?.objectId)")
         performSegueWithIdentifier("showMatchedProfileSegue", sender: self)
         
     }
 
     @IBAction func eventTitleButton(sender: UIButton) {
+        if let matchedEventId = objectTouched(sender)?.valueForKey("matchedEvents") {
+            print("object touched is \(matchedEventId)")
+            let query = PFQuery(className: "Events").whereKey("objectId", equalTo: matchedEventId)
+            do {
+                eventTouched = try query.findObjects().first
+                print("event touched is \(eventTouched)")
+            } catch {}
+            performSegueWithIdentifier("showMatchedEventDetailsSegue", sender: self)
+        }
     }
    
     
@@ -265,10 +274,19 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         }
             
         else if segue.identifier == "showMatchedProfileSegue" {
-            let destinationVC = segue.destinationViewController as! UINavigationController
-            let pvc = destinationVC.topViewController as! DiscoverProfilePage
-            if self.userTouched != nil {
-                pvc.user2 = self.userTouched!
+            if let pvc = segue.destinationViewController as? DiscoverProfilePage {
+                if self.userTouched != nil {
+                    pvc.user2 = self.userTouched!
+                }
+            }
+        }
+        
+        else if segue.identifier == "showMatchedEventDetailsSegue" {
+            if let edvc = segue.destinationViewController as? EventDetailsTableViewController {
+                if let eventToPass = self.eventTouched {
+                    print("Event passed is \(eventToPass)")
+                    edvc.event = eventToPass
+                }
             }
         }
     }
