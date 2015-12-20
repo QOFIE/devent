@@ -147,12 +147,10 @@
                         <outlet property="nameAgeLabel" destination="iBN-dA-tsi" id="ocV-NW-RHx"/>
                         <outlet property="nameLabel" destination="imo-pb-R69" id="TeS-nV-SbA"/>
                         <outlet property="yeahButton" destination="4nd-Rn-fXZ" id="LYg-eP-OrI"/>
-                        <segue destination="p9h-ry-wIq" kind="show" identifier="deneme5" id="0pK-HY-4U5"/>
-                        <segue destination="qf8-QC-x2z" kind="unwind" identifier="noGenderInterestedSeque" unwindAction="unwindToProfileVC:" id="7T8-V4-gBR"/>
+                        <segue destination="Bzo-dx-jG1" kind="show" identifier="deneme5" id="6iC-tb-GiK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zui-eN-6f1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="qf8-QC-x2z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2703" y="793"/>
         </scene>
@@ -1230,7 +1228,7 @@
                                                 <constraint firstAttribute="height" constant="64" id="zH9-ga-jIa"/>
                                             </constraints>
                                             <connections>
-                                                <action selector="profilePictureButton:" destination="PTT-kG-tNm" eventType="touchUpInside" id="93U-v3-yMo"/>
+                                                <action selector="profilePictureButton:" destination="PTT-kG-tNm" eventType="touchUpInside" id="EMj-G9-FuO"/>
                                             </connections>
                                         </button>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="4Ke-CL-RtT">
@@ -2395,7 +2393,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Db4-2y-Fph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3237" y="124"/>
+            <point key="canvasLocation" x="3489" y="92"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="egn-dt-UeP">
@@ -2474,7 +2472,7 @@
         <image name="yes-green" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0pK-HY-4U5"/>
-        <segue reference="tO7-Ck-TcO"/>
+        <segue reference="6iC-tb-GiK"/>
+        <segue reference="T9H-OF-eSC"/>
     </inferredMetricsTieBreakers>
 </document>

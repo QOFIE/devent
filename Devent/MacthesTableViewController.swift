@@ -231,7 +231,33 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         }
     }
 
+    @IBAction func profilePictureButton(sender: UIButton) {
+        let event = objectTouched(sender)
+        let toUserTouched = event?.objectForKey("toUser") as! String
+        let byUserTouched = event?.objectForKey("byUser") as! String
+        let userId = PFUser.currentUser()?.objectId!
+        let otherUserId = (userId == toUserTouched) ? byUserTouched : toUserTouched
+        do {
+            userTouched = try PFQuery.getUserObjectWithId(otherUserId)
+        } catch {}
+        performSegueWithIdentifier("showMatchedProfileSegue", sender: self)
+
+        
+    }
     
+    @IBAction func eventTitleButton(sender: AnyObject) {
+        
+        if let matchedEventId = objectTouched(sender)?.valueForKey("matchedEvents") {
+            print("object touched is \(matchedEventId)")
+            let query = PFQuery(className: "Events").whereKey("objectId", equalTo: matchedEventId)
+            do {
+                eventTouched = try query.findObjects().first
+                print("event touched is \(eventTouched)")
+            } catch {}
+            performSegueWithIdentifier("showMatchedEventDetailsSegue", sender: self)
+        }
+        
+    }
    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

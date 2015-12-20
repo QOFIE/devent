@@ -105,10 +105,9 @@ class CardsViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if let edvc = segue.destinationViewController as? UINavigationController {
-            let abcd = edvc.topViewController as? DiscoverProfilePage
+        if let edvc = segue.destinationViewController as? DiscoverProfilePage {
             let user3 = frontCard?.user.pfUser
-            abcd!.user2 = user3!
+            edvc.user2 = user3!
         }
     }
 
