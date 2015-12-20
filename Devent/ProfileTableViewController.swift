@@ -271,6 +271,12 @@ class ProfileTableViewController: UITableViewController {
             return tableView.bounds.size.width
         }
         return UITableViewAutomaticDimension
+        
+        
+    }
+    
+    @IBAction func unwindToProfileVC(segue: UIStoryboardSegue) {
+        // do nothing
     }
 
     /*

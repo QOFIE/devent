@@ -106,7 +106,6 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         }
         
         cell.timeLeftLabel.hidden = true
-        cell.progressBar.hidden = true
         
         
         var currentUserName: String = ""
@@ -158,9 +157,7 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         }
         else {
         cell.timeLeftLabel.hidden = false
-        cell.progressBar.hidden = false
         cell.timeLeftLabel.text = " \(differenceHour)h" + ", \(differenceMinute)m left."
-        cell.progressBar.setProgress(Float(differencePercentage), animated: false)
         }
         }
         

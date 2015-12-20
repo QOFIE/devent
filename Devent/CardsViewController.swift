@@ -32,15 +32,12 @@ class CardsViewController: UIViewController {
     var backCard: Card?
     var frontCard: Card?
     var nameAge: String?
-    var i: Int = 0
+
     
     var users: [User]?
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.nameAgeLabel.hidden = true
-        i = 0
         
         frontCard?.cardView.removeFromSuperview()
         backCard?.cardView.removeFromSuperview()
@@ -66,6 +63,7 @@ class CardsViewController: UIViewController {
                 self.backCard!.swipeView.frame = self.createCardFrame(self.backCardTopMargin, leftMargin: self.backCardLeftMargin)
                 self.cardStackView.insertSubview(self.backCard!.swipeView, belowSubview: self.frontCard!.swipeView)
             }
+            
             if (self.frontCard != nil) {
             self.nameAge = self.frontCard!.user.name + ", " + self.frontCard!.user.age
             self.nameAgeLabel.hidden = false
@@ -152,6 +150,7 @@ class CardsViewController: UIViewController {
     
     private func switchCards() {
         if let card = backCard {
+            print("1")
             self.nameLabel.text = ""
             self.nameAge = self.backCard!.user.name + ", " + self.backCard!.user.age
             self.nameAgeLabel.text = self.nameAge
@@ -161,21 +160,19 @@ class CardsViewController: UIViewController {
                 self.frontCard!.swipeView.frame = self.createCardFrame(self.frontCardTopMargin, leftMargin: self.frontCardLeftMargin)
             })
         }
+        else {
+        print("2")
+        self.nameAgeLabel.hidden = true
+        }
         
         if let card = self.popCard() {
+            print("3")
             backCard = card
             backCard!.swipeView.frame = createCardFrame(backCardTopMargin, leftMargin: backCardLeftMargin)
             cardStackView.insertSubview(backCard!.swipeView, belowSubview: frontCard!.swipeView)
             
         }
-        else {
-            i++
-            if (i == 2) {
-                self.nameAgeLabel.hidden = true
-
-            }
-
-        }
+        
     }
     
     @IBAction func unwindToMCardsVC(segue: UIStoryboardSegue) {
