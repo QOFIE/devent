@@ -57,10 +57,10 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
             
             self.createBackendChargeWithToken(token!, completion: { (result, error) -> Void in
                 if result == STPBackendChargeResult.Success {
-                    //completion(PKPaymentAuthorizationStatus.Success)
+                   
                 }
                 else {
-                    //completion(PKPaymentAuthorizationStatus.Failure)
+                    
                 }
             })
         })
@@ -81,8 +81,7 @@ class PaymentPageViewController: UIViewController, STPPaymentCardTextFieldDelega
                     let successfulResponse = (response as? NSHTTPURLResponse)?.statusCode == 200
                     if successfulResponse && error == nil {
                         completion(.Success, nil)
-                        print("success")
-                        print(self.macthedEventObjectId)
+                        print("successful payment")
                         
                         let query = PFQuery(className: "MatchedEvent")
                             .whereKey("objectId", equalTo: self.macthedEventObjectId)
@@ -161,10 +160,10 @@ func userDidProvideCreditCardInfo(cardInfo: CardIOCreditCardInfo!, inPaymentView
         
         self.createBackendChargeWithToken(token!, completion: { (result, error) -> Void in
             if result == STPBackendChargeResult.Success {
-                //completion(PKPaymentAuthorizationStatus.Success)
+                
             }
             else {
-                //completion(PKPaymentAuthorizationStatus.Failure)
+               
             }
         })
     })

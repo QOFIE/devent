@@ -42,7 +42,7 @@
             </objects>
             <point key="canvasLocation" x="376" y="2411"/>
         </scene>
-        <!--Cards View Controller-->
+        <!--Discover-->
         <scene sceneID="bgM-zP-LKW">
             <objects>
                 <viewController id="mfI-E3-hfL" customClass="CardsViewController" customModule="Devent" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,7 +112,7 @@
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBN-dA-tsi">
                                 <rect key="frame" x="175" y="352" width="255" height="26"/>
                                 <animations/>
-                                <color key="backgroundColor" white="0.93999999999999995" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93999999761581421" green="0.93999999761581421" blue="0.93999999761581421" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="VHu-SO-HdB"/>
                                     <constraint firstAttribute="width" constant="255" id="atQ-iE-eXB"/>
@@ -140,7 +140,7 @@
                             <constraint firstItem="QPr-Ye-ctx" firstAttribute="leading" secondItem="g1l-0S-1YI" secondAttribute="leading" constant="34" id="xPC-kX-HjZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="bD5-9d-fxP"/>
+                    <navigationItem key="navigationItem" title="Discover" id="bD5-9d-fxP"/>
                     <connections>
                         <outlet property="cardStackView" destination="g1l-0S-1YI" id="rjW-X2-73t"/>
                         <outlet property="nahButton" destination="QPr-Ye-ctx" id="XfX-7F-BD7"/>
@@ -148,9 +148,11 @@
                         <outlet property="nameLabel" destination="imo-pb-R69" id="TeS-nV-SbA"/>
                         <outlet property="yeahButton" destination="4nd-Rn-fXZ" id="LYg-eP-OrI"/>
                         <segue destination="Bzo-dx-jG1" kind="show" identifier="deneme5" id="6iC-tb-GiK"/>
+                        <segue destination="3DS-YQ-t5p" kind="unwind" identifier="noGenderInterestedSeque" unwindAction="unwindToProfileVC:" id="l9S-RZ-RCc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zui-eN-6f1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3DS-YQ-t5p" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2703" y="793"/>
         </scene>
@@ -1635,6 +1637,17 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="328"/>
                                                                 <animations/>
                                                             </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEY-8Y-drB">
+                                                                <rect key="frame" x="0.0" y="292" width="600" height="36"/>
+                                                                <animations/>
+                                                                <color key="backgroundColor" white="0.93999999999999995" alpha="0.5" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="36" id="S6S-iW-Png"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <animations/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1644,11 +1657,15 @@
                                                     <constraints>
                                                         <constraint firstItem="dea-Y2-37i" firstAttribute="leading" secondItem="qXN-3O-g7U" secondAttribute="leading" id="4lO-ZN-EW5"/>
                                                         <constraint firstItem="dea-Y2-37i" firstAttribute="top" secondItem="qXN-3O-g7U" secondAttribute="top" id="57l-Qu-ooZ"/>
+                                                        <constraint firstItem="BEY-8Y-drB" firstAttribute="leading" secondItem="dea-Y2-37i" secondAttribute="leading" id="Ok0-KS-tb7"/>
                                                         <constraint firstAttribute="bottom" secondItem="dea-Y2-37i" secondAttribute="bottom" id="UV7-BQ-gnA"/>
+                                                        <constraint firstItem="BEY-8Y-drB" firstAttribute="bottom" secondItem="dea-Y2-37i" secondAttribute="bottom" id="ZNZ-xL-2SR"/>
                                                         <constraint firstAttribute="trailing" secondItem="dea-Y2-37i" secondAttribute="trailing" id="c4e-yK-XGR"/>
+                                                        <constraint firstItem="BEY-8Y-drB" firstAttribute="trailing" secondItem="dea-Y2-37i" secondAttribute="trailing" id="pu9-1t-1HS"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="featuredEventImage" destination="dea-Y2-37i" id="J3i-Vw-L12"/>
+                                                        <outlet property="featuredEventLabel" destination="BEY-8Y-drB" id="nvk-Xl-wSG"/>
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>

@@ -30,6 +30,7 @@ class EventsTableViewController: PFQueryTableViewController, SortingCellDelegate
         let query = PFQuery(className: "Events")
         query.whereKey(EVENT.featured, equalTo: false)
         query.whereKey(EVENT.type, containedIn: categories)
+        query.whereKey(EVENT.date, greaterThanOrEqualTo: NSDate())
         if let sortBy = sortType {
             return query.orderByAscending(sortBy)
         } else {

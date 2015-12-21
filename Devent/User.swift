@@ -68,8 +68,7 @@ func fetchUnviewedUsers(callback: ([User] -> ())) {
                 .findObjectsInBackgroundWithBlock({
                     objects, error in
                     
-                    //deneme
-                    
+        
                     userArray.removeAll()
                     for i in objects! {
                         

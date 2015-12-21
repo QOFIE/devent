@@ -11,6 +11,7 @@ import UIKit
 class DenemeCollectionViewCell: UICollectionViewCell {
     
     
+    @IBOutlet weak var featuredEventLabel: UILabel!
     @IBOutlet weak var featuredEventImage: UIImageView!
     
 }

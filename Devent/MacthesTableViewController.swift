@@ -41,6 +41,7 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
         let query = PFQuery(className: "MatchedEvent").whereKey("byUser", equalTo: PFUser.currentUser()!.objectId!)
         let query2 = PFQuery(className: "MatchedEvent").whereKey("toUser", equalTo: PFUser.currentUser()!.objectId!)
         let query3 = PFQuery.orQueryWithSubqueries([query, query2])
+        query.whereKey("eventDate", greaterThanOrEqualTo: NSDate())
         query3.orderByAscending("matchedEventName")
         return query3
     }
@@ -187,9 +188,10 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
             cell.payButtonOutlet.setTitle("Message", forState: .Normal)
             cell.paymentStatusLabel.textColor = UIColor.greenColor()
             
+            if (object?.valueForKey("deneme") as? String != "Done"){
             object?.setObject("Done", forKey: "deneme")
             object?.saveInBackground()
-            
+            }
         }
         
         return cell
@@ -317,6 +319,8 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
         if editingStyle == UITableViewCellEditingStyle.Delete {
             
             if (Reachability.isConnectedToNetwork() == false) {
@@ -328,6 +332,16 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
                 
                 
             }
+            else if (objectAtIndexPath(indexPath)!.valueForKey("PaymentDone") != nil) {
+            
+                let alertController = UIAlertController(title: "Already Paid", message:
+                    "This event has already been paid by both accounts so it can't be deleted", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            
+            }
+                
+                
             else {
             let event = objectAtIndexPath(indexPath)
             event?.deleteInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
@@ -344,6 +358,8 @@ class MacthesTableViewController: PFQueryTableViewController, UISearchBarDelegat
             }
             }
         }
+        
+        
         
     }
 

@@ -71,6 +71,7 @@ func createEventMatchbyEventChoice(event: PFObject) {
                     jointEvent.setObject(otherUserArray[0]["profilePicture"], forKey: "toUserPicture")
                     jointEvent.setObject(event.objectId!, forKey: "matchedEvents")
                     jointEvent.setObject(event["name"], forKey: "matchedEventName")
+                    jointEvent.setObject(event["date"], forKey: "eventDate")
                     jointEvent.saveInBackground()
                     
                 }

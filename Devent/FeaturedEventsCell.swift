@@ -43,6 +43,7 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
                     (imageData: NSData?, error: NSError?) -> Void in
                     if (error == nil) {
                         cell.featuredEventImage.image = UIImage(data:imageData!)
+                        cell.featuredEventLabel.text = self.featuredEventsArray![indexPath.row][EVENT.name] as? String
                         
                         
                     } else {
@@ -91,6 +92,7 @@ class FeaturedEventsCell: PFTableViewCell, UICollectionViewDataSource, UICollect
                             (imageData: NSData?, error: NSError?) -> Void in
                             if (error == nil) {
                                 cell.featuredEventImage.image = UIImage(data:imageData!)
+                                cell.featuredEventLabel.text = self.featuredEventsArray![indexPath.row][EVENT.name] as? String
                                
                                 
                             } else {
