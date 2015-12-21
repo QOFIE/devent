@@ -40,8 +40,6 @@ class CardsViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //
-        
         frontCard?.cardView.removeFromSuperview()
         backCard?.cardView.removeFromSuperview()
         backCard?.swipeView.removeFromSuperview()
@@ -59,18 +57,18 @@ class CardsViewController: UIViewController {
             if let card = self.popCard() {
                 self.frontCard = card
                 self.cardStackView.addSubview(self.frontCard!.swipeView)
+                self.nameAgeLabel.hidden = false
             }
             
             if let card = self.popCard() {
                 self.backCard = card
                 self.backCard!.swipeView.frame = self.createCardFrame(self.backCardTopMargin, leftMargin: self.backCardLeftMargin)
                 self.cardStackView.insertSubview(self.backCard!.swipeView, belowSubview: self.frontCard!.swipeView)
-                self.nameAgeLabel.hidden = false
+                
             }
             
             if (self.frontCard != nil) {
             self.nameAge = self.frontCard!.user.name + ", " + self.frontCard!.user.age
-            
             self.nameAgeLabel.text = self.nameAge
             }
             self.nameLabel.text = ""
@@ -130,8 +128,7 @@ class CardsViewController: UIViewController {
     
     private func createCard(user: User) -> Card {
         let cardView = CardView()
-        
-        //cardView.name = user.name
+
         cardView.name = ""
         user.getPhoto({
             image in
@@ -153,7 +150,6 @@ class CardsViewController: UIViewController {
     
     private func switchCards() {
         if let card = backCard {
-            print("1")
             self.nameLabel.text = ""
             self.nameAge = self.backCard!.user.name + ", " + self.backCard!.user.age
             self.nameAgeLabel.text = self.nameAge
@@ -165,7 +161,6 @@ class CardsViewController: UIViewController {
         }
         
         if let card = self.popCard() {
-            print("3")
             backCard = card
             backCard!.swipeView.frame = createCardFrame(backCardTopMargin, leftMargin: backCardLeftMargin)
             cardStackView.insertSubview(backCard!.swipeView, belowSubview: frontCard!.swipeView)
@@ -175,6 +170,11 @@ class CardsViewController: UIViewController {
             if (i == 2){
             self.nameAgeLabel.hidden = true
             }
+            
+            else if (i == 1 && backCard == nil) {
+            self.nameAgeLabel.hidden = true
+            }
+            else {}
         }
         
     }
